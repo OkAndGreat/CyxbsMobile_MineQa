@@ -14,7 +14,7 @@ import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.util.ui.TabPagerAdapter
 import kotlinx.android.synthetic.main.mine_activity_tablayout_common.*
 
-
+//此界面未使用 废弃
 class MyProductActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -15,6 +15,7 @@ import io.reactivex.disposables.Disposable
 /**
  * Created by roger on 2020/2/15
  */
+//此界面未使用 废弃
 class MyProductViewModel : BaseViewModel() {
     private val disposableForUnClaimed: MutableList<Disposable> = mutableListOf()
     private val disposableForClaimed: MutableList<Disposable> = mutableListOf()

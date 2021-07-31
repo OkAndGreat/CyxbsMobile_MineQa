@@ -18,6 +18,7 @@ import com.mredrock.cyxbs.common.utils.extensions.*
 /**
  * Created by roger on 2020/2/15
  */
+//此界面未使用 废弃
 class MyProductFragment(private val type: Int = UNCLAIMED) : BaseRVFragment<MyProduct>() {
     companion object {
         const val CLAIMED = 1

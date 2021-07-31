@@ -166,10 +166,11 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
     private fun initView() {
         mine_daily_sign.setOnClickListener { checkIn() }
         mine_store_rv.addItemDecoration(SpaceDecoration(dp2px(8f)))
-        mine_store_my_product.setOnClickListener {
-            startActivity<MyProductActivity>()
-            overridePendingTransition(R.anim.common_slide_in_from_bottom_with_bezier, R.anim.common_scale_fade_out_with_bezier)
-        }
+        //原图顶部我的商品跳转，废弃
+//        mine_store_my_product.setOnClickListener {
+//            startActivity<MyProductActivity>()
+//            overridePendingTransition(R.anim.common_slide_in_from_bottom_with_bezier, R.anim.common_scale_fade_out_with_bezier)
+//        }
     }
 
     /**
@@ -229,29 +230,30 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
         isChecking = true
         viewModel.checkIn()
     }
-
+    //底部状态栏处理
     private fun dealBottomSheet() {
         val behavior = BottomSheetBehavior.from(mine_sign_fl)
         mine_store_arrow_left.setOnClickListener {
             behavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
         behavior.state = onStartBottomStatus//设置bottomSheet的展开状态
-        behavior.peekHeight = dp2px(95f + 30f)
+        behavior.peekHeight = dp2px(85f)
         behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(p0: View, p1: Float) {
                 mine_store_arrow_left.alpha = p1
-                mine_store_my_product.alpha = p1
+//                mine_store_my_product.alpha = p1 废弃
                 mine_store_line.alpha = 1 - p1
-                mine_store_tv_title.x = mine_store_arrow_left.x + p1 * dp2px(15f) + dp2px(17f)
+
+//                mine_store_tv_title.x = mine_store_arrow_left.x + p1 * dp2px(15f) + dp2px(17f) 废弃
             }
 
             override fun onStateChanged(p0: View, p1: Int) {
                 if (p1 == BottomSheetBehavior.STATE_COLLAPSED) {
                     mine_store_arrow_left.invisible()
-                    mine_store_my_product.invisible()
+//                    mine_store_my_product.invisible() 废弃
                 } else {
                     mine_store_arrow_left.visible()
-                    mine_store_my_product.visible()
+//                    mine_store_my_product.visible() 废弃
                 }
             }
         })
