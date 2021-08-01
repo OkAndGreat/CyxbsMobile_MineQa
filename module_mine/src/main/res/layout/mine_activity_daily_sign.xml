@@ -464,7 +464,7 @@
         app:behavior_peekHeight="0dp"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
-        <include layout="@layout/mine_layout_store_sign" />
+        <include layout="@layout/mine_fragment_stamp_center" />
     </FrameLayout>
 
 

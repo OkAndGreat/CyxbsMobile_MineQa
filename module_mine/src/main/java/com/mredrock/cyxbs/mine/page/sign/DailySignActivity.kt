@@ -107,7 +107,7 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
         setContentView(R.layout.mine_activity_daily_sign)
         common_toolbar.initWithSplitLine("", false)
         initView()
-        initAdapter()
+//        initAdapter()
         dealBottomSheet()
         initData()
     }
@@ -165,7 +165,7 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
 
     private fun initView() {
         mine_daily_sign.setOnClickListener { checkIn() }
-        mine_store_rv.addItemDecoration(SpaceDecoration(dp2px(8f)))
+//        mine_store_rv.addItemDecoration(SpaceDecoration(dp2px(8f)))
         //原图顶部我的商品跳转，废弃
 //        mine_store_my_product.setOnClickListener {
 //            startActivity<MyProductActivity>()
@@ -230,34 +230,6 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
         isChecking = true
         viewModel.checkIn()
     }
-    //底部状态栏处理
-    private fun dealBottomSheet() {
-        val behavior = BottomSheetBehavior.from(mine_sign_fl)
-        mine_store_arrow_left.setOnClickListener {
-            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
-        behavior.state = onStartBottomStatus//设置bottomSheet的展开状态
-        behavior.peekHeight = dp2px(85f)
-        behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onSlide(p0: View, p1: Float) {
-                mine_store_arrow_left.alpha = p1
-//                mine_store_my_product.alpha = p1 废弃
-                mine_store_line.alpha = 1 - p1
-
-//                mine_store_tv_title.x = mine_store_arrow_left.x + p1 * dp2px(15f) + dp2px(17f) 废弃
-            }
-
-            override fun onStateChanged(p0: View, p1: Int) {
-                if (p1 == BottomSheetBehavior.STATE_COLLAPSED) {
-                    mine_store_arrow_left.invisible()
-//                    mine_store_my_product.invisible() 废弃
-                } else {
-                    mine_store_arrow_left.visible()
-//                    mine_store_my_product.visible() 废弃
-                }
-            }
-        })
-    }
 
     /**
      * 设置签到的七个圆点的Image
@@ -279,7 +251,6 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
             }
         }
     }
-
 
     //修改divider颜色,如果isChecking == true 那么说明是用户点击了签到导致的UI刷新，此时相应的divider需要有一段动画
     private fun paintDivider(dividerColorArr: Array<ColorState>) {
@@ -321,61 +292,7 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
         }
     }
 
-    //设置商品展示的Adapter，同时设置监听，弹出DialogFragment
-    private fun initAdapter() {
-        val click: ((Product, Int) -> Unit)? = { product, position ->
-            val integral = viewModel.status.value?.integral
 
-            integral?.let {
-                //防止商品积分为空，同时需处理积分为小数的情况
-                val productIntegral = if (product.integral.isEmpty()) 0 else product.integral.toFloat().toInt()
-                //判断用户积分是否大于物品所需积分数 && 物品剩余数大于0
-                if (integral >= productIntegral && product.count > 0) {
-                    val tag = "exchange"
-                    if (supportFragmentManager.findFragmentByTag(tag) == null) {
-                        CommonDialogFragment().apply {
-                            initView(
-                                    containerRes = R.layout.mine_layout_dialog_exchange,
-                                    positiveString = "确认兑换",
-                                    onPositiveClick = {
-                                        viewModel.exchangeProduct(product, position)
-                                        dismiss()
-                                    },
-                                    onNegativeClick = { dismiss() },
-                                    elseFunction = {
-                                        val str = "这将消耗您的${product.integral}个积分，仍然要兑换吗？"
-                                        it.findViewById<TextView>(R.id.mine_tv_exchange_for_sure_content).text = str
-                                    }
-                            )
-                        }.show(supportFragmentManager, tag)
-                    }
-                } else {
-                    val tag = "lack of integral"
-                    //防止连续两次快速点击两次重复创建相同tag的DialogFragment
-                    if (supportFragmentManager.findFragmentByTag(tag) == null) {
-                        CommonDialogFragment().apply {
-                            initView(
-                                    containerRes = R.layout.mine_layout_dialog_exchange,
-                                    positiveString = "确认",
-                                    onPositiveClick = { dismiss() },
-                                    elseFunction = {
-                                        //区分是积分不足还是物品剩余数为0
-                                        if (product.count <= 0) {
-                                            it.findViewById<TextView>(R.id.mine_tv_exchange_for_sure_content).text = "物品被抢光了，明天再来吧"
-                                        } else {
-                                            it.findViewById<TextView>(R.id.mine_tv_exchange_for_sure_content).text = "积分不足"
-                                        }
-                                    }
-                            )
-                        }.show(supportFragmentManager, tag)
-                    }
-                }
-            }
-        }
-        adapter.setOnExChangeClick(click)
-        mine_store_rv.adapter = adapter
-
-    }
 
 
     override fun onBackPressed() {
@@ -386,4 +303,87 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
             super.onBackPressed()
         }
     }
+    //底部状态栏处理
+    private fun dealBottomSheet() {
+        val behavior = BottomSheetBehavior.from(mine_sign_fl)
+//        mine_store_arrow_left.setOnClickListener {
+//            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+//        } 废弃
+        behavior.state = onStartBottomStatus//设置bottomSheet的展开状态
+        behavior.peekHeight = dp2px(85f)
+        behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onSlide(p0: View, p1: Float) {
+//                mine_store_arrow_left.alpha = p1 废弃
+//                mine_store_my_product.alpha = p1
+//                mine_store_line.alpha = 1 - p1
+
+//                mine_store_tv_title.x = mine_store_arrow_left.x + p1 * dp2px(15f) + dp2px(17f) 废弃
+            }
+
+            override fun onStateChanged(p0: View, p1: Int) {
+//                if (p1 == BottomSheetBehavior.STATE_COLLAPSED) {
+//                    mine_store_arrow_left.invisible()
+//                    mine_store_my_product.invisible() 废弃
+//                } else {
+//                    mine_store_arrow_left.visible()
+//                    mine_store_my_product.visible()
+//                }
+            }
+        })
+    }
+    //设置商品展示的Adapter，同时设置监听，弹出DialogFragment
+//    private fun initAdapter() {
+//        val click: ((Product, Int) -> Unit)? = { product, position ->
+//            val integral = viewModel.status.value?.integral
+//
+//            integral?.let {
+//                //防止商品积分为空，同时需处理积分为小数的情况
+//                val productIntegral = if (product.integral.isEmpty()) 0 else product.integral.toFloat().toInt()
+//                //判断用户积分是否大于物品所需积分数 && 物品剩余数大于0
+//                if (integral >= productIntegral && product.count > 0) {
+//                    val tag = "exchange"
+//                    if (supportFragmentManager.findFragmentByTag(tag) == null) {
+//                        CommonDialogFragment().apply {
+//                            initView(
+//                                containerRes = R.layout.mine_layout_dialog_exchange,
+//                                positiveString = "确认兑换",
+//                                onPositiveClick = {
+//                                    viewModel.exchangeProduct(product, position)
+//                                    dismiss()
+//                                },
+//                                onNegativeClick = { dismiss() },
+//                                elseFunction = {
+//                                    val str = "这将消耗您的${product.integral}个积分，仍然要兑换吗？"
+//                                    it.findViewById<TextView>(R.id.mine_tv_exchange_for_sure_content).text = str
+//                                }
+//                            )
+//                        }.show(supportFragmentManager, tag)
+//                    }
+//                } else {
+//                    val tag = "lack of integral"
+//                    //防止连续两次快速点击两次重复创建相同tag的DialogFragment
+//                    if (supportFragmentManager.findFragmentByTag(tag) == null) {
+//                        CommonDialogFragment().apply {
+//                            initView(
+//                                containerRes = R.layout.mine_layout_dialog_exchange,
+//                                positiveString = "确认",
+//                                onPositiveClick = { dismiss() },
+//                                elseFunction = {
+//                                    //区分是积分不足还是物品剩余数为0
+//                                    if (product.count <= 0) {
+//                                        it.findViewById<TextView>(R.id.mine_tv_exchange_for_sure_content).text = "物品被抢光了，明天再来吧"
+//                                    } else {
+//                                        it.findViewById<TextView>(R.id.mine_tv_exchange_for_sure_content).text = "积分不足"
+//                                    }
+//                                }
+//                            )
+//                        }.show(supportFragmentManager, tag)
+//                    }
+//                }
+//            }
+//        }
+//        adapter.setOnExChangeClick(click)
+//        mine_store_rv.adapter = adapter
+//
+//    }
 }
