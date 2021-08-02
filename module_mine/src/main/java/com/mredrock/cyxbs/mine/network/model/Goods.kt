@@ -10,7 +10,7 @@ import java.io.Serializable
 data class Goods(
     //商品图片
     @SerializedName("pic")
-    val pic: String,
+    val pic: List<String>,
     //商品持续时间
     //约定 返回“无”为虚拟商品
     @SerializedName("last_time")
@@ -24,8 +24,8 @@ data class Goods(
     //商品价格
     @SerializedName("price")
     val price :Int,
-    @SerializedName("name")
     //商品名称
+    @SerializedName("name")
     val name:String,
     //商品描述
     @SerializedName("description")

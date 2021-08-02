@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mredrock.cyxbs.common.utils.extensions.onClick
+import androidx.fragment.app.viewModels
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentStampCenterBinding
 import com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel
