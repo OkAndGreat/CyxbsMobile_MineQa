@@ -462,9 +462,14 @@
         android:paddingTop="30dp"
         app:behavior_hideable="false"
         app:behavior_peekHeight="0dp"
-        app:layout_behavior="@string/bottom_sheet_behavior">
-
-        <include layout="@layout/mine_fragment_stamp_center" />
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        tools:ignore="ExtraText">
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/mine_stamp_center_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+         />
     </FrameLayout>
 
 

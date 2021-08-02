@@ -7,14 +7,15 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.mredrock.cyxbs.common.ui.BaseFragment
 
 
 /**
  *
  * @param DB: ViewDataBinding
- * @property layoutId Int
- * @property mBinding DB
+ * @property layoutId Int 资源文件
+ * @property mBinding DB 下放的DB
  * @constructor
  */
 abstract class BaseDataBindingFragment<DB: ViewDataBinding>(

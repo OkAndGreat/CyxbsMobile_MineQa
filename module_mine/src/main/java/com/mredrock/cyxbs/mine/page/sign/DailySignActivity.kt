@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -30,6 +31,7 @@ import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.network.model.Product
 import com.mredrock.cyxbs.mine.network.model.ScoreStatus
 import com.mredrock.cyxbs.mine.page.myproduct.MyProductActivity
+import com.mredrock.cyxbs.mine.page.sign.fragment.StampCenterFragment
 import com.mredrock.cyxbs.mine.util.ui.ProductAdapter
 import com.mredrock.cyxbs.mine.util.widget.*
 import kotlinx.android.synthetic.main.mine_activity_daily_sign.*
@@ -164,6 +166,7 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
     }
 
     private fun initView() {
+        supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, StampCenterFragment()).commit()
         mine_daily_sign.setOnClickListener { checkIn() }
 //        mine_store_rv.addItemDecoration(SpaceDecoration(dp2px(8f)))
         //原图顶部我的商品跳转，废弃
@@ -200,7 +203,7 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
         } else {
             mine_daily_tv_ranking.text = "寒暑假不可签到呢(●'ᴗ'σ)σணღ*"
         }
-        mine_store_tv_integral.text = "${scoreStatus.integral}"
+//        mine_store_tv_integral.text = "${scoreStatus.integral}"
         if (scoreStatus.isChecked or !scoreStatus.canCheckIn) {
             mine_daily_sign.apply {
                 isClickable = false
