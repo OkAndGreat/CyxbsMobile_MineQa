@@ -29,6 +29,7 @@ abstract class BaseDataBindingAdapter<M,DB: ViewDataBinding>
         items.observe(lifecycleOwner, Observer{
             notifyDataSetChanged()
         })
+
     }
 
     class BaseDataBindingViewHolder(var mbinding: ViewDataBinding): RecyclerView.ViewHolder(mbinding.root) {
@@ -49,7 +50,7 @@ abstract class BaseDataBindingAdapter<M,DB: ViewDataBinding>
     override fun onBindViewHolder(holder: BaseDataBindingViewHolder, position: Int) {
 
         val mBinding: DB? = DataBindingUtil.getBinding(holder.itemView)
-        items.value?.get(position)?.let { this.onBindItem(mBinding, it) };
+        items.value?.get(position)?.let { this.onBindItem(mBinding, it,position) };
     }
 
     override fun getItemCount(): Int {
@@ -57,6 +58,6 @@ abstract class BaseDataBindingAdapter<M,DB: ViewDataBinding>
     }
 
     //mBinding为View，item为数据
-    abstract fun onBindItem(mBinding: DB?, item: M)
+    abstract fun onBindItem(mBinding: DB?, item: M,position:Int)
 
 }

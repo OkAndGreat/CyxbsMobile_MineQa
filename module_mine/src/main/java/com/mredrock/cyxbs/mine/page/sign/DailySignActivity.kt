@@ -15,8 +15,11 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import android.widget.Space
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -31,7 +34,9 @@ import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.network.model.Product
 import com.mredrock.cyxbs.mine.network.model.ScoreStatus
 import com.mredrock.cyxbs.mine.page.myproduct.MyProductActivity
+import com.mredrock.cyxbs.mine.page.sign.fragment.GoodsDetailFragment
 import com.mredrock.cyxbs.mine.page.sign.fragment.StampCenterFragment
+import com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel
 import com.mredrock.cyxbs.mine.util.ui.ProductAdapter
 import com.mredrock.cyxbs.mine.util.widget.*
 import kotlinx.android.synthetic.main.mine_activity_daily_sign.*
@@ -50,6 +55,7 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
     private var objectAnimator: ObjectAnimator? = null
     private var onStartBottomStatus = BottomSheetBehavior.STATE_COLLAPSED
     private var requestPointStore = false
+    private val stampViewModel: StampViewModel by viewModels()
 
     private val dividerResArr: Array<Stick> by lazy {
         arrayOf(mine_daily_v_divider_mon_tue,
@@ -166,8 +172,20 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
     }
 
     private fun initView() {
+        stampViewModel.toGoodPager.observe(this, Observer<String> {
+            val goodsDetailFragment = GoodsDetailFragment()
+            goodsDetailFragment.arguments
+            supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, GoodsDetailFragment().apply {
+                val bundle = Bundle()
+                bundle.putString("args",it)
+                this.arguments = bundle
+            }).commit()
+
+        })
         supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, StampCenterFragment()).commit()
+
         mine_daily_sign.setOnClickListener { checkIn() }
+
 //        mine_store_rv.addItemDecoration(SpaceDecoration(dp2px(8f)))
         //原图顶部我的商品跳转，废弃
 //        mine_store_my_product.setOnClickListener {

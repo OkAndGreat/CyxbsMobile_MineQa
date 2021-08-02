@@ -7,6 +7,9 @@
         <variable
             name="Goods"
             type="com.mredrock.cyxbs.mine.network.model.Goods" />
+        <variable
+            name="viewModel"
+            type="com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -88,6 +91,7 @@
             android:minWidth="47dp"
             android:minHeight="24dp"
             android:text="@string/mine_sign_store_item_exchange"
+            android:onClick="@{() -> viewModel.onClickForToGoodPager(Goods.title)}"
             style="?android:attr/borderlessButtonStyle"
             android:textColor="@color/common_white_font_color"
             android:textSize="12sp"
