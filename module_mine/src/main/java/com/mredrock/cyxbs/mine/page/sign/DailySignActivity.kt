@@ -194,6 +194,8 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
 //        }
     }
 
+
+
     /**
      * 刷新签到页面
      */
