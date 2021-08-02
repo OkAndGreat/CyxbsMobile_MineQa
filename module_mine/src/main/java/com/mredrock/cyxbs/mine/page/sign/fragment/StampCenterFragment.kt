@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.mine.page.sign.fragment
 
+import androidx.fragment.app.viewModels
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentStampCenterBinding
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
