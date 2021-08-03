@@ -9,7 +9,7 @@
             type="com.mredrock.cyxbs.mine.network.model.Goods" />
         <variable
             name="viewModel"
-            type="com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel" />
+            type="com.mredrock.cyxbs.mine.page.stamp.StampCenterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

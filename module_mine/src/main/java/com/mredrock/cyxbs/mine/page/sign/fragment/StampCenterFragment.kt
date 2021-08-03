@@ -19,10 +19,10 @@ class StampCenterFragment:BaseDataBindingFragment<MineFragmentStampCenterBinding
 
     override fun initView() {
         viewModel.attach(this)
-        mBinding.mineStampCenterGoodsRv.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = StampCenterGoodsAdapter(viewModel,this@StampCenterFragment)
-        }
+//        mBinding.mineStampCenterGoodsRv.apply {
+//            layoutManager = LinearLayoutManager(context)
+//            adapter = StampCenterGoodsAdapter(viewModel,this@StampCenterFragment)
+//        }
 
 
 
