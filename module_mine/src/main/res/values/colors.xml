@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
+    <!--    邮票明细页面color值-->
+    <color name="mine_stamp_detail_base_color">#F2F3F8</color>
 
+    <color name="mine_stamp_detail_decoration">#DFE8F5</color>
+
+    <color name="mine_stamp_exchange_detail_blue">#6C69F1</color>
 </resources>

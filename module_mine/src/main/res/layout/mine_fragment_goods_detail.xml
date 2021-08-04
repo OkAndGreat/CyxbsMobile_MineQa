@@ -12,72 +12,201 @@
         android:background="@drawable/mine_shape_round_corner_white_store"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/mine_store_line"
-            android:layout_width="27dp"
-            android:layout_height="5dp"
-            android:layout_marginTop="9dp"
-            android:src="@drawable/mine_shape_round_corner_store_line"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mine_cl_stamp_detail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/mine_view_stamp_detail_back"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginStart="17dp"
+                android:background="@drawable/mine_vector_stamp_detail_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:layout_marginStart="13dp"
+                android:gravity="center"
+                android:text="@string/mine_decoration_detail"
+                android:textAppearance="@style/mine_stamp_exchange_detail"
+                app:layout_constraintBottom_toBottomOf="@+id/mine_view_stamp_detail_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/mine_view_stamp_detail_back"
+                app:layout_constraintTop_toTopOf="@+id/mine_view_stamp_detail_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/mine_view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/mine_shape_stamp_exchange_detail_decoration"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mine_cl_stamp_detail" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/mine_vp2_goods_pic"
             android:layout_width="match_parent"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
             android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/mine_store_line" />
+            app:layout_constraintTop_toBottomOf="@id/mine_cl_stamp_detail" />
 
         <TextView
-            android:id="@+id/mine_tv_goods_name"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:text="商品名称:"
-            android:textSize="20sp"
+            android:id="@+id/mine_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="28dp"
+            android:text="掌邮PM名片"
+            android:textAppearance="@style/mine_decoration_detail_goods_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_vp2_goods_pic" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/mine_ll_exchange"
+        <TextView
+            android:id="@+id/mine_stamp_decoration_inventory"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginRight="15dp"
+            android:text="库存量：999"
+            android:textAppearance="@style/mine_decoration_detail_Inventory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_vp2_goods_pic" />
+
+        <TextView
+            android:id="@+id/mine_textview2"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="69dp"
+            android:singleLine="false"
+            android:text="带上这个名片，你就是这条街最亮的仔带上这个名片，你就是这条街最亮的仔"
+            android:textAppearance="@style/mine_decoration_detail_goods_decoration"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_vp2_goods_pic" />
+
+        <TextView
+            android:id="@+id/mine_tv_decoration_detail_Validity"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="121dp"
+            android:text="有效期：15天"
+            android:textAppearance="@style/mine_decoration_detail_Validity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_vp2_goods_pic" />
+
+        <TextView
+            android:id="@+id/mine_tv_decoration_detail_rights_decoration"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/mine_decoration_detail_right"
+            android:textAppearance="@style/mine_decoration_detail_rights"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_tv_decoration_detail_Validity" />
+
+        <TextView
+            android:id="@+id/mine_tv_decoration_detail_rights_decoration_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:text="1、每个实物商品每人限兑换一次，已经兑换的商品不能退货换货也不予折现"
+            android:textAppearance="@style/mine_decoration_detail_rights_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_tv_decoration_detail_rights_decoration" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="12dp"
+            android:text="2、在法律允许的范围内，本活动的最终解释权归红岩网校工作站所有。"
+            android:textAppearance="@style/mine_decoration_detail_rights_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_tv_decoration_detail_rights_decoration_detail" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mine_cl_exchange"
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/mine_shape_stamp_exchange_detail_decoration"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/mine_cl_exchange" />
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/common_ic_app_notifacation" />
+                android:id="@+id/mine_iv_decoration_icon"
+                android:layout_width="21.23dp"
+                android:layout_height="21.23dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/mine_ic_stamp"
+                app:layout_constraintLeft_toLeftOf="@+id/mine_cl_exchange"
+                app:layout_constraintTop_toTopOf="@id/mine_cl_exchange" />
 
             <TextView
-                android:id="@+id/mine_tv_cur_money"
+                android:id="@+id/mine_tv_decoration_cost"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:layout_marginStart="20dp"
-                android:layout_weight="3"
-                android:text="余额： " />
+                android:layout_height="22dp"
+                android:paddingLeft="4.87dp"
+                android:text="121"
+                android:textAppearance="@style/mine_decoration_detail_cost_count"
+                app:layout_constraintBottom_toBottomOf="@+id/mine_iv_decoration_icon"
+                app:layout_constraintStart_toEndOf="@+id/mine_iv_decoration_icon" />
+
+            <TextView
+                android:id="@+id/mine_tv_decoration_rest_count"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="6dp"
+                android:text="余额：1222"
+                android:textAppearance="@style/mine_decoration_detail_rest_count"
+                app:layout_constraintLeft_toLeftOf="@id/mine_iv_decoration_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mine_iv_decoration_icon" />
+
 
             <Button
                 android:id="@+id/mine_btn_exchange"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="2"
-                android:layout_marginEnd="20dp"
-                android:text="兑换" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                android:layout_width="112dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="17dp"
+                android:background="@drawable/mine_selector_decoration_detail_btn"
+                android:text="兑换"
+                android:textAppearance="@style/mine_decoration_detail_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
