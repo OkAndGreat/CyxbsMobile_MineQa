@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
 
-class StampNestedScrollLayou(
+class StampNestedScrollLayout(
     context: Context,
     attrs: AttributeSet?,
     defStyleAttr: Int):

@@ -1,20 +1,28 @@
 package com.mredrock.cyxbs.mine.page.stamp
 
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.TableLayout
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayoutMediator
+import com.mredrock.cyxbs.common.ui.BaseActivity
 import com.mredrock.cyxbs.common.ui.BaseViewModelActivity
+import com.mredrock.cyxbs.common.utils.extensions.onClick
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineActivityStampeBinding
-import com.mredrock.cyxbs.mine.page.stamp.fragment.StampTabFragment
-import com.mredrock.cyxbs.mine.util.ui.StampTabPageAdapter
+import com.mredrock.cyxbs.mine.page.sign.fragment.GoodsDetailFragment
+import com.mredrock.cyxbs.mine.page.stamp.fragment.StampCenterFragment
 
-class StampCenterActivity: BaseViewModelActivity<StampCenterViewModel>() {
+class StampCenterActivity: BaseActivity() {
 
     private var mBinding:MineActivityStampeBinding? = null
+    private val stampViewModel: StampCenterViewModel by viewModels()
 
-    private var fragmentList: ArrayList<Fragment> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,15 +31,22 @@ class StampCenterActivity: BaseViewModelActivity<StampCenterViewModel>() {
     }
 
     private fun initView() {
-        fragmentList.add(StampTabFragment())
-        fragmentList.add(StampTabFragment())
-        mBinding?.mineStampCenterVp?.adapter = StampTabPageAdapter(this,fragmentList)
-        if ( mBinding.mineStampCenterTl != null && mBinding.mineStampCenterVp )
-        TabLayoutMediator(mBinding?.mineStampCenterTl,
-            mBinding?.mineStampCenterVp,
-            TabLayoutMediator.TabConfigurationStrategy(){
 
-            })
+        supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, StampCenterFragment()).commit()
+
+        stampViewModel.toGoodPager.observe(this, Observer<String> {
+            val goodsDetailFragment = GoodsDetailFragment()
+            goodsDetailFragment.arguments
+            supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, GoodsDetailFragment().apply {
+                val bundle = Bundle()
+                bundle.putString("args",it)
+                this.arguments = bundle
+            }).commit()
+        })
+
+
+
+
     }
 
 

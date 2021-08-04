@@ -7,35 +7,24 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import android.widget.Space
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.mredrock.cyxbs.common.component.CommonDialogFragment
 import com.mredrock.cyxbs.common.config.MINE_CHECK_IN
 import com.mredrock.cyxbs.common.ui.BaseViewModelActivity
 import com.mredrock.cyxbs.common.utils.extensions.dp2px
-import com.mredrock.cyxbs.common.utils.extensions.invisible
 import com.mredrock.cyxbs.common.utils.extensions.toast
-import com.mredrock.cyxbs.common.utils.extensions.visible
 import com.mredrock.cyxbs.mine.R
-import com.mredrock.cyxbs.mine.network.model.Product
 import com.mredrock.cyxbs.mine.network.model.ScoreStatus
-import com.mredrock.cyxbs.mine.page.myproduct.MyProductActivity
-import com.mredrock.cyxbs.mine.page.sign.fragment.GoodsDetailFragment
-import com.mredrock.cyxbs.mine.page.sign.fragment.StampCenterFragment
 import com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel
 import com.mredrock.cyxbs.mine.util.ui.ProductAdapter
 import com.mredrock.cyxbs.mine.util.widget.*
@@ -172,18 +161,6 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
     }
 
     private fun initView() {
-        stampViewModel.toGoodPager.observe(this, Observer<String> {
-            val goodsDetailFragment = GoodsDetailFragment()
-            goodsDetailFragment.arguments
-            supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, GoodsDetailFragment().apply {
-                val bundle = Bundle()
-                bundle.putString("args",it)
-                this.arguments = bundle
-            }).commit()
-
-        })
-        supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, StampCenterFragment()).commit()
-
         mine_daily_sign.setOnClickListener { checkIn() }
 
 //        mine_store_rv.addItemDecoration(SpaceDecoration(dp2px(8f)))

@@ -26,6 +26,9 @@
             android:name=".page.about.AboutActivity"
             android:launchMode="singleTop" />
         <activity
+            android:name=".page.stamp.StampCenterActivity"
+            android:launchMode="singleTop" />
+        <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />

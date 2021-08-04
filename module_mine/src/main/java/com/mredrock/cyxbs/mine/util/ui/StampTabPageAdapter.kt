@@ -5,9 +5,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class StampTabPageAdapter(
-    fragmentActivity:FragmentActivity,
+    fragment:Fragment,
     val fragmentList:List<Fragment>
-    ): FragmentStateAdapter(fragmentActivity) {
+    ): FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int {
         return fragmentList.size

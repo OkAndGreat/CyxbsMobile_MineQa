@@ -42,7 +42,7 @@
             android:layout_marginTop="8dp"
             android:text="@{Goods.name}"
             android:textColor="@color/common_level_two_font_color"
-            android:textSize="13sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/mine_sign_store_item_tv_count"
             app:layout_constraintTop_toBottomOf="@+id/mine_sign_store_item_cv" />
 
@@ -54,7 +54,7 @@
             android:alpha="0.58"
             android:text="@string/mine_sign_store_item_count_default"
             android:textColor="@color/common_level_two_font_color"
-            android:textSize="10sp"
+            android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@+id/mine_sign_store_item_iv_diamond"
             app:layout_constraintTop_toBottomOf="@+id/mine_sign_store_item_tv_title" />
 
@@ -62,9 +62,9 @@
             android:id="@+id/mine_sign_store_item_iv_diamond"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="18dp"
             android:src="@drawable/mine_ic_sign_diamond"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,27 +74,30 @@
             android:id="@+id/mine_sign_store_item_tv__integral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="17dp"
             android:text="@string/mine_sign_store_item_integral_default"
-            android:textColor="@color/common_mine_sign_store_item_tv_integral"
-            android:textSize="18sp"
+            android:textColor="@color/mine_stamp_number"
+            android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/mine_sign_store_item_iv_diamond"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/mine_sign_store_item_iv_diamond"
-            app:layout_constraintTop_toTopOf="@+id/mine_sign_store_item_iv_diamond" />
+            app:layout_constraintTop_toBottomOf="@+id/mine_sign_store_item_tv_count" />
 
         <Button
             android:id="@+id/mine_sign_store_item_btn_exchange"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:background="@drawable/common_dialog_btn_positive_blue"
             android:minWidth="47dp"
             android:minHeight="24dp"
-            android:text="@string/mine_sign_store_item_exchange"
             android:onClick="@{() -> viewModel.onClickForToGoodPager(Goods.title)}"
-            style="?android:attr/borderlessButtonStyle"
+            android:text="@string/mine_sign_store_item_exchange"
             android:textColor="@color/common_white_font_color"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/mine_sign_store_item_iv_diamond"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mine_sign_store_item_iv_diamond" />
