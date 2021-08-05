@@ -25,7 +25,7 @@ class StampCenterViewModel:BaseStampViewModel() {
     val toGoodPager:LiveData<String>
         get() = _toGoodPager
 
-    private var _toDetailPager = MutableLiveData<Int>(1)
+    private var _toDetailPager = MutableLiveData<Int>()
     val toDetailPager:LiveData<Int>
         get() = _toDetailPager
 

@@ -47,10 +47,9 @@ class StampCenterActivity: BaseActivity() {
         stampViewModel.toDetailPager.observe(this, Observer {
             supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, StampDetailFragment()).commit()
         })
-
-
-
     }
+
+    on
 
 
 
