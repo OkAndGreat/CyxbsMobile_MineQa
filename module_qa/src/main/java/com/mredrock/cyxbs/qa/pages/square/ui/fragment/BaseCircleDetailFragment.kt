@@ -46,6 +46,7 @@ import kotlinx.android.synthetic.main.qa_fragment_last_hot.*
  */
 abstract class BaseCircleDetailFragment<T : CircleDetailViewModel> : BaseViewModelFragment<T>() {
 
+
     private var mTencent: Tencent? = null
     lateinit var dynamicListRvAdapter: DynamicAdapter
     private var loop = 1

@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentGoodsDetailBinding
-import com.mredrock.cyxbs.mine.page.sign.adapter.GoodsDetailPicAdapter
+import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
 import com.mredrock.cyxbs.mine.util.dp
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 
@@ -24,7 +24,6 @@ import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 class GoodsDetailFragment :
     BaseDataBindingFragment<MineFragmentGoodsDetailBinding>(R.layout.mine_fragment_goods_detail) {
     private val mRadioButtonList = ArrayList<RadioButton>()
-    private var mLastPositionOffset = 0F
     override fun initView() {
         mBinding.mineVp2GoodsPic.adapter = GoodsDetailPicAdapter()
 

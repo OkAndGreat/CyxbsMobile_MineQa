@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.page.sign.adapter
+package com.mredrock.cyxbs.mine.page.stamp.adapter
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.page.sign.adapter
+package com.mredrock.cyxbs.mine.page.stamp.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -10,7 +10,8 @@ import com.mredrock.cyxbs.mine.R
 
 /**
  * Author by OkAndGreat，Date on 2021/8/2.
- *
+ * 因为后端数据暂时还没有拿到
+ * 用来给viewpager2测试的adapter
  */
 class GoodsDetailPicAdapter : RecyclerView.Adapter<GoodsDetailPicAdapter.PagerViewHolder>() {
     private var mList = listOf(1, 2, 3)

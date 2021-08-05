@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.StampCenterViewModel" />
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
+        android:background="#F2F3F8"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -39,83 +41,134 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/mine_ic_back_arrow_deep" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
+            android:background="#F2F3F8"
+            android:elevation="0dp"
+            app:elevation="0dp"
             android:layout_height="match_parent">
+
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/mine_stamp_center_abl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:background="#F2F3F8"
+                android:elevation="0dp"
+                app:elevation="0dp"
+                android:layout_height="wrap_content">
 
-                    <FrameLayout
-                        android:id="@+id/mine_stamp_center_fl"
+                <FrameLayout
+                    android:id="@+id/mine_stamp_center_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="154dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginRight="16dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_scrollFlags="scroll">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="108dp"
-                        app:cardCornerRadius="12dp"
-                        app:layout_scrollFlags="scroll"
-                        >
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/common_blue_button"
-                            />
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:paddingStart="36dp">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:text="@string/mine_stamp_exchange_detail_order_code"
-                                android:textAppearance="@style/mine_stamp_exchange_detail_code_num" />
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/mine_shape_stamp_center_fl"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="16dp">
 
-                            <TextView
-                                android:id="@+id/mine_tv_exchange_code_num"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="245769"
-                                android:textAppearance="@style/mine_stamp_exchange_real_code_num" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="7dp"
-                                android:text="@string/mine_stamp_exchange_ps"
-                                android:textAppearance="@style/mine_stamp_exchange_ps" />
-                        </androidx.appcompat.widget.LinearLayoutCompat>
-                    </FrameLayout>
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="17dp"
+                            android:layout_marginTop="18dp"
+                            android:text="我的邮票"
+                            android:textAppearance="@style/mine_stamp_center_my_stamp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:layout_width="9dp"
+                            android:layout_height="11dp"
+                            android:layout_marginLeft="72dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/mine_vector_stamp_center_detail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="84dp"
+                            android:layout_marginTop="19dp"
+                            android:text="明细"
+                            android:textAppearance="@style/mine_stamp_center_detail"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="154dp"
+                            android:layout_height="66dp"
+                            android:text="110000"
+                            android:layout_marginTop="30dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:textAppearance="@style/mine_stamp_center_count"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:layout_width="196dp"
+                        android:layout_height="61dp"
+                        android:layout_gravity="bottom|end"
+                        android:src="@drawable/mine_vector_stamp_center_icon" />
+
+                    <ImageView
+                        android:layout_width="132dp"
+                        android:layout_height="119dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="24dp"
+                        android:src="@drawable/mine_stamp_center_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="118dp"
+                        android:text="你还有待领取的商品，请尽快领取"
+                        android:textAppearance="@style/mine_stamp_center_ps"
+                        />
+
+                </FrameLayout>
+
                 <com.google.android.material.tabs.TabLayout
-                    android:background="@color/mine_stamp_background"
                     android:id="@+id/mine_stamp_center_tl"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:tabTextColor="@color/common_alpha_level_two_font_color"
-                    app:tabSelectedTextColor="@color/common_level_two_font_color"
+                    android:layout_below="@id/mine_stamp_center_fl"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/mine_stamp_background"
                     app:tabGravity="fill"
-                    app:tabIndicatorHeight="3dp"
                     app:tabIndicatorColor="@color/common_mine_tab_layout_indicator_color"
                     app:tabIndicatorFullWidth="false"
+                    app:tabIndicatorHeight="3dp"
                     app:tabMode="fixed"
-                    android:layout_below="@id/mine_stamp_center_fl" />
+                    app:elevation="0dp"
+                    app:tabSelectedTextColor="@color/common_level_two_font_color"
+                    app:tabTextColor="@color/common_alpha_level_two_font_color" />
             </com.google.android.material.appbar.AppBarLayout>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                >
+                app:cardCornerRadius="18dp"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
                 <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/mine_stamp_center_tl_vp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                 />
+                    android:id="@+id/mine_stamp_center_tl_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </androidx.cardview.widget.CardView>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 
     </LinearLayout>
