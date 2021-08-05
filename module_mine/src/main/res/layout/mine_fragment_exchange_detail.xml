@@ -42,6 +42,7 @@
         android:background="@drawable/mine_shape_stamp_exchange_detail_decoration" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/mine_cardView_stamp_exchange_detail"
         android:layout_width="match_parent"
         android:layout_height="108dp"
         android:layout_marginLeft="16dp"
@@ -51,12 +52,13 @@
         app:cardCornerRadius="12dp">
 
         <ImageView
+            android:id="@+id/mine_iv_stamp_exchange_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="26dp"
             android:layout_marginEnd="4dp"
-            android:background="@drawable/mine_stamp_exchange_detail_icon" />
+            android:background="@drawable/mine_vector_stamp_exchange_detail_icon" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

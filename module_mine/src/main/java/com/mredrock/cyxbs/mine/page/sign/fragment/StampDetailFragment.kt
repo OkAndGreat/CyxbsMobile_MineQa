@@ -24,15 +24,6 @@ class StampDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mine_vp_stamp_detail.adapter =
-            activity?.let { StampDetailVpAdapter(it.supportFragmentManager) }
-
-        mine_tl_stamp_detail.setupWithViewPager(mine_vp_stamp_detail)
-        //添加自定义tab
-        for (i in 0..mine_tl_stamp_detail.tabCount) {
-            val tab = mine_tl_stamp_detail.getTabAt(i)
-            tab?.customView = LayoutInflater.from(activity).inflate(R.layout.mine_tab_stamp_detail_item, null)
-        }
     }
 
 }
