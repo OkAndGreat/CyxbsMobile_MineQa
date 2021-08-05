@@ -314,11 +314,13 @@
 
     </style>
 
-
-
-    <style name="tab_style" tools:ignore="ResourceName">
+    <style name="mine_tab_style">
         <item name="android:textSize">18sp</item>
 
         <item name="android:unselectedAlpha">0.6</item>
     </style>
+
+
+
+
 </resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="task"
+            type="com.mredrock.cyxbs.mine.network.model.StampTask" />
+        <variable
+            name="plView"
+            type="com.mredrock.cyxbs.mine.page.sign.customview.progressview.ProgressLayout" />
+        <variable
+            name="viewModel"
+            type="com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp">
+
+        <TextView
+            android:id="@+id/mine_list_item_stamp_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/mine_stamp_item_title_small"
+            android:text='@{task.describe + " +"+ task.rewardNumber}'
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_list_item_stamp_title_small_tv" />
+
+        <com.mredrock.cyxbs.mine.page.sign.customview.progressview.ProgressLayout
+            android:id="@+id/mine_list_item_stamp_pl"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:visibility="@{task.finished ? plView.GONE : plView.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mine_list_item_stamp_title_tv" />
+        <TextView
+            android:id="@+id/mine_list_item_stamp_title_small_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@{task.taskName}"
+            android:textColor="@color/mine_stamp_item_title"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/mine_list_item_stamp_btn"
+            android:layout_width="66dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/mine_selector_decoration_detail_btn"
+            android:text="去签到"
+            android:onClick="@{() -> viewModel.onClickForToGoodPager(task.taskName)}"
+            android:textColor="@color/common_white_font_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

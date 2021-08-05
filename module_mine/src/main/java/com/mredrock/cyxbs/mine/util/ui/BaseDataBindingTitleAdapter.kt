@@ -17,8 +17,8 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
         private val items2 : LiveData<List<M2>>,
         private val layoutTitleId:Int,
         lifecycleOwner: LifecycleOwner,
-        private val title1:String = "装扮",
-        private val title2:String = "邮货"
+        private val title2:String = "无",
+        private val title1:String = "无"
     ): RecyclerView.Adapter<BaseDataBindingTitleAdapter.BaseDataBindingTitleViewHolder>() {
         init {
             items.observe(lifecycleOwner, Observer{
@@ -34,6 +34,8 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
         val TITLE_ONE = 1000
         val TITLE_TWO = 1001
 
+        private var baseNumber = if ( title1 == "无" ){ 0 } else { 1 }
+
         class BaseDataBindingTitleViewHolder(var mbinding: ViewDataBinding): RecyclerView.ViewHolder(mbinding.root) {
 
         }
@@ -44,15 +46,19 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
             items2.value?.size?.let { item2Size ->
 
                 return when(position){
-                    0 -> TITLE_ONE
-                    in 1  until 1+item1Size -> ITEM_ONE
-                    in 1+item1Size until  1+item1Size -> TITLE_TWO
-                    in 2+item1Size until  2+item1Size+item2Size -> ITEM_TWO
-                    else -> TITLE_ONE
+                    0 ->if ( baseNumber == 0 ){
+                            ITEM_ONE
+                        }else{
+                            TITLE_ONE
+                        }
+                    in baseNumber  until item1Size -> ITEM_ONE
+                    in baseNumber+item1Size until  baseNumber+item1Size+1 -> TITLE_TWO
+                    in baseNumber+1+item1Size until  baseNumber+1+item1Size+item2Size -> ITEM_TWO
+                    else -> ITEM_ONE
                 }
             }
         }
-        return TITLE_ONE
+        return ITEM_ONE
     }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseDataBindingTitleViewHolder {
@@ -109,17 +115,17 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
                 }
                 ITEM_ONE ->{
                     val mBinding: DB1? = DataBindingUtil.getBinding(holder.itemView)
-                    items.value?.get(position-1)?.let {
-                        this.onBindItem1(mBinding,it,position-1)
-                    };
+                    items.value?.get(position-baseNumber)?.let {
+                        this.onBindItem1(mBinding,it,position-baseNumber)
+                    }
                 }
                 ITEM_TWO ->{
                     val mBinding: DB2? = DataBindingUtil.getBinding(holder.itemView)
                     items.value?.size?.let { item1Size ->
-                        items2.value?.get(position- 2 - item1Size)?.let {
-                            this.onBindItem2(mBinding, it,position- 2 - item1Size )
+                        items2.value?.get(position- baseNumber - 1 - item1Size)?.let {
+                            this.onBindItem2(mBinding, it,position- baseNumber - 1 - item1Size )
                         }
-                    };
+                    }
                 }
             }
         }
@@ -127,7 +133,7 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
 
 
     override fun getItemCount(): Int {
-            return  items2.value?.size?.let { items.value?.size?.plus(it+2) } ?: 0
+            return  items2.value?.size?.let { items.value?.size?.plus(it+1+baseNumber) } ?: 0
         }
 
         //mBinding为View，item为数据

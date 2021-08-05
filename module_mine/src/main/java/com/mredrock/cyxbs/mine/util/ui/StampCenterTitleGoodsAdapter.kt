@@ -19,13 +19,16 @@ class StampCenterTitleGoodsAdapter(private val viewModel: StampCenterViewModel,l
     viewModel.goods,
     viewModel.goods2,
     R.layout.mine_list_item_stamp_good_title,
-    lifecycleOwner
+    lifecycleOwner,
+    "邮货",
+    "装扮"
         ) {
 
 
     override fun onBindItem1(mBinding: MineListItemProductBinding?, item: Goods, position: Int) {
         mBinding?.goods = item
         mBinding?.viewModel = viewModel
+
     }
 
     override fun onBindItem2(mBinding: MineListItemProductBinding?, item: Goods, position: Int) {

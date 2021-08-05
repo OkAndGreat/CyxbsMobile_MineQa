@@ -31,11 +31,11 @@ class ProgressLayout(context: Context, attrs: AttributeSet?) :
 
     private fun init() {
         removeAllViews()
-        orientation = VERTICAL
+        orientation = HORIZONTAL
 
         addCountView()
-        mCountView.setCount(0)
         addProgressView()
+        mCountView.setCount(0)
     }
 
     //将ProgressView添加到线性布局中

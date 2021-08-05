@@ -18,7 +18,7 @@ class StampCenterFragment: BaseDataBindingFragment<MineFragmentStampCenterBindin
 
     override fun initView() {
         fragmentList.add(StampTabFragment())
-        fragmentList.add(StampTabFragment())
+        fragmentList.add(StampTabTaskFragment())
         val stampTabPageAdapter = StampTabPageAdapter(this, fragmentList)
         mBinding.mineStampCenterTlVp.adapter = stampTabPageAdapter
         //设置tabLayout
