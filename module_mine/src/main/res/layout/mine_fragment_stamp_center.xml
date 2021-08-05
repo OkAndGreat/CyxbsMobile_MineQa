@@ -6,64 +6,87 @@
     <data>
 
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/mine_shape_round_corner_white_store"
-        >
-        <ImageView
-            android:id="@+id/mine_store_line"
-            android:layout_width="27dp"
-            android:layout_height="5dp"
-            android:layout_marginTop="9dp"
-            android:src="@drawable/mine_shape_round_corner_store_line"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <ImageButton
-            android:id="@+id/mine_store_arrow_left"
-            android:layout_marginStart="5dp"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:alpha="0"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:srcCompat="@drawable/mine_ic_arrow_left"
-            android:contentDescription="@string/mine_sign_store_back"
-            app:layout_constraintBottom_toTopOf="@+id/mine_store_guildeline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:id="@+id/mine_stamp_center_title"
-            tools:text="邮豆中心"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mine_stamp_center_title"
-            android:textColor="@color/common_level_two_font_color"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/mine_store_guildeline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/mine_store_guildeline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="95dp" />
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/mine_store_guildeline">
+        android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/mine_stamp_center_goods_rv"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mine_stamp_center_cl"
+            android:layout_width="match_parent"
+            android:layout_height="91dp">
+
+            <TextView
+                android:id="@+id/mine_stamp_center_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="53dp"
+                android:text="@string/mine_stamp_center_title"
+                android:textColor="@color/mine_stamp_title"
+                android:textSize="22dp"
+                app:layout_constraintStart_toEndOf="@+id/mine_stamp_center_back_iv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/mine_stamp_center_back_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/mine_ic_back_arrow_deep" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/mine_stamp_center_abl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_scrollFlags="scroll">
+
+                    <ImageView
+                        android:id="@+id/mine_stamp_center_iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:background="@color/common_mine_security_deep_back_color" />
+                </RelativeLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/mine_stamp_center_tl"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/mine_shape_tab_shape"
+                    app:tabTextAppearance="@style/tab_style"
+                    app:tabRippleColor="@color/common_transparent_background"
+                    app:tabBackground="@color/common_transparent_background"
+                    app:tabTextColor="@color/common_alpha_level_two_font_color"
+                    app:tabSelectedTextColor="@color/common_level_two_font_color"
+                    app:tabGravity="fill"
+                    app:tabIndicatorHeight="3dp"
+                    app:tabIndicatorColor="@color/common_mine_tab_layout_indicator_color"
+                    app:tabIndicator="@drawable/mine_ic_open_eye"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabMode="fixed"
+                    android:layout_below="@id/mine_stamp_center_iv" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/mine_stamp_center_tl_vp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="50dp" />
-        </FrameLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </LinearLayout>
 </layout>
