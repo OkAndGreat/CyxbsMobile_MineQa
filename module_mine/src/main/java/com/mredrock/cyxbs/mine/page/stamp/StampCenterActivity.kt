@@ -16,6 +16,7 @@ import com.mredrock.cyxbs.common.utils.extensions.onClick
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineActivityStampeBinding
 import com.mredrock.cyxbs.mine.page.sign.fragment.GoodsDetailFragment
+import com.mredrock.cyxbs.mine.page.sign.fragment.StampDetailFragment
 import com.mredrock.cyxbs.mine.page.stamp.fragment.StampCenterFragment
 
 class StampCenterActivity: BaseActivity() {
@@ -43,7 +44,9 @@ class StampCenterActivity: BaseActivity() {
                 this.arguments = bundle
             }).commit()
         })
-
+        stampViewModel.toDetailPager.observe(this, Observer {
+            supportFragmentManager.beginTransaction().replace(R.id.mine_stamp_center_fragment, StampDetailFragment()).commit()
+        })
 
 
 

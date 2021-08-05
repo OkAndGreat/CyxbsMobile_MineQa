@@ -25,6 +25,10 @@ class StampCenterViewModel:BaseStampViewModel() {
     val toGoodPager:LiveData<String>
         get() = _toGoodPager
 
+    private var _toDetailPager = MutableLiveData<Int>(1)
+    val toDetailPager:LiveData<Int>
+        get() = _toDetailPager
+
     fun load(){
 
         val goodList = ArrayList<Goods>()
@@ -38,5 +42,10 @@ class StampCenterViewModel:BaseStampViewModel() {
     fun onClickForToGoodPager(title:String){
         println("点击了")
         _toGoodPager.postValue(title)
+    }
+
+    fun onClickForToDetailPager(){
+        println("点击了")
+        _toDetailPager.postValue(toDetailPager.value?.plus(1))
     }
 }
