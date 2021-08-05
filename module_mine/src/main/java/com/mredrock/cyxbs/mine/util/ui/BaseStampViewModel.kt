@@ -1,12 +1,13 @@
 package com.mredrock.cyxbs.mine.util.ui
 
 import androidx.lifecycle.*
+import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
 
 /**
  * 给 ViewModel生命周期管理的接口
  * @property lifecycleOwner LifecycleOwner?
  */
-open class BaseStampViewModel : ViewModel(),
+open class BaseStampViewModel : BaseViewModel(),
     LifecycleObserver {
     protected var lifecycleOwner: LifecycleOwner? = null
 
