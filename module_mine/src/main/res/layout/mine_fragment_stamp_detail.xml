@@ -41,13 +41,8 @@
         android:layout_height="1dp"
         android:background="@drawable/mine_shape_stamp_exchange_detail_decoration" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/mine_tl_stamp_detail"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:tabIndicatorHeight="0dp" />
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/mine_vp_stamp_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
