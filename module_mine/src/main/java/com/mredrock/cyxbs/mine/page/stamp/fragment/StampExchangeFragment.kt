@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.page.sign.fragment
+package com.mredrock.cyxbs.mine.page.stamp.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,7 +18,7 @@ import com.mredrock.cyxbs.mine.R
  * 和mine_iv_stamp_exchange_detail的background为
  * mine_vector_stamp_exchange_detail_icon_collected.xml
  */
-class ExchangeFragment : Fragment() {
+class StampExchangeFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

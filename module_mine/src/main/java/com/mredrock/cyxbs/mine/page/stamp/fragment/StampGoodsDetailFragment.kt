@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.page.sign.fragment
+package com.mredrock.cyxbs.mine.page.stamp.fragment
 
 import android.app.AlertDialog
 import android.graphics.Color
@@ -21,7 +21,7 @@ import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
  * 根据商品是虚拟商品还是实体商品页面显示不同
  * 如果是虚拟商品要通过代码修改权益说明textview的值
  */
-class GoodsDetailFragment :
+class StampGoodsDetailFragment :
     BaseDataBindingFragment<MineFragmentGoodsDetailBinding>(R.layout.mine_fragment_goods_detail) {
     private val mRadioButtonList = ArrayList<RadioButton>()
     override fun initView() {

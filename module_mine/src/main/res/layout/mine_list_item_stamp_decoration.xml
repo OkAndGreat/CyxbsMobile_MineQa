@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:alpha="0.58"
-            android:text="@{Decoration.price}"
+            android:text="@{Decoration.description}"
             android:textColor="@color/common_level_two_font_color"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@+id/mine_sign_store_item_iv_diamond"
@@ -73,7 +73,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="11dp"
             android:layout_marginBottom="17dp"
-            android:text="@{Decoration.description}"
+            android:text='@{Decoration.price+""}'
             android:textColor="@color/mine_stamp_number"
             android:textSize="14sp"
             android:textStyle="bold"

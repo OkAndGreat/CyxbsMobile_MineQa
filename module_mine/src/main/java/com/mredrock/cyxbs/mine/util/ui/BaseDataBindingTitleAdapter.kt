@@ -10,6 +10,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ *
+ * @param M1 item1类
+ * @param M2 item2类
+ * @param DB1: ViewDataBinding item1
+ * @param DB2:ViewDataBinding  item2
+ * @param DBT:ViewDataBinding title
+ * @property layoutId1 Int item1 xml
+ * @property layoutId2 Int item2 xml
+ * @property items LiveData<List<M1>> 传入livedata
+ * @property items2 LiveData<List<M2>>
+ * @property layoutTitleId Int title xml
+ * @property title2 String title2
+ * @property title1 String title1//如果title2不填入，默认显示下面那个title
+ */
 abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDataBinding,DBT:ViewDataBinding>(
         @LayoutRes private val layoutId1:Int,
         private val layoutId2:Int,
@@ -20,6 +35,7 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
         private val title2:String = "无",
         private val title1:String = "无"
     ): RecyclerView.Adapter<BaseDataBindingTitleAdapter.BaseDataBindingTitleViewHolder>() {
+        //对传入的数据进行监听
         init {
             items.observe(lifecycleOwner, Observer{
                 notifyDataSetChanged()
@@ -28,12 +44,12 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
                 notifyDataSetChanged()
             })
         }
-
+        //TYPE ID
         val ITEM_ONE = 998
         val ITEM_TWO = 999
         val TITLE_ONE = 1000
         val TITLE_TWO = 1001
-
+        //需要确认是否有第一个title
         private var baseNumber = if ( title1 == "无" ){ 0 } else { 1 }
 
         class BaseDataBindingTitleViewHolder(var mbinding: ViewDataBinding): RecyclerView.ViewHolder(mbinding.root) {
@@ -44,7 +60,6 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
 
         items.value?.size?.let { item1Size ->
             items2.value?.size?.let { item2Size ->
-
                 return when(position){
                     0 ->if ( baseNumber == 0 ){
                             ITEM_ONE

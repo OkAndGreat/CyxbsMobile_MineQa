@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.network.model
+package com.mredrock.cyxbs.mine.network.model.stamp
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -8,7 +8,6 @@ data class StampTask(
     @SerializedName("task_name")
     val taskName: String,
     //任务描述
-    //约定 返回“无”为虚拟商品
     @SerializedName("describe")
     val describe: String,
     //该任务完成后能获得的积分数量

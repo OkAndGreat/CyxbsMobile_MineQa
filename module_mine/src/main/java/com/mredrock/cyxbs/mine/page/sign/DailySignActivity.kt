@@ -25,7 +25,6 @@ import com.mredrock.cyxbs.common.utils.extensions.dp2px
 import com.mredrock.cyxbs.common.utils.extensions.toast
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.network.model.ScoreStatus
-import com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel
 import com.mredrock.cyxbs.mine.util.ui.ProductAdapter
 import com.mredrock.cyxbs.mine.util.widget.*
 import kotlinx.android.synthetic.main.mine_activity_daily_sign.*
@@ -44,7 +43,6 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
     private var objectAnimator: ObjectAnimator? = null
     private var onStartBottomStatus = BottomSheetBehavior.STATE_COLLAPSED
     private var requestPointStore = false
-    private val stampViewModel: StampViewModel by viewModels()
 
     private val dividerResArr: Array<Stick> by lazy {
         arrayOf(mine_daily_v_divider_mon_tue,

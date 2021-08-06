@@ -66,7 +66,6 @@ class DailyViewModel : BaseViewModel() {
 
     //用flatmap解决嵌套请求的问题
     fun checkIn() {
-
         apiService.checkIn()
                 .flatMap(Function<RedrockApiStatus, Observable<RedrockApiWrapper<ScoreStatus>>> {
                     //如果status为405，说明是在寒暑假，此时不可签到

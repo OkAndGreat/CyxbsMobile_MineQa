@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="邮票任务"
+        style="@style/mine_stamp_center_tab_text"
         android:textColor="@color/common_alpha_level_two_font_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

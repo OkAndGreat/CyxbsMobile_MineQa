@@ -6,13 +6,13 @@
     <data>
         <variable
             name="task"
-            type="com.mredrock.cyxbs.mine.network.model.StampTask" />
+            type="com.mredrock.cyxbs.mine.network.model.stamp.StampTask" />
         <variable
             name="plView"
             type="com.mredrock.cyxbs.mine.page.stamp.customview.progressview.ProgressLayout" />
         <variable
             name="viewModel"
-            type="com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel" />
+            type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

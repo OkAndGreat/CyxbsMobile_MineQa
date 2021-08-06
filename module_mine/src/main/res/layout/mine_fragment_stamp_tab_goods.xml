@@ -6,10 +6,11 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:background="#FBFCFF"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mine_stamp_tab_rv"
+        android:id="@+id/mine_stamp_tab_rv_goods"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 </LinearLayout>

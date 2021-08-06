@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
-            name="Decoration"
-            type="com.mredrock.cyxbs.mine.network.model.stamp.Decoration" />
+            name="StampGood"
+            type="com.mredrock.cyxbs.mine.network.model.stamp.StampGood" />
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />
@@ -36,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{Decoration.title}"
+            android:text="@{StampGood.title}"
             android:textColor="@color/common_level_two_font_color"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/mine_sign_store_item_tv_count"
@@ -48,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:alpha="0.58"
-            android:text="@{Decoration.price}"
+            android:text="@{StampGood.title}"
             android:textColor="@color/common_level_two_font_color"
             android:textSize="11sp"
             app:layout_constraintStart_toStartOf="@+id/mine_sign_store_item_iv_diamond"
@@ -73,7 +72,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="11dp"
             android:layout_marginBottom="17dp"
-            android:text="@{Decoration.description}"
+            android:text='@{StampGood.price+""}'
             android:textColor="@color/mine_stamp_number"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -90,7 +89,7 @@
             android:background="@drawable/common_dialog_btn_positive_blue"
             android:minWidth="47dp"
             android:minHeight="24dp"
-            android:onClick="@{() -> viewModel.onClickForToGoodPager(Decoration.title)}"
+            android:onClick="@{() -> viewModel.onClickForToGoodPager(StampGood.title)}"
             android:text="@string/mine_sign_store_item_exchange"
             android:textColor="@color/common_white_font_color"
             android:textSize="14sp"
