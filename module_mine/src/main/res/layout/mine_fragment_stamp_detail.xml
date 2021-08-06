@@ -1,78 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mine_stamp_detail_base_color"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mine_cl_stamp_detail"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="53dp">
+    <data>
 
-        <ImageView
-            android:id="@+id/mine_view_stamp_detail_back"
-            android:layout_width="wrap_content"
-            android:layout_height="16dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="7dp"
-            android:background="@drawable/mine_vector_stamp_detail_back"
-            app:layout_constraintBottom_toBottomOf="@+id/mine_tv_stamp_detail"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/mine_tv_stamp_detail" />
-
-        <TextView
-            android:id="@+id/mine_tv_stamp_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="31dp"
-            android:layout_marginLeft="13dp"
-            android:gravity="center"
-            android:text="@string/mine_stamp_detail"
-            android:textAppearance="@style/mine_stamp_exchange_detail"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/mine_view_stamp_detail_back"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/mine_shape_stamp_exchange_detail_decoration" />
+    </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/mine_tv_stamp_detail_exchange_note"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="兑换记录"
-            android:textAppearance="@style/mine_stamp_detail_tab_selected" />
-
-        <TextView
-            android:id="@+id/mine_tv_stamp_detail_got_note"
-            android:layout_width="0dp"
-            android:alpha="0.8"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="获取记录"
-            android:textAppearance="@style/mine_stamp_detail_tab_normal" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/mine_vp2_stamp_detail"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never" />
+        android:background="@color/mine_stamp_detail_base_color"
+        android:orientation="vertical">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mine_cl_stamp_detail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="53dp">
+
+            <ImageView
+                android:id="@+id/mine_view_stamp_detail_back"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_marginLeft="17dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/mine_vector_stamp_detail_back"
+                app:layout_constraintBottom_toBottomOf="@+id/mine_tv_stamp_detail"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/mine_tv_stamp_detail" />
+
+            <TextView
+                android:id="@+id/mine_tv_stamp_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:layout_marginLeft="13dp"
+                android:gravity="center"
+                android:text="@string/mine_stamp_detail"
+                android:textAppearance="@style/mine_stamp_exchange_detail"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/mine_view_stamp_detail_back"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/mine_shape_stamp_exchange_detail_decoration" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mine_tv_stamp_detail_exchange_note"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="兑换记录"
+                android:textAppearance="@style/mine_stamp_detail_tab_selected" />
+
+            <TextView
+                android:id="@+id/mine_tv_stamp_detail_got_note"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:alpha="0.8"
+                android:gravity="center"
+                android:text="获取记录"
+                android:textAppearance="@style/mine_stamp_detail_tab_normal" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardCornerRadius="15dp"
+            android:layout_height="match_parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/mine_vp2_stamp_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never" />
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

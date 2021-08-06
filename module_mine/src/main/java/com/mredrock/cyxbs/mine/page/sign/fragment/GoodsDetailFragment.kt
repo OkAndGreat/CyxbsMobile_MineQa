@@ -27,7 +27,6 @@ class GoodsDetailFragment :
     override fun initView() {
         mBinding.mineVp2GoodsPic.adapter = GoodsDetailPicAdapter()
 
-
         initListener()
         initCallback()
     }

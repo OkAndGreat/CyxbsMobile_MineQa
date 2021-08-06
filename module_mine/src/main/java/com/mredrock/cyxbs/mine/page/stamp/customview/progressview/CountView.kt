@@ -18,8 +18,8 @@ import kotlin.math.ceil
  */
 class CountView (context: Context) : View(context) {
     companion object{
-        const val DEFAULT_TEXT_COLOR = "#cccccc"
-        const val DEFAULT_TEXT_SIZE = 45f
+        const val DEFAULT_TEXT_COLOR = "#7D8AFF"
+        const val DEFAULT_TEXT_SIZE = 40f
         const val COUNT_ANIM_DURING = 5000
     }
 

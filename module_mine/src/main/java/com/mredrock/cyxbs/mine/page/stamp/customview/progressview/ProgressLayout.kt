@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.LinearLayout
 import com.mredrock.cyxbs.mine.R
+import com.mredrock.cyxbs.mine.util.DisplayUtils
 
 /**
  * Author by OkAndGreat，Date on 2021/8/2.
@@ -33,8 +34,8 @@ class ProgressLayout(context: Context, attrs: AttributeSet?) :
         removeAllViews()
         orientation = HORIZONTAL
 
-        addCountView()
         addProgressView()
+        addCountView()
         mCountView.setCount(0)
     }
 
@@ -63,10 +64,10 @@ class ProgressLayout(context: Context, attrs: AttributeSet?) :
     //生成CountView的布局参数
     private fun getCountViewParams(): LayoutParams {
         val params = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
-        params.leftMargin = paddingLeft
+        //这里的目的是为了让CountView和进度条View有一定间隔
+        params.leftMargin = paddingLeft + DisplayUtils.dp2px(context,5F)
         params.rightMargin = paddingRight
-        //这里加20的目的是为了让CountView和进度条View有一定间隔
-        params.bottomMargin = paddingBottom + 20
+        params.bottomMargin = paddingBottom + 10
         params.gravity = Gravity.CENTER
         return params
     }
