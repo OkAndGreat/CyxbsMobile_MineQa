@@ -22,5 +22,5 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/mine_item_tl_hint_tv"
         app:layout_constraintStart_toEndOf="@+id/mine_item_tl_hint_tv"
-        app:srcCompat="@drawable/mine_ic_me_remind_icon" />
+        app:srcCompat="@drawable/mine_vector_stamp_center_tab" />
 </androidx.constraintlayout.widget.ConstraintLayout>

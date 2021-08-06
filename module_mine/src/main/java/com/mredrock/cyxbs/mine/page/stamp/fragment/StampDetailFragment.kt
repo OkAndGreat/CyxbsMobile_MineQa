@@ -1,11 +1,10 @@
-package com.mredrock.cyxbs.mine.page.sign.fragment
+package com.mredrock.cyxbs.mine.page.stamp.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentStampDetailBinding
-import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
 import com.mredrock.cyxbs.mine.page.stamp.adapter.StampDetailVp2Adapter
 import com.mredrock.cyxbs.mine.util.ProgressUtils
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment

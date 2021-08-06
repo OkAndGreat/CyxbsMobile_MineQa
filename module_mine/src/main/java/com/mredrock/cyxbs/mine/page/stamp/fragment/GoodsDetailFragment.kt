@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.page.sign.fragment
+package com.mredrock.cyxbs.mine.page.stamp.fragment
 
 import android.app.AlertDialog
 import android.graphics.Color

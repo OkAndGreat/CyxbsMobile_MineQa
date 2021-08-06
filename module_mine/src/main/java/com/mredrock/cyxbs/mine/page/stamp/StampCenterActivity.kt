@@ -1,23 +1,16 @@
 package com.mredrock.cyxbs.mine.page.stamp
 
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.TableLayout
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.google.android.material.tabs.TabItem
-import com.google.android.material.tabs.TabLayoutMediator
 import com.mredrock.cyxbs.common.ui.BaseActivity
-import com.mredrock.cyxbs.common.ui.BaseViewModelActivity
-import com.mredrock.cyxbs.common.utils.extensions.onClick
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineActivityStampeBinding
-import com.mredrock.cyxbs.mine.page.sign.fragment.GoodsDetailFragment
-import com.mredrock.cyxbs.mine.page.sign.fragment.StampDetailFragment
+import com.mredrock.cyxbs.mine.page.stamp.fragment.GoodsDetailFragment
+import com.mredrock.cyxbs.mine.page.stamp.fragment.StampDetailFragment
 import com.mredrock.cyxbs.mine.page.stamp.fragment.StampCenterFragment
 
 class StampCenterActivity: BaseActivity() {

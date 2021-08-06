@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.page.sign.fragment
+package com.mredrock.cyxbs.mine.page.stamp.fragment
 
 import android.os.Bundle
 import android.view.View
