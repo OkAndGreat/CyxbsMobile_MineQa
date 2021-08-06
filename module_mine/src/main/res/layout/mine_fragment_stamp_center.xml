@@ -67,7 +67,7 @@
                     android:layout_marginTop="7dp"
                     android:layout_marginRight="16dp"
                     app:cardCornerRadius="12dp"
-                    app:layout_scrollFlags="scroll">
+                    app:layout_scrollFlags="scroll|snap|snapMargins">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                     android:layout_height="50dp"
                     android:layout_below="@id/mine_stamp_center_fl"
                     android:layout_marginTop="24dp"
-                    android:background="@color/mine_stamp_background"
+                    android:background="#F2F3F8"
                     app:tabGravity="fill"
                     app:tabIndicatorColor="@color/common_mine_tab_layout_indicator_color"
                     app:tabIndicatorFullWidth="false"
