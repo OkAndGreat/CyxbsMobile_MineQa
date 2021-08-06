@@ -63,7 +63,6 @@ class GoodsDetailFragment :
             val forSureBtn = view2.findViewById(R.id.mine_btn_goods_detail_for_sure) as Button
             val forCancelBtn = view2.findViewById(R.id.mine_btn_goods_detail_for_cancel) as Button
 
-
             val dialog = builder.create()
             dialog.show()
             val attributes = dialog.window.attributes
@@ -93,9 +92,9 @@ class GoodsDetailFragment :
         }
 
         //处理back键点击的交互逻辑
-//        mBinding.mineViewStampDetailBack.setOnClickListener {
-//            activity?.onBackPressed()
-//        }
+        mBinding.mineViewStampDetailBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
 
 
     }
