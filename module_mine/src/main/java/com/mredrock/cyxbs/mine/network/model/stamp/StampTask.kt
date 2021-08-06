@@ -5,11 +5,11 @@ import java.io.Serializable
 
 data class StampTask(
     //任务名称
-    @SerializedName("task_name")
-    val taskName: String,
+    @SerializedName("title")
+    val title: String,
     //任务描述
-    @SerializedName("describe")
-    val describe: String,
+    @SerializedName("description")
+    val description: String,
     //该任务完成后能获得的积分数量
     @SerializedName("reward_number")
     val rewardNumber : Int,
@@ -20,9 +20,9 @@ data class StampTask(
     @SerializedName("is_progress")
     val isProgress :Boolean,
     //如果存在进度，该任务总的任务量
-    @SerializedName("total_amount")
+    @SerializedName("max_progress")
     val totalAmount:Int,
     //如果存在进度，该已经做的任务量
-    @SerializedName("done_amount")
+    @SerializedName("current_progress")
     val doneAmount:Int
 ) : Serializable

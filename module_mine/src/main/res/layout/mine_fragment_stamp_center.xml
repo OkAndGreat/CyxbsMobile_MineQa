@@ -19,7 +19,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/mine_stamp_center_cl"
             android:layout_width="match_parent"
-            android:layout_height="91dp">
+            android:layout_height="90dp"
+            >
 
             <TextView
                 android:id="@+id/mine_stamp_center_title_tv"
@@ -87,7 +88,6 @@
             </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:background="#F2F3F8"
@@ -215,7 +215,5 @@
                         android:layout_height="match_parent" />
             </androidx.cardview.widget.CardView>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
     </LinearLayout>
 </layout>

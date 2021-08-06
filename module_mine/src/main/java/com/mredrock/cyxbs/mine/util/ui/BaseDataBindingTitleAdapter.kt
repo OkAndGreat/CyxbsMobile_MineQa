@@ -38,6 +38,8 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
         //对传入的数据进行监听
         init {
             items.observe(lifecycleOwner, Observer{
+
+                notifyItemRangeRemoved(baseNumber,baseNumber+it.size)
                 notifyDataSetChanged()
             })
             items2.observe(lifecycleOwner, Observer {

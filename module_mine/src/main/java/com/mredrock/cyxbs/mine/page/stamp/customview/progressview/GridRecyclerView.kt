@@ -32,11 +32,11 @@ class GridRecyclerView(
 
     override fun attachLayoutAnimationParameters(
         child: View?,
-        params: ViewGroup.LayoutParams?,
+        params: ViewGroup.LayoutParams,
         index: Int,
         count: Int
     ) {
-        if (adapter != null && layoutManager is GridLayoutManager && params?.layoutAnimationParameters!= null){
+        if (adapter != null && layoutManager is GridLayoutManager){
             var animationParameters =
                 params.layoutAnimationParameters as GridLayoutAnimationController.AnimationParameters
 
