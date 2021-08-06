@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mine_cl_exchange_detail"
     android:layout_width="match_parent"
+
     android:layout_height="73dp"
     android:background="#FFFFFF">
 
@@ -37,8 +38,8 @@
         app:layout_constraintStart_toEndOf="@+id/mine_tv_stamp_exchange_name">
 
         <TextView
-            android:layout_width="33dp"
-            android:layout_height="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textAppearance="@style/mine_stamp_exchange_under_collected"
             android:layout_gravity="center"
             android:text="待领取" />
@@ -47,7 +48,7 @@
     <TextView
         android:id="@+id/mine_tv_stamp_exchange_count"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
+        android:layout_height="wrap_content"
         android:layout_marginRight="31dp"
         android:text="-4300"
         android:textAppearance="@style/mine_stamp_exchange_count"
@@ -67,7 +68,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="3dp"
+        android:layout_height="1dp"
         android:background="@drawable/mine_shape_stamp_exchange_detail_decoration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

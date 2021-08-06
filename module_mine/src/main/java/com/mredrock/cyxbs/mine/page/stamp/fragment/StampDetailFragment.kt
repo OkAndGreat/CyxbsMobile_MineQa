@@ -1,18 +1,14 @@
 package com.mredrock.cyxbs.mine.page.stamp.fragment
 
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.mredrock.cyxbs.mine.R
+import com.mredrock.cyxbs.mine.databinding.MineFragmentStampDetailBinding
 import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
+import com.mredrock.cyxbs.mine.page.stamp.adapter.StampDetailVp2Adapter
 import com.mredrock.cyxbs.mine.util.ProgressUtils
+import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 import kotlinx.android.synthetic.main.mine_fragment_stamp_detail.*
 
 /**
@@ -21,34 +17,28 @@ import kotlinx.android.synthetic.main.mine_fragment_stamp_detail.*
  */
 private const val TAG = "StampDetailFragment"
 
-class StampDetailFragment : Fragment() {
+class StampDetailFragment :
+    BaseDataBindingFragment<MineFragmentStampDetailBinding>(R.layout.mine_fragment_stamp_detail) {
     companion object {
         const val TO_CHANGE_SIZE = 2
         const val TO_CHANGE_ALPHA = 0.2
-        const val TO_CHANGE_COLOR = 10250689
+        const val NORMAL_TEXT_COLOR = -15388325
+        const val SELECTED_TEXT_COLOR = -10521116
     }
 
     private var mCurPosition = 0
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        mine_vp2_stamp_detail.adapter = activity?.let { StampDetailVp2Adapter(it) }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        return inflater.inflate(R.layout.mine_fragment_stamp_detail, container, false)
+        initListener()
+        initVp2CallBack()
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun initView() {
+    }
 
-        val NORMAL_TEXT_COLOR = Color.parseColor("#15315B")
-        Log.d(TAG, "onViewCreated: 1-->$NORMAL_TEXT_COLOR")
-        val SELECTED_TEXT_COLOR = Color.parseColor("#5F75E4")
-        Log.d(TAG, "onViewCreated: 2-->$SELECTED_TEXT_COLOR")
-        mine_vp2_stamp_detail.adapter = GoodsDetailPicAdapter()
-
+    private fun initVp2CallBack() {
         //监听ViewPager2来改变tab的颜色和大小
         mine_vp2_stamp_detail.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
@@ -123,6 +113,31 @@ class StampDetailFragment : Fragment() {
                 }
             }
         )
+    }
+
+    private fun initListener() {
+        //设置俩个tab的点击事件
+        //和Vp2联动
+        mine_tv_stamp_detail_exchange_note.setOnClickListener {
+            mine_vp2_stamp_detail.setCurrentItem(0, true)
+        }
+
+        mine_tv_stamp_detail_got_note.setOnClickListener {
+            mine_vp2_stamp_detail.setCurrentItem(1, true)
+        }
+
+        //跳转的逻辑
+        mine_view_stamp_detail_back.setOnClickListener {
+            activity?.onBackPressed()
+        }
+    }
+
+    override fun initData() {
+
+    }
+
+    override fun initOther() {
+
     }
 
 }

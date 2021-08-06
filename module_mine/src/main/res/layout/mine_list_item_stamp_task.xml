@@ -6,7 +6,7 @@
     <data>
         <variable
             name="task"
-            type="com.mredrock.cyxbs.mine.network.model.stamp.StampTask" />
+            type="com.mredrock.cyxbs.mine.network.model.StampTask" />
         <variable
             name="plView"
             type="com.mredrock.cyxbs.mine.page.stamp.customview.progressview.ProgressLayout" />

@@ -27,6 +27,7 @@
         <Button
             android:id="@+id/mine_btn_goods_detail_for_cancel"
             android:layout_width="93dp"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_height="40dp"
             android:background="@drawable/mine_shape_goods_detail_cancel"
             android:text="再想想"
@@ -36,6 +37,7 @@
             android:id="@+id/mine_btn_goods_detail_for_sure"
             android:layout_marginLeft="19dp"
             android:layout_width="93dp"
+            style="?android:attr/borderlessButtonStyle"
             android:background="@drawable/mine_selector_decoration_detail_btn"
             android:text="好的"
             android:textAppearance="@style/mine_goods_detail_dialog_sure"
