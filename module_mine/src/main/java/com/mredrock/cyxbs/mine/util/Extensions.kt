@@ -9,21 +9,23 @@ import android.widget.Toast
 //dp2px
 val Float.px
     get() = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            this,
-            Resources.getSystem().displayMetrics
+        TypedValue.COMPLEX_UNIT_DIP,
+        this,
+        Resources.getSystem().displayMetrics
     )
 
 val Float.dp
     get() = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            this,
-            Resources.getSystem().displayMetrics
+        TypedValue.COMPLEX_UNIT_DIP,
+        this,
+        Resources.getSystem().displayMetrics
     )
 
 val Int.dp
     get() = this.toFloat().dp
 
-fun String.show(context:Context,time:Int=Toast.LENGTH_SHORT){
-    Toast.makeText(context,this,time).show()
+fun String.show(context: Context, time: Int = Toast.LENGTH_SHORT) {
+    Toast.makeText(context, this, time).show()
 }
+
+fun Float.sp2px(context: Context) = (this * (context.resources.displayMetrics.scaledDensity) + 0.5f)

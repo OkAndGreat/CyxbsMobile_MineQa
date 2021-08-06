@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.mine.util.ui
 
+import android.graphics.drawable.BitmapDrawable
 import androidx.lifecycle.LifecycleOwner
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineListItemProductBinding

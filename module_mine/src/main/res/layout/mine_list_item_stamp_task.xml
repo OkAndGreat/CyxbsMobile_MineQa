@@ -9,7 +9,7 @@
             type="com.mredrock.cyxbs.mine.network.model.StampTask" />
         <variable
             name="plView"
-            type="com.mredrock.cyxbs.mine.page.sign.customview.progressview.ProgressLayout" />
+            type="com.mredrock.cyxbs.mine.page.stamp.customview.progressview.ProgressLayout" />
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.sign.viewmodel.StampViewModel" />
@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_list_item_stamp_title_small_tv" />
 
-        <com.mredrock.cyxbs.mine.page.sign.customview.progressview.ProgressLayout
+        <com.mredrock.cyxbs.mine.page.stamp.customview.progressview.ProgressLayout
             android:id="@+id/mine_list_item_stamp_pl"
             android:layout_width="176dp"
             android:layout_height="8dp"

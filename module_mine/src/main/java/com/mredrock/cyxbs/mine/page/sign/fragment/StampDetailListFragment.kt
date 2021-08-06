@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mredrock.cyxbs.mine.R
-import com.mredrock.cyxbs.mine.page.sign.adapter.StampDetailRvAdapter
+import com.mredrock.cyxbs.mine.page.stamp.adapter.StampDetailRvAdapter
 import kotlinx.android.synthetic.main.mine_fragment_stamp_detail_item.*
 
 /**

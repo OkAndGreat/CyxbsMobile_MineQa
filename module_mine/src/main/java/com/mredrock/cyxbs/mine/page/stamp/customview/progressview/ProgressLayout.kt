@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.page.sign.customview.progressview
+package com.mredrock.cyxbs.mine.page.stamp.customview.progressview
 
 import android.content.Context
 import android.util.AttributeSet
