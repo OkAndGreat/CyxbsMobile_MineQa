@@ -31,12 +31,6 @@ class StampCenterFragment :
     //是否应该展示小蓝点
     private var mShouldShowBlueDot = true
 
-
-    companion object {
-        //一天的时间戳
-        const val ONE_DAY_TIMES_STAMP = 86400000
-    }
-
     val viewModel: StampCenterViewModel by activityViewModels()
 
     //viewpager2的fragment集合
@@ -50,10 +44,10 @@ class StampCenterFragment :
         //进来fragment后就对当前时间戳赋值
         mCurTimeStamp = System.currentTimeMillis()
         //拿到上一次的时间戳 如果是第一次进入 则返回0
-        val prefs = activity?.getSharedPreferences("data", Context.MODE_PRIVATE)
+        val prefs = activity?.getSharedPreferences("TimeStamp", Context.MODE_PRIVATE)
         val mLastTimeStamp = prefs?.getLong("TimeStamp", 0L)
         //储存当前时间戳
-        val editor = activity?.getSharedPreferences("data", Context.MODE_PRIVATE)?.edit()
+        val editor = activity?.getSharedPreferences("TimeStamp", Context.MODE_PRIVATE)?.edit()
         editor?.putLong("TimeStamp", mCurTimeStamp)
         editor?.apply()
 
@@ -106,6 +100,7 @@ class StampCenterFragment :
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     if (tab?.position == 1) {
+                        hintIv?.visibility = GONE
                         context?.let {
                             ContextCompat.getColor(
                                 it,
@@ -160,7 +155,7 @@ class StampCenterFragment :
 
     override fun initOther() {
         mBinding.mineStampCenterFl.setOnClickListener { viewModel.onClickForToDetailPager() }
-        mBinding.mineStampCenterBackIv.onClick { parentFragmentManager.popBackStack() }
+        mBinding.mineRlStampCenterBack.onClick { activity?.onBackPressed() }
     }
 
     /**

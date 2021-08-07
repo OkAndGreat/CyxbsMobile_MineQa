@@ -90,7 +90,7 @@ class StampGoodsDetailFragment :
         }
 
         //处理back键点击的交互逻辑
-        mBinding.mineViewStampDetailBack.setOnClickListener {
+        mBinding.mineRlStampCenterBack.setOnClickListener {
             activity?.onBackPressed()
         }
 
