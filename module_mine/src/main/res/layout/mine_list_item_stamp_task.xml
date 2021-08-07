@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:visibility="@{task.finished ? plView.GONE : plView.VISIBLE}"
+            android:visibility="@{task.totalAmount == 0 ? plView.GONE : plView.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.035"
             app:layout_constraintStart_toStartOf="parent"

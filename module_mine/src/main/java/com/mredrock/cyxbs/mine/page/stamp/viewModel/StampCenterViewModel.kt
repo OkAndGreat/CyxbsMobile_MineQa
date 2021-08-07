@@ -76,7 +76,7 @@ class StampCenterViewModel:BaseStampViewModel() {
     fun loadGoods(){
         val goodList = ArrayList<StampGood>()
         repeat(6){
-            goodList.add(StampGood("title",20,"好东西",20,listOf("pic","pic2","pic3")))
+            goodList.add(StampGood(listOf("pic","pic2","pic3"),"名字",20,"好东西","什么玩意",1,15))
         }
         _goods.postValue(goodList)
     }

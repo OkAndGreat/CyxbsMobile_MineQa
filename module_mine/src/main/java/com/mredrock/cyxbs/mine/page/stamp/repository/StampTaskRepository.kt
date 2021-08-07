@@ -8,18 +8,16 @@ class StampTaskRepository {
 
     fun getTodayTask():List<StampTask>{
         var tasks: ArrayList<StampTask> = ArrayList()
-        tasks.add(StampTask("任务名称","任务描述",15,false,true,15,5))
-        tasks.add(StampTask("任务名称","任务描述",15,true,true,15,5))
-        tasks.add(StampTask("任务名称","任务描述",15,true,true,15,10))
-        tasks.add(StampTask("任务名称","任务描述",15,false,true,15,2))
+        tasks.add(StampTask("任务名称","任务描述",15,15,0,"today"))
+        tasks.add(StampTask("任务名称","任务描述",15,15,2,"today"))
+        tasks.add(StampTask("任务名称","任务描述",15,0,0,"today"))
+        tasks.add(StampTask("任务名称","任务描述",15,0,0,"today"))
         return tasks
     }
     fun getMoreTask():List<StampTask>{
         var tasks: ArrayList<StampTask> = ArrayList()
-        tasks.add(StampTask("任务名称","任务描述",15,false,true,15,5))
-        tasks.add(StampTask("任务名称","任务描述",15,false,true,15,5))
-        tasks.add(StampTask("任务名称","任务描述",15,false,true,15,10))
-        tasks.add(StampTask("任务名称","任务描述",15,false,true,15,2))
+        tasks.add(StampTask("任务名称","任务描述",15,5,5,"more"))
+        tasks.add(StampTask("任务名称","任务描述",15,2,1,"more"))
         return tasks
     }
 }

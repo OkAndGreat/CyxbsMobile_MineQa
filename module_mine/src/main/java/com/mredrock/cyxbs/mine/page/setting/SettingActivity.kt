@@ -32,6 +32,7 @@ class SettingActivity : BaseActivity() {
 
         mine_setting_toolbar.toolbar.apply {
             setTitleLocationAtLeft(false)
+
             setBackgroundColor(ContextCompat.getColor(this@SettingActivity, R.color.common_mine_setting_common_back_color))
             initWithSplitLine(
                     "设置",
