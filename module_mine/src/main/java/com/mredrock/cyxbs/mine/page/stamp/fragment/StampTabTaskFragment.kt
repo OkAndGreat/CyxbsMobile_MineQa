@@ -30,9 +30,10 @@ class StampTabTaskFragment: BaseFragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.mine_stamp_tab_rv_tasks)
         //rvAdapter
-        val adapter = StampCenterTaskAdapter(viewModel,this@StampTabTaskFragment,recyclerView.scheduleLayoutAnimation())
+        val adapter = StampCenterTaskAdapter(viewModel,this@StampTabTaskFragment
+        ) { recyclerView.scheduleLayoutAnimation() }
         val layoutManager = LinearLayoutManager(context)
-
+        LayoutAnimationController.AnimationParameters()
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
         loadData()

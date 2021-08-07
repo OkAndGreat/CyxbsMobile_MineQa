@@ -33,17 +33,18 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
         private val layoutTitleId:Int,
         lifecycleOwner: LifecycleOwner,
         private val title2:String = "无",
-        private val title1:String = "无"
+        private val title1:String = "无",
+        scheduleLayoutAnimation: () -> Unit
     ): RecyclerView.Adapter<BaseDataBindingTitleAdapter.BaseDataBindingTitleViewHolder>() {
         //对传入的数据进行监听
         init {
             items.observe(lifecycleOwner, Observer{
-
-                notifyItemRangeRemoved(baseNumber,baseNumber+it.size)
                 notifyDataSetChanged()
+                scheduleLayoutAnimation()
             })
             items2.observe(lifecycleOwner, Observer {
                 notifyDataSetChanged()
+                scheduleLayoutAnimation()
             })
         }
         //TYPE ID

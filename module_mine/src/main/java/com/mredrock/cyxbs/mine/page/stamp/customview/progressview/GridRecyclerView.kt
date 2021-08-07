@@ -37,10 +37,11 @@ class GridRecyclerView(
         count: Int
     ) {
         if (adapter != null && layoutManager is GridLayoutManager){
-            var animationParameters =
-                params.layoutAnimationParameters as GridLayoutAnimationController.AnimationParameters
-
-            if (animationParameters == null) {
+            var animationParameters:GridLayoutAnimationController.AnimationParameters? = null
+            if (params.layoutAnimationParameters != null){
+                animationParameters =
+                    params.layoutAnimationParameters as GridLayoutAnimationController.AnimationParameters
+            }else{
                 animationParameters = GridLayoutAnimationController.AnimationParameters()
                 params.layoutAnimationParameters = animationParameters
             }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.GridLayoutAnimationController
 import android.view.animation.LayoutAnimationController
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -29,9 +30,10 @@ class StampTabGoodFragment:BaseFragment() {
     ): View {
         val view = inflater.inflate(R.layout.mine_fragment_stamp_tab_goods, container, false)
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.mine_stamp_tab_rv_goods)
+        val recyclerView: GridRecyclerView = view.findViewById(R.id.mine_stamp_tab_rv_goods)
         //设置rvAdapter
-        val mAdapter = StampCenterTitleGoodsAdapter(viewModel,this@StampTabGoodFragment,recyclerView.scheduleLayoutAnimation())
+        val mAdapter = StampCenterTitleGoodsAdapter(viewModel,this@StampTabGoodFragment
+        ) { recyclerView.scheduleLayoutAnimation() }
 
         val mLayoutManager = GridLayoutManager(context,2,GridLayoutManager.VERTICAL,false)
         mLayoutManager.spanSizeLookup = object:SpanSizeLookup(){
@@ -47,8 +49,10 @@ class StampTabGoodFragment:BaseFragment() {
         recyclerView.apply {
             layoutManager = mLayoutManager
             adapter = mAdapter
+            GridLayoutAnimationController.AnimationParameters()
         }
         loadData()
+
         return view
     }
     //数据加载

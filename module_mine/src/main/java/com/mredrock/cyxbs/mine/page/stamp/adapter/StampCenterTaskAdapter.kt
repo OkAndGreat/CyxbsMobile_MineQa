@@ -10,7 +10,7 @@ import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingTitleAdapter
 
 class StampCenterTaskAdapter(private val viewModel: StampTaskViewModel,
                              lifecycleOwner: LifecycleOwner,
-                             scheduleLayoutAnimation: Unit):BaseDataBindingTitleAdapter<
+                             scheduleLayoutAnimation:() -> Unit):BaseDataBindingTitleAdapter<
         StampTask,
         StampTask,
         MineListItemStampTaskBinding,
@@ -23,7 +23,8 @@ class StampCenterTaskAdapter(private val viewModel: StampTaskViewModel,
         viewModel.moreTasks,
         R.layout.mine_list_item_stamp_title,
         lifecycleOwner,
-        "更多任务") {
+        "更多任务",
+        scheduleLayoutAnimation = scheduleLayoutAnimation) {
         override fun onBindTitleItem(
                 mBinding: MineListItemStampTitleBinding?,
                 position: Int,

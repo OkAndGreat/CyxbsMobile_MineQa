@@ -13,7 +13,7 @@ import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingTitleAdapter
 class StampCenterTitleGoodsAdapter(
     private val viewModel: StampCenterViewModel,
     lifecycleOwner: LifecycleOwner,
-    scheduleLayoutAnimation: Unit
+    scheduleLayoutAnimation: () -> Unit
 ): BaseDataBindingTitleAdapter<
         Decoration,
         StampGood,
@@ -27,7 +27,8 @@ class StampCenterTitleGoodsAdapter(
     R.layout.mine_list_item_stamp_good_title,
     lifecycleOwner,
     "邮货",
-    "装扮"
+    "装扮",
+    scheduleLayoutAnimation
         ) {
 
     //绑定虚拟商品
