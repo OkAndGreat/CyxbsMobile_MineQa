@@ -18,29 +18,34 @@
             android:layout_height="50dp"
             android:layout_marginTop="53dp">
 
-            <ImageView
-                android:id="@+id/mine_view_stamp_detail_back"
-                android:layout_width="wrap_content"
-                android:layout_height="16dp"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="7dp"
-                android:background="@drawable/mine_vector_stamp_detail_back"
-                app:layout_constraintBottom_toBottomOf="@+id/mine_tv_stamp_detail"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/mine_tv_stamp_detail" />
+            <RelativeLayout
+                android:id="@+id/mine_rl_stamp_detail_back"
+                android:layout_width="35dp"
+                android:background="@drawable/mine_stamp_detail_ripple"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="35dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/mine_vector_stamp_detail_back" />
+            </RelativeLayout>
+
 
             <TextView
                 android:id="@+id/mine_tv_stamp_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="31dp"
-                android:layout_marginLeft="13dp"
                 android:gravity="center"
                 android:text="@string/mine_stamp_detail"
                 android:textAppearance="@style/mine_stamp_exchange_detail"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/mine_view_stamp_detail_back"
+                app:layout_constraintStart_toEndOf="@+id/mine_rl_stamp_detail_back"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

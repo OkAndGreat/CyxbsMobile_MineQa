@@ -126,7 +126,7 @@ class StampDetailFragment :
         }
 
         //跳转的逻辑
-        mine_view_stamp_detail_back.setOnClickListener {
+        mine_rl_stamp_detail_back.setOnClickListener {
             activity?.onBackPressed()
         }
     }
