@@ -5,7 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.mredrock.cyxbs.mine.R
+import com.mredrock.cyxbs.mine.databinding.MineFragmentExchangeDetailBinding
+import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel
+import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 
 /**
  * Author by OkAndGreat，Date on 2021/8/4.
@@ -18,11 +23,23 @@ import com.mredrock.cyxbs.mine.R
  * 和mine_iv_stamp_exchange_detail的background为
  * mine_vector_stamp_exchange_detail_icon_collected.xml
  */
-class StampExchangeFragment : Fragment() {
+class StampExchangeFragment() :
+    BaseDataBindingFragment<MineFragmentExchangeDetailBinding>(R.layout.mine_fragment_exchange_detail) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.mine_fragment_exchange_detail, container, false)
+    private val viewModel:StampChangeViewModel by activityViewModels()
+
+    override fun initView() {
+        val getId = arguments?.get("args") as Int
+        mBinding.exChangeDetail = viewModel.getOneExChangeById(getId)
+    }
+
+    override fun initData() {
+
+    }
+
+    override fun initOther() {
+
+    }
+
+
 }

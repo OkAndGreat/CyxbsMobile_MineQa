@@ -53,7 +53,17 @@
         </item>
 
     </style>
+    <style name="mine_stamp_exchange_get_count">
 
+        <item name="android:textSize">
+            16sp
+        </item>
+
+        <item name="android:textColor">
+            #FFA92F
+        </item>
+
+    </style>
     <style name="mine_stamp_exchange_detail">
 
         <item name="android:textSize">

@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="145dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/mine_stamp_center_fake"
+            imageUrl="@{StampGood.pic.get(0)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

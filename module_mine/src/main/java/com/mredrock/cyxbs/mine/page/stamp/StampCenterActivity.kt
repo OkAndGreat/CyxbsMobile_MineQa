@@ -19,14 +19,16 @@ import com.mredrock.cyxbs.mine.databinding.MineActivityStampeBinding
 import com.mredrock.cyxbs.mine.page.stamp.fragment.StampGoodsDetailFragment
 import com.mredrock.cyxbs.mine.page.stamp.fragment.StampDetailFragment
 import com.mredrock.cyxbs.mine.page.stamp.fragment.StampCenterFragment
+import com.mredrock.cyxbs.mine.page.stamp.fragment.StampExchangeFragment
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
+import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel
 
 //邮票中心界面
 class StampCenterActivity: BaseActivity() {
 
     private var mBinding:MineActivityStampeBinding? = null
     private val stampViewModel: StampCenterViewModel by viewModels()
-
+    private val stampChangeViewModel: StampChangeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +42,7 @@ class StampCenterActivity: BaseActivity() {
         stampViewModel.toGoodPager.observe(this, Observer<String> {
             val goodsDetailFragment = StampGoodsDetailFragment()
             goodsDetailFragment.arguments
-            toFragmentForAnim((StampGoodsDetailFragment()).apply {
+            toFragmentForAnim((goodsDetailFragment).apply {
                 val bundle = Bundle()
                 bundle.putString("args",it)
                 this.arguments = bundle
@@ -50,6 +52,16 @@ class StampCenterActivity: BaseActivity() {
         //对跳转到明细界面进行监听
         stampViewModel.toDetailPager.observe(this, Observer {
             toFragmentForAnim(StampDetailFragment()).addToBackStack(null).commit()
+        })
+
+        stampChangeViewModel.toExChangePager.observe(this, Observer {
+            val exchangeFragment = StampExchangeFragment()
+            exchangeFragment.arguments
+            toFragmentForAnim((exchangeFragment).apply {
+                val bundle = Bundle()
+                bundle.putInt("args",it)
+                this.arguments = bundle
+            }).addToBackStack(null).commit()
         })
     }
 

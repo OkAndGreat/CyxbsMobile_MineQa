@@ -3,6 +3,8 @@ package com.mredrock.cyxbs.mine.network.model.stamp
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+
+
 data class StampGood(
     //商品图片
     @SerializedName("urls")

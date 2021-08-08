@@ -3,7 +3,17 @@ package com.mredrock.cyxbs.mine.page.stamp.repository
 import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
 import kotlin.collections.ArrayList
 
-class StampTaskRepository {
+class StampTaskRepository private constructor(){
+
+    companion object {
+        fun getInstance(): StampTaskRepository {
+            return Holder.instance
+        }
+    }
+
+    private object Holder {
+        val instance = StampTaskRepository()
+    }
 
 
     fun getTodayTask():List<StampTask>{
@@ -20,4 +30,5 @@ class StampTaskRepository {
         tasks.add(StampTask("任务名称","任务描述",15,2,1,"more"))
         return tasks
     }
+
 }

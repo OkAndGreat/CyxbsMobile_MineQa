@@ -6,6 +6,7 @@
     <color name="mine_stamp_detail_decoration">#DFE8F5</color>
 
     <color name="mine_stamp_exchange_detail_blue">#6C69F1</color>
+    <color name="mine_stamp_exchange_detail_grey">#979797</color>
     <color name="mine_stamp_title">#15315B</color>
     <color name="mine_stamp_number">#5177FF</color>
     <color name="mine_stamp_item_title_small">#6615315B</color>
