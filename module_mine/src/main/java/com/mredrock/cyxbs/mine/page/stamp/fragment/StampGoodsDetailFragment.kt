@@ -74,6 +74,7 @@ class StampGoodsDetailFragment :
             val forCancelBtn = view2.findViewById(R.id.mine_btn_goods_detail_for_cancel) as Button
 
             val dialog = builder.create()
+            dialog.window.setWindowAnimations(R.style.mine_dialog_anim)
             dialog.show()
             val attributes = dialog.window.attributes
             attributes.width = 300.dp.toInt()
@@ -83,7 +84,9 @@ class StampGoodsDetailFragment :
             dialog.window.setContentView(view1)
 
             sureBtn.setOnClickListener {
+                dialog.dismiss()
                 dialog.setContentView(view2)
+                dialog.show()
             }
 
             cancelBtn.setOnClickListener {
