@@ -14,8 +14,6 @@ import kotlinx.android.synthetic.main.mine_fragment_stamp_detail.*
  * Author by OkAndGreat，Date on 2021/8/4.
  * 邮票中心兑换详情页面的fragment
  */
-private const val TAG = "StampDetailFragment"
-
 class StampDetailFragment :
     BaseDataBindingFragment<MineFragmentStampDetailBinding>(R.layout.mine_fragment_stamp_detail) {
     companion object {

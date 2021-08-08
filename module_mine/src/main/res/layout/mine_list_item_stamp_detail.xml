@@ -74,7 +74,7 @@
         <View
             android:id="@+id/mine_view_stamp_detail_navigate"
             android:layout_width="6dp"
-            android:layout_height="19dp"
+            android:layout_height="12dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/mine_vector_stamp_detail_navigate"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -29,8 +29,15 @@ class StampExchangeFragment() :
     private val viewModel:StampChangeViewModel by activityViewModels()
 
     override fun initView() {
+        initListener()
         val getId = arguments?.get("args") as Int
         mBinding.exChangeDetail = viewModel.getOneExChangeById(getId)
+    }
+
+    private fun initListener() {
+        mBinding.mineRlExchangeDetailBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     override fun initData() {

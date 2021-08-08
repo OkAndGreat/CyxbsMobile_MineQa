@@ -25,9 +25,9 @@ object DataBindingAdapter {
     @JvmStatic
     fun setChangeBackGround(view: View,boolean: Boolean){
         if (boolean){
-            view.setBackgroundResource(R.color.mine_stamp_exchange_detail_grey)
+            view.setBackgroundResource(R.drawable.mine_shape_exchange_detail_cv_got)
         }else{
-            view.setBackgroundResource(R.color.mine_stamp_exchange_detail_blue)
+            view.setBackgroundResource(R.drawable.mine_shape_exchange_detail_cv_normal)
         }
     }
 
