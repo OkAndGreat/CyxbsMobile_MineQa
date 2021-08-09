@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 邮票大的那个余额使用的字体 -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/bauhaus_93"/>
+</font-family>

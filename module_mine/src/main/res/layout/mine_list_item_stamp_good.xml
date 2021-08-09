@@ -25,6 +25,7 @@
             android:layout_height="145dp"
             android:scaleType="centerCrop"
             imageUrl="@{StampGood.pic.get(0)}"
+            android:onClick="@{() -> viewModel.onClickForToGoodPager(StampGood.title,StampGood.type)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -72,7 +73,8 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="11dp"
             android:layout_marginBottom="17dp"
-            android:text='@{StampGood.price+""}'
+            android:text="@{String.valueOf(StampGood.price)}"
+            android:fontFamily="@font/din_medium"
             android:textColor="@color/mine_stamp_number"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -89,7 +91,7 @@
             android:background="@drawable/common_dialog_btn_positive_blue"
             android:minWidth="47dp"
             android:minHeight="24dp"
-            android:onClick="@{() -> viewModel.onClickForToGoodPager(StampGood.title)}"
+            android:onClick="@{() -> viewModel.onClickForToGoodPager(StampGood.title,StampGood.type)}"
             android:text="@string/mine_sign_store_item_exchange"
             android:textColor="@color/common_white_font_color"
             android:textSize="14sp"

@@ -14,8 +14,11 @@ data class Decoration(
     @SerializedName("desc")
     val description:String,
     //商品持续时间
-    @SerializedName("period")
-    val period: String,
+    @SerializedName("life")
+    val life: String,
+    //商品持续时间
+    @SerializedName("type")
+    val type: Int,
     //商品价格
     @SerializedName("price")
     val price :Int,

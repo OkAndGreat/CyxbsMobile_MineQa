@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentGoodsDetailBinding
 import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
+import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.util.dp
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 
@@ -23,8 +25,20 @@ import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
  */
 class StampGoodsDetailFragment :
     BaseDataBindingFragment<MineFragmentGoodsDetailBinding>(R.layout.mine_fragment_goods_detail) {
+
+    private val viewModel:StampCenterViewModel by activityViewModels()
+
     private val mRadioButtonList = ArrayList<RadioButton>()
+
+    private val title:String = ""
+    //0为
+    private val type:Int = -1
+
     override fun initView() {
+
+        val title:String = arguments?.get("title") as String
+        val type:Int = arguments?.get("type") as Int
+
         mBinding.mineVp2GoodsPic.adapter = GoodsDetailPicAdapter()
 
         initListener()
@@ -33,6 +47,9 @@ class StampGoodsDetailFragment :
 
 
     override fun initData() {
+
+        viewModel
+
 //        代码添加radioBtn,拿到数据后得到图片数量数据后代码动态添加RadioButton
 //        val radioBtn = RadioButton(activity)
 //        mRadioButtonList.add(radioBtn)

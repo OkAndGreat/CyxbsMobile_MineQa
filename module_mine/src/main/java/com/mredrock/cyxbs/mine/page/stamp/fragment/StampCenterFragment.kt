@@ -164,37 +164,37 @@ class StampCenterFragment :
      * @param offset Int 偏移值
      * @param maxHeight Int 高度
      */
-    private fun changeAnim(view: View,offset: Int,maxHeight: Int) {
+    private fun changeAnim(view: View, offset: Int, maxHeight: Int) {
 
         //根据滑动值和高度来计算缩小和透明度
 
         val ratio = (offset.toFloat() / maxHeight)
-            view.scaleX = ratio
-            view.scaleY = ratio * ratio * ratio
-            view.alpha = ratio
+        view.scaleX = ratio
+        view.scaleY = ratio * ratio * ratio
+        view.alpha = ratio
 
 
 
 
-        Log.d(TAG,"offset $offset maxHeight $maxHeight ratio $ratio")
+        Log.d(TAG, "offset $offset maxHeight $maxHeight ratio $ratio")
         //右上角动画
         //这里的if主要是进行边界值判断，发现width为0的时候就会填充边界
-        if (ratio != 0f && baseIconWidth == 0 && offset != maxHeight){
+        if (ratio != 0f && baseIconWidth == 0 && offset != maxHeight) {
             baseIconWidth = mBinding.mineStampCenterIconFl.width
         }
-            val layoutParams = mBinding.mineStampCenterIconFl.layoutParams
-            mBinding.mineStampCenterIconFl.width.let {
-                    if (baseIconWidth == 0 || offset == maxHeight){
-                        mBinding.mineStampCenterIconFl.visibility = GONE
-                    }else{
-                        mBinding.mineStampCenterIconFl.visibility = VISIBLE
-                        if ((baseIconWidth*(1 -ratio)).toInt() != 0){
-                            layoutParams.width = (baseIconWidth*(1 -ratio)).toInt()
-                        }
-                    }
+        val layoutParams = mBinding.mineStampCenterIconFl.layoutParams
+        mBinding.mineStampCenterIconFl.width.let {
+            if (baseIconWidth == 0 || offset == maxHeight) {
+                mBinding.mineStampCenterIconFl.visibility = GONE
+            } else {
+                mBinding.mineStampCenterIconFl.visibility = VISIBLE
+                if ((baseIconWidth * (1 - ratio)).toInt() != 0) {
+                    layoutParams.width = (baseIconWidth * (1 - ratio)).toInt()
                 }
+            }
+        }
 
-            mBinding.mineStampCenterIconFl.layoutParams = layoutParams
+        mBinding.mineStampCenterIconFl.layoutParams = layoutParams
 
     }
 

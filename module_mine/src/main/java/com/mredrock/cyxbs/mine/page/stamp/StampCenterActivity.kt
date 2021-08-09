@@ -1,19 +1,12 @@
 package com.mredrock.cyxbs.mine.page.stamp
 
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.TableLayout
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import com.google.android.material.tabs.TabItem
-import com.google.android.material.tabs.TabLayoutMediator
 import com.mredrock.cyxbs.common.ui.BaseActivity
-import com.mredrock.cyxbs.common.ui.BaseViewModelActivity
-import com.mredrock.cyxbs.common.utils.extensions.onClick
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineActivityStampeBinding
 import com.mredrock.cyxbs.mine.page.stamp.fragment.StampGoodsDetailFragment
@@ -24,27 +17,28 @@ import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel
 
 //邮票中心界面
-class StampCenterActivity: BaseActivity() {
+class StampCenterActivity : BaseActivity() {
 
-    private var mBinding:MineActivityStampeBinding? = null
+    private var mBinding: MineActivityStampeBinding? = null
     private val stampViewModel: StampCenterViewModel by viewModels()
     private val stampChangeViewModel: StampChangeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this,R.layout.mine_activity_stampe);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.mine_activity_stampe);
         initView()
     }
 
     private fun initView() {
         toFragmentForAnim(StampCenterFragment()).commit()
 
-        stampViewModel.toGoodPager.observe(this, Observer<String> {
+        stampViewModel.toGoodPager.observe(this, Observer {
             val goodsDetailFragment = StampGoodsDetailFragment()
             goodsDetailFragment.arguments
             toFragmentForAnim((goodsDetailFragment).apply {
                 val bundle = Bundle()
-                bundle.putString("args",it)
+                bundle.putString("title", it.title)
+                bundle.putInt("type", it.type)
                 this.arguments = bundle
             }).addToBackStack(null).commit()
         })
@@ -53,13 +47,13 @@ class StampCenterActivity: BaseActivity() {
         stampViewModel.toDetailPager.observe(this, Observer {
             toFragmentForAnim(StampDetailFragment()).addToBackStack(null).commit()
         })
-
+        //跳转到明细具体领取界面进行监听
         stampChangeViewModel.toExChangePager.observe(this, Observer {
             val exchangeFragment = StampExchangeFragment()
             exchangeFragment.arguments
             toFragmentForAnim((exchangeFragment).apply {
                 val bundle = Bundle()
-                bundle.putInt("args",it)
+                bundle.putInt("args", it)
                 this.arguments = bundle
             }).addToBackStack(null).commit()
         })
@@ -69,20 +63,20 @@ class StampCenterActivity: BaseActivity() {
         //对Fragment栈进行判断,如果栈清空了才让返回上一层activity
         if (
             supportFragmentManager.backStackEntryCount > 0
-        ){
+        ) {
             supportFragmentManager.popBackStack()
-        }else{
+        } else {
             super.onBackPressed()
         }
     }
 
     //对fragment跳转添加动画
-    private fun toFragmentForAnim(fragment:Fragment):FragmentTransaction{
-            return supportFragmentManager.beginTransaction().setCustomAnimations(
-                R.anim.mine_fragment_enter,
-                R.anim.mine_fragment_exit,
-                R.anim.mine_fragment_pop_enter,
-                R.anim.mine_fragment_pop_exit
-            ).replace(R.id.mine_stamp_center_fragment,fragment)
+    private fun toFragmentForAnim(fragment: Fragment): FragmentTransaction {
+        return supportFragmentManager.beginTransaction().setCustomAnimations(
+            R.anim.mine_fragment_enter,
+            R.anim.mine_fragment_exit,
+            R.anim.mine_fragment_pop_enter,
+            R.anim.mine_fragment_pop_exit
+        ).replace(R.id.mine_stamp_center_fragment, fragment)
     }
 }

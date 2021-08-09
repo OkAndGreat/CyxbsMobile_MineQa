@@ -28,13 +28,6 @@ class DailyViewModel : BaseViewModel() {
     val status: LiveData<ScoreStatus>
         get() = _status
 
-    //积分商城物品
-    //作为唯一置信源，驱动视图的更新
-    private val _products = MutableLiveData<MutableList<Product>>()
-    val products: LiveData<List<Product>> = Transformations.map(_products) {
-        it.toList()
-    }
-
     //作为唯一置信源，用来弹出寒暑假不可签到的toast，同时为了解决LiveData粘性事件的限制，采用SingleLiveEvent
     private val _isInVacation = SingleLiveEvent<Boolean>()
     val isInVacation: LiveData<Boolean>
@@ -84,65 +77,5 @@ class DailyViewModel : BaseViewModel() {
                         }
                 )
                 .lifeCycle()
-    }
-
-    fun loadProduct() {
-        apiService.getProducts(page++)
-                .normalWrapper(this)
-                .safeSubscribeBy(
-                        onNext = {
-                            //由于Rxjava反射不应定能够够保证为空，当为空的说明这一页没有数据，于是停止加载
-                            if (it.isEmpty()) {
-                                return@safeSubscribeBy
-                            }
-
-                            //往_product中添加Product
-                            val localProducts = _products.value ?: mutableListOf()
-                            localProducts.addAll(it)
-                            _products.postValue(localProducts)
-                            //加载下一页
-                            loadProduct()
-                        },
-                        onError = {
-                            BaseApp.context.toast("加载物品失败")
-                        }
-                )
-                .lifeCycle()
-    }
-
-    fun exchangeProduct(product: Product, position: Int) {
-        //防止后端粗心的将integral设置为空，同时需要处理为小数的情况
-        val productIntegral = if (product.integral.isEmpty()) 0 else product.integral.toFloat().toInt()
-
-        apiService.exchangeProduct(product.name, productIntegral)
-                .flatMap(Function<RedrockApiStatus, Observable<RedrockApiWrapper<ScoreStatus>>> {
-                    if (it.status == 200) {
-                        _exchangeEvent.postValue(true)
-                        minusProductCount(product, position)
-                    } else {
-                        _exchangeEvent.postValue(false)
-                    }
-                    return@Function apiService.getScoreStatus()
-                })
-                .normalWrapper(this)
-                .safeSubscribeBy(
-                        onNext = {
-                            _status.postValue(it)
-                        },
-                        onError = {
-                            BaseApp.context.toast("兑换失败")
-                        }
-                )
-                .lifeCycle()
-    }
-
-    private fun minusProductCount(product: Product, position: Int) {
-        //将product的count减1
-        val list = _products.value ?: mutableListOf()
-        if (list.size - 1 >= position) {
-            val product = list[position]
-            list[position] = Product(product.name, product.count.dec(), product.integral, product.src, product.isVirtual)
-        }
-        _products.postValue(list)
     }
 }

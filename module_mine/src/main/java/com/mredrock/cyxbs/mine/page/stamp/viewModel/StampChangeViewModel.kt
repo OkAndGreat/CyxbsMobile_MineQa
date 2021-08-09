@@ -8,7 +8,7 @@ import com.mredrock.cyxbs.mine.network.model.stamp.GetChangeDetail
 import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
 import com.mredrock.cyxbs.mine.page.stamp.repository.StampChangeDetailRepository
 
-class StampChangeViewModel:BaseViewModel() {
+class StampChangeViewModel : BaseViewModel() {
 
     private val repository = StampChangeDetailRepository.getInstance()
 
@@ -24,22 +24,22 @@ class StampChangeViewModel:BaseViewModel() {
         get() = _getChangeDetails
 
     //更新获取明细
-    fun loadGetChangeDetails(){
+    fun loadGetChangeDetails() {
         _getChangeDetails.postValue(repository.getGetChangeDetails())
     }
 
     //更新兑换明细
-    fun loadExChangeDetails(){
+    fun loadExChangeDetails() {
         _exChangeDetails.postValue(repository.getExChangeDetails())
     }
 
     //跳转详情页面
     private var _toExChangePager = MutableLiveData<Int>()
-    val toExChangePager:LiveData<Int>
+    val toExChangePager: LiveData<Int>
         get() = _toExChangePager
 
     //跳转详情页面
-    fun onClickForToExChangePager(i:Int){
+    fun onClickForToExChangePager(i: Int) {
         println("点击了")
         _toExChangePager.postValue(i)
     }
@@ -49,13 +49,13 @@ class StampChangeViewModel:BaseViewModel() {
     val exChangeDetail: LiveData<ExChangeDetail>
         get() = _exChangeDetail
 
-    fun getOneExChangeById(id: Int):ExChangeDetail{
+    fun getOneExChangeById(id: Int): ExChangeDetail {
         exChangeDetails.value?.forEach {
-            if (it.orderId == id){
+            if (it.orderId == id) {
                 return it
             }
         }
-        return ExChangeDetail("未查找到",0,"","",true,0)
+        return ExChangeDetail("未查找到", 0, "", "", true, 0)
     }
 
 }

@@ -25,7 +25,6 @@ import com.mredrock.cyxbs.common.utils.extensions.dp2px
 import com.mredrock.cyxbs.common.utils.extensions.toast
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.network.model.ScoreStatus
-import com.mredrock.cyxbs.mine.util.ui.ProductAdapter
 import com.mredrock.cyxbs.mine.util.widget.*
 import kotlinx.android.synthetic.main.mine_activity_daily_sign.*
 import kotlinx.android.synthetic.main.mine_layout_store_sign.*
@@ -74,9 +73,7 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
         WeekGenerator()
     }
 
-    private val adapter: ProductAdapter by lazy {
-        ProductAdapter()
-    }
+
 
     companion object{
         fun actionStart(context: Context, bottomSheetStatus: Int){
@@ -132,17 +129,8 @@ class DailySignActivity : BaseViewModelActivity<DailyViewModel>() {
     //ViewModel观察和网络请求
     private fun initData() {
         viewModel.loadAllData()
-        viewModel.loadProduct()
         viewModel.status.observe(this, Observer {
             refreshUI(it)
-        })
-        viewModel.products.observe(this, Observer {
-
-            if (it == null || it.isEmpty()) {
-                return@Observer
-            }
-
-            adapter.submitList(it)
         })
         viewModel.isInVacation.observe(this, Observer {
             if (it == true) {

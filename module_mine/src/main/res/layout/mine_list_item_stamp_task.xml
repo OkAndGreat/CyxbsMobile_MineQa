@@ -62,7 +62,6 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/mine_selector_decoration_detail_btn"
             android:text="去签到"
-            android:onClick="@{() -> viewModel.onClickForToGoodPager(task.title)}"
             android:textColor="@color/common_white_font_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

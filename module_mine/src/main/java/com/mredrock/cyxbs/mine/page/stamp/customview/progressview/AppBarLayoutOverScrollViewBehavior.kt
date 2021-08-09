@@ -141,7 +141,6 @@ class AppBarLayoutOverScrollViewBehavior(context: Context, attrs: AttributeSet) 
         target.scaleY = 0f
     }
 
-
     private fun initial(abl: AppBarLayout) {
         abl.clipChildren = false
         mParentHeight = abl.height

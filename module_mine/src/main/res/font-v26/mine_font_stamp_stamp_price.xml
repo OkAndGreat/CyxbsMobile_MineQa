@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 邮票中心右上角那个余额使用的字体以及价格使用的字体 -->
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/din_medium"/>
+</font-family>

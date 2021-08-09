@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -48,15 +49,11 @@
             </RelativeLayout>
 
 
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mine_stamp_center_icon_fl"
                 android:layout_width="80dp"
                 android:layout_height="27dp"
                 android:background="@drawable/mine_stamp_center_icon_fl_background"
-                android:paddingLeft="11dp"
-                android:paddingTop="2dp"
-                android:paddingRight="11dp"
-                android:paddingBottom="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/mine_stamp_center_title_tv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.906"
@@ -66,14 +63,17 @@
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/mine_stamp_center_icon_iv"
                         android:layout_width="21.23dp"
                         android:layout_height="21.23dp"
                         android:layout_gravity="center_vertical"
-
                         android:src="@drawable/mine_ic_stamp" />
 
                     <TextView
@@ -83,10 +83,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="4dp"
+                        android:fontFamily="@font/din_medium"
                         android:text="100" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -154,13 +155,16 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:layout_width="154dp"
+                            android:id="@+id/mine_stamp_center_nub_tv"
+                            android:layout_width="wrap_content"
                             android:layout_height="66dp"
-                            android:text="110000"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="35dp"
+                            android:fontFamily="@font/bauhaus_93"
+                            android:lines="1"
+                            android:text="11000"
+                            android:textAppearance="@style/mine_stamp_center_count"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:textAppearance="@style/mine_stamp_center_count" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
