@@ -65,7 +65,7 @@ class ProgressLayout(context: Context, attrs: AttributeSet?) :
     private fun getCountViewParams(): LayoutParams {
         val params = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         //这里的目的是为了让CountView和进度条View有一定间隔
-        params.leftMargin = paddingLeft + DisplayUtils.dp2px(context,5F)
+        params.leftMargin = paddingLeft + DisplayUtils.dp2px(context, 5F)
         params.rightMargin = paddingRight
         params.bottomMargin = paddingBottom + 10
         params.gravity = Gravity.CENTER

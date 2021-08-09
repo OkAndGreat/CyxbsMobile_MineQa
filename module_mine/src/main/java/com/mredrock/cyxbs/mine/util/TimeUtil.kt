@@ -19,13 +19,13 @@ object TimeUtil {
         try {
             val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).parse(time)
             return wrapTime(date)
-        }catch (e: ParseException){
-            LogUtils.e("Mine -- TimeUtil",e.toString())
+        } catch (e: ParseException) {
+            LogUtils.e("Mine -- TimeUtil", e.toString())
             return "null"
         }
     }
 
-    fun wrapTime(date: Date): String{
+    fun wrapTime(date: Date): String {
         //获取5分钟前的date
         val before5Min = Calendar.getInstance()
         before5Min.set(Calendar.MINUTE, before5Min.get(Calendar.MINUTE) - 1)

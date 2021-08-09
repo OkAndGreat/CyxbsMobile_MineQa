@@ -53,6 +53,7 @@
         </item>
 
     </style>
+
     <style name="mine_stamp_exchange_get_count">
 
         <item name="android:textSize">
@@ -64,6 +65,7 @@
         </item>
 
     </style>
+
     <style name="mine_stamp_exchange_detail">
 
         <item name="android:textSize">
@@ -393,7 +395,6 @@
         </item>
 
 
-
     </style>
 
     <style name="mine_stamp_detail_tab_normal">
@@ -407,6 +408,7 @@
         </item>
 
     </style>
+
     <style name="mine_stamp_center_icon">
 
         <item name="android:textSize">
@@ -418,6 +420,7 @@
         </item>
 
     </style>
+
     <style name="mine_stamp_center_tab_text">
 
         <item name="android:textSize">
@@ -429,4 +432,15 @@
         </item>
 
     </style>
+
+    <!--    dialog出场动画-->
+    <!--自定义对话框样式-->
+    <style name="mine_dialog_anim" parent="android:Animation">
+        <!--进入时的动画-->
+        <item name="android:windowEnterAnimation">@anim/mine_dialog_enter</item>
+        <!--退出时的动画-->
+        <item name="android:windowExitAnimation">@anim/mine_dialog_exit</item>
+    </style>
+
+
 </resources>

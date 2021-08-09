@@ -1,12 +1,6 @@
 package com.mredrock.cyxbs.mine.page.stamp.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentExchangeDetailBinding
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel
@@ -26,11 +20,18 @@ import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 class StampExchangeFragment() :
     BaseDataBindingFragment<MineFragmentExchangeDetailBinding>(R.layout.mine_fragment_exchange_detail) {
 
-    private val viewModel:StampChangeViewModel by activityViewModels()
+    private val viewModel: StampChangeViewModel by activityViewModels()
 
     override fun initView() {
+        initListener()
         val getId = arguments?.get("args") as Int
         mBinding.exChangeDetail = viewModel.getOneExChangeById(getId)
+    }
+
+    private fun initListener() {
+        mBinding.mineRlExchangeDetailBack.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     override fun initData() {

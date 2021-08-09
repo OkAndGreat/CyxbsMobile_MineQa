@@ -16,6 +16,10 @@ import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.util.dp
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import java.util.concurrent.TimeUnit
 
 /**
  * Author by OkAndGreat，Date on 2021/8/1.
@@ -23,11 +27,17 @@ import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
  * 根据商品是虚拟商品还是实体商品页面显示不同
  * 如果是虚拟商品要通过代码修改权益说明textview的值
  */
+
 class StampGoodsDetailFragment :
     BaseDataBindingFragment<MineFragmentGoodsDetailBinding>(R.layout.mine_fragment_goods_detail) {
 
     private val viewModel:StampCenterViewModel by activityViewModels()
 
+    //banner当前的item的position
+    private var mCurPosition = 0
+
+    //注意退出后让流停止，否则会不断发送信息
+    private lateinit var disposable: Disposable
     private val mRadioButtonList = ArrayList<RadioButton>()
 
     private val title:String = ""
@@ -40,6 +50,7 @@ class StampGoodsDetailFragment :
         val type:Int = arguments?.get("type") as Int
 
         mBinding.mineVp2GoodsPic.adapter = GoodsDetailPicAdapter()
+
 
         initListener()
         initCallback()
@@ -63,10 +74,16 @@ class StampGoodsDetailFragment :
     }
 
     override fun initOther() {
+        //初始化banner的自动轮播
+        disposable = Observable.interval(3000, TimeUnit.MILLISECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                mBinding.mineVp2GoodsPic.setCurrentItem((mCurPosition + 1) % 3, true)
+            }
     }
 
     private fun initListener() {
-        //这里的代码很多，但逻辑其实很简单，就是处理商品详情界面兑换按钮后被点击后的各种情况
+        //这里处理商品详情界面兑换按钮后被点击后的各种情况
         mBinding.mineBtnExchange.setOnClickListener {
             val builder = AlertDialog.Builder(activity)
             val inflater = LayoutInflater.from(activity)
@@ -79,6 +96,7 @@ class StampGoodsDetailFragment :
             val forCancelBtn = view2.findViewById(R.id.mine_btn_goods_detail_for_cancel) as Button
 
             val dialog = builder.create()
+            dialog.window.setWindowAnimations(R.style.mine_dialog_anim)
             dialog.show()
             val attributes = dialog.window.attributes
             attributes.width = 300.dp.toInt()
@@ -88,7 +106,9 @@ class StampGoodsDetailFragment :
             dialog.window.setContentView(view1)
 
             sureBtn.setOnClickListener {
+                dialog.dismiss()
                 dialog.setContentView(view2)
+                dialog.show()
             }
 
             cancelBtn.setOnClickListener {
@@ -97,7 +117,7 @@ class StampGoodsDetailFragment :
 
             //TODO:在这里处理用户请求服务器购买商品的逻辑
             forSureBtn.setOnClickListener {
-                Toast.makeText(activity,"购买成功",Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "购买成功", Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             }
 
@@ -116,33 +136,14 @@ class StampGoodsDetailFragment :
 
     private fun initCallback() {
         //viewPager2操作，与RadioButton联系
+        //使用onPageScrolled这个方法打Log可以发现从左往右滑动时滑倒末尾position才会变化并且positionOffset值是从0变化到1，
+        // 而从右往左滑positionOffset值是从1变化到0，一开始滑动position值就会发生变化
+        // 如果不注意这个问题并进行处理非常容易出bug
+        //因此使用onPageSelected再当前需求下更合理
         mBinding.mineVp2GoodsPic.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                    Log.d(
-                        TAG,
-                        "onPageScrolled:\n " +
-                                "position-->$position \n " +
-                                "positionOffset-->$positionOffset"
-                    )
-
-                    //打Log可以发现从左往右滑动时滑倒末尾position才会变化并且positionOffset值是从0变化到1，
-                    // 而从右往左滑positionOffset值是从1变化到0，一开始滑动position值就会发生变化
-                    // 如果不注意这个问题并进行处理非常容易出bug
-
-                }
-
                 override fun onPageSelected(position: Int) {
-                    Log.d(
-                        TAG,
-                        "onPageSelected:\n " +
-                                "position-->$position \n "
-                    )
-
+                    mCurPosition = position
                     when (position) {
                         0 ->
                             mBinding.mineRbGoodsDetail0.isChecked = true
@@ -153,9 +154,14 @@ class StampGoodsDetailFragment :
                     }
                 }
             }
-
-
         )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!disposable.isDisposed) {
+            disposable.dispose()
+        }
     }
 
 }

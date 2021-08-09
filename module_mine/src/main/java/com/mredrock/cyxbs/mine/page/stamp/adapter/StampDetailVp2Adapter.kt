@@ -14,10 +14,14 @@ class StampDetailVp2Adapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int = 2
 
-    override fun createFragment(position: Int): Fragment{
-        return when(position){
-            0 -> { StampDetailListFragment() }
-            else -> { StampGetDetailListFragment() }
+    override fun createFragment(position: Int): Fragment {
+        return when (position) {
+            0 -> {
+                StampDetailListFragment()
+            }
+            else -> {
+                StampGetDetailListFragment()
+            }
         }
     }
 

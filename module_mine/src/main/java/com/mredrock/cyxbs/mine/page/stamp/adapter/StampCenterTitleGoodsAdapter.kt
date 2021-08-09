@@ -14,7 +14,7 @@ class StampCenterTitleGoodsAdapter(
     private val viewModel: StampCenterViewModel,
     lifecycleOwner: LifecycleOwner,
     scheduleLayoutAnimation: () -> Unit
-): BaseDataBindingTitleAdapter<
+) : BaseDataBindingTitleAdapter<
         Decoration,
         StampGood,
         MineListItemStampDecorationBinding,
@@ -29,7 +29,7 @@ class StampCenterTitleGoodsAdapter(
     "邮货",
     "装扮",
     scheduleLayoutAnimation
-        ) {
+) {
 
     //绑定虚拟商品
     override fun onBindItem1(
@@ -41,6 +41,7 @@ class StampCenterTitleGoodsAdapter(
         mBinding?.decoration = item
         mBinding?.viewModel = viewModel
     }
+
     //绑定实体商品
     override fun onBindItem2(
         mBinding: MineListItemStampGoodBinding?,
@@ -50,6 +51,7 @@ class StampCenterTitleGoodsAdapter(
         mBinding?.stampGood = item
         mBinding?.viewModel = viewModel
     }
+
     //绑定title
     override fun onBindTitleItem(
         mBinding: MineListItemStampGoodTitleBinding?,
@@ -59,10 +61,6 @@ class StampCenterTitleGoodsAdapter(
         mBinding?.string = title
         mBinding?.viewModel = viewModel
     }
-
-
-
-
 
 
 }

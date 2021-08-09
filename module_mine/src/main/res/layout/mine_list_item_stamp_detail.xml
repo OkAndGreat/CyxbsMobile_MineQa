@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:onClick="@{() -> viewModel.onClickForToExChangePager(exChange.orderId)}"
         android:layout_height="73dp"
-        android:background="#FFFFFF">
+        android:background="@drawable/mine_stamp_detail_item_ripple">
 
         <TextView
             android:id="@+id/mine_tv_stamp_exchange_name"
@@ -74,7 +74,7 @@
         <View
             android:id="@+id/mine_view_stamp_detail_navigate"
             android:layout_width="6dp"
-            android:layout_height="19dp"
+            android:layout_height="12dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/mine_vector_stamp_detail_navigate"
             app:layout_constraintBottom_toBottomOf="parent"

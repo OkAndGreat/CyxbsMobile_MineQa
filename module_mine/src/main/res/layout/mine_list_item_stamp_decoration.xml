@@ -7,6 +7,7 @@
         <variable
             name="Decoration"
             type="com.mredrock.cyxbs.mine.network.model.stamp.Decoration" />
+
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />

@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
 import com.mredrock.cyxbs.mine.network.model.stamp.ExChangeDetail
 import com.mredrock.cyxbs.mine.network.model.stamp.GetChangeDetail
-import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
 import com.mredrock.cyxbs.mine.page.stamp.repository.StampChangeDetailRepository
 
 class StampChangeViewModel : BaseViewModel() {

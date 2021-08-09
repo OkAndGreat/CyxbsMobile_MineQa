@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="StampGood"
             type="com.mredrock.cyxbs.mine.network.model.stamp.StampGood" />
+
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />

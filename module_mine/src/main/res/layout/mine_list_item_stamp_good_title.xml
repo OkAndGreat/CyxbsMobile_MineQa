@@ -4,17 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />
+
         <variable
             name="string"
             type="String" />
     </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="58dp"
@@ -26,10 +30,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="TextView"
+                android:textColor="@color/mine_stamp_item_title"
+                android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:textSize="20dp"
-                android:textColor="@color/mine_stamp_item_title"
                 tools:text="@{string}" />
 
             <TextView

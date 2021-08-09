@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.mine.page.stamp.repository
 
 import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
-import kotlin.collections.ArrayList
 
 class StampTaskRepository private constructor() {
 

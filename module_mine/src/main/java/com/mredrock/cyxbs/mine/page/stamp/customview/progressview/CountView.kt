@@ -16,8 +16,8 @@ import kotlin.math.ceil
  * 进度条上面的指示文字的自定义View
  * 示例 ： 5 / 20
  */
-class CountView (context: Context) : View(context) {
-    companion object{
+class CountView(context: Context) : View(context) {
+    companion object {
         const val DEFAULT_TEXT_COLOR = "#7D8AFF"
         const val DEFAULT_TEXT_SIZE = 40f
         const val COUNT_ANIM_DURING = 5000
@@ -30,6 +30,7 @@ class CountView (context: Context) : View(context) {
 
     private var mCount = 0
     private var mMaxCount = 0
+
     //mTexts[0]是不变的部分，mTexts[1]原来的部分，mTexts[2]变化后的部分
     private var mTexts: Array<String?> = arrayOfNulls(3)
 
@@ -200,12 +201,10 @@ class CountView (context: Context) : View(context) {
 
     fun setTextOffsetY(offsetY: Float) {
         mOldOffsetY = offsetY //变大是从[0,1]，变小是[0,-1]
-        mNewOffsetY = if (mCount2Bigger)
-        {
+        mNewOffsetY = if (mCount2Bigger) {
             //从下到上[-1,0]
             offsetY - mMaxOffsetY
-        } else
-        {
+        } else {
             //从上到下[1,0]
             mMaxOffsetY + offsetY
         }

@@ -3,7 +3,6 @@ package com.mredrock.cyxbs.mine.page.stamp.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
-import com.mredrock.cyxbs.mine.page.stamp.repository.StampChangeDetailRepository
 import com.mredrock.cyxbs.mine.page.stamp.repository.StampTaskRepository
 import com.mredrock.cyxbs.mine.util.ui.BaseStampViewModel
 

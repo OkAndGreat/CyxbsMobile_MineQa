@@ -14,8 +14,6 @@ import kotlinx.android.synthetic.main.mine_fragment_stamp_detail.*
  * Author by OkAndGreat，Date on 2021/8/4.
  * 邮票中心兑换详情页面的fragment
  */
-private const val TAG = "StampDetailFragment"
-
 class StampDetailFragment :
     BaseDataBindingFragment<MineFragmentStampDetailBinding>(R.layout.mine_fragment_stamp_detail) {
     companion object {
@@ -46,8 +44,8 @@ class StampDetailFragment :
                     positionOffset: Float,
                     positionOffsetPixels: Int
                 ) {
-                    //这段看起来长，其实逻辑并不复杂，就是根据viewpager2的positionOffset来实现一个大小和颜色渐变的效果
-                    //主要是要注意if语句判断的细节
+                    //根据viewpager2的positionOffset来实现一个大小和颜色渐变的效果
+                    //主要注意if语句判断的细节处理
                     if (mCurPosition == 0 && positionOffset > 0) {
                         mine_tv_stamp_detail_exchange_note.setTextColor(
                             ProgressUtils.evaluate(
