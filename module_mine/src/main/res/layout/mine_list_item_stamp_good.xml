@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="StampGood"
             type="com.mredrock.cyxbs.mine.network.model.stamp.StampGood" />
+
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />
@@ -21,10 +23,10 @@
 
         <ImageView
             android:id="@+id/mine_sign_store_item_iv"
+            imageUrl="@{StampGood.pic.get(0)}"
             android:layout_width="match_parent"
             android:layout_height="145dp"
             android:scaleType="centerCrop"
-            imageUrl="@{StampGood.pic.get(0)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

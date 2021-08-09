@@ -3,11 +3,9 @@
     <!--从上部进入到中间-->
     <translate
         android:duration="500"
-        android:fromYDelta="-100%">
-    </translate>
+        android:fromYDelta="-100%" />
 
     <alpha
         android:duration="500"
-        android:fromAlpha="0">
-    </alpha>
+        android:fromAlpha="0" />
 </set>

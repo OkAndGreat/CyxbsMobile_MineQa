@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.view.animation.LayoutAnimationController
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,9 +16,9 @@ import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampTaskViewModel
 /**
  * 任务列表
  */
-class StampTabTaskFragment: BaseFragment() {
+class StampTabTaskFragment : BaseFragment() {
 
-    private val viewModel:StampTaskViewModel by viewModels()
+    private val viewModel: StampTaskViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +29,8 @@ class StampTabTaskFragment: BaseFragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.mine_stamp_tab_rv_tasks)
         //rvAdapter
-        val adapter = StampCenterTaskAdapter(viewModel,this@StampTabTaskFragment
+        val adapter = StampCenterTaskAdapter(
+            viewModel, this@StampTabTaskFragment
         ) { recyclerView.scheduleLayoutAnimation() }
         val layoutManager = LinearLayoutManager(context)
         LayoutAnimationController.AnimationParameters()

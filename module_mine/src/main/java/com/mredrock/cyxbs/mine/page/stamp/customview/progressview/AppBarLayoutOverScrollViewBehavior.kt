@@ -5,7 +5,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.core.view.ViewCompat
 import com.google.android.material.appbar.AppBarLayout
 
 class AppBarLayoutOverScrollViewBehavior(context: Context, attrs: AttributeSet) :
@@ -16,19 +15,20 @@ class AppBarLayoutOverScrollViewBehavior(context: Context, attrs: AttributeSet) 
     private val TARGET_HEIGHT = 9000f
 
     //子view
-    private var mTargetView: View ?= null
+    private var mTargetView: View? = null
+
     //高度
-    private var mParentHeight:Int = 0
+    private var mParentHeight: Int = 0
 
-    private var mTargetViewHeight:Int = 0
+    private var mTargetViewHeight: Int = 0
 
-    private var mTotalDy:Float = 0f
+    private var mTotalDy: Float = 0f
 
-    private var mLastScale:Float = 0f
+    private var mLastScale: Float = 0f
 
-    private var mLastBottom:Int = 0
+    private var mLastBottom: Int = 0
 
-    private var isAnimate:Boolean = false
+    private var isAnimate: Boolean = false
 
 
     override fun onLayoutChild(
@@ -36,10 +36,10 @@ class AppBarLayoutOverScrollViewBehavior(context: Context, attrs: AttributeSet) 
         abl: AppBarLayout,
         layoutDirection: Int
     ): Boolean {
-        var handled:Boolean = super.onLayoutChild(parent, abl, layoutDirection)
-        if (mTargetView == null){
+        var handled: Boolean = super.onLayoutChild(parent, abl, layoutDirection)
+        if (mTargetView == null) {
             mTargetView = parent.findViewWithTag(TAG)
-            if (mTargetView != null){
+            if (mTargetView != null) {
                 initial(abl);
             }
         }
@@ -55,12 +55,14 @@ class AppBarLayoutOverScrollViewBehavior(context: Context, attrs: AttributeSet) 
         type: Int
     ): Boolean {
         isAnimate = true
-        return super.onStartNestedScroll(parent,
+        return super.onStartNestedScroll(
+            parent,
             child,
             directTargetChild,
             target,
             nestedScrollAxes,
-            type)
+            type
+        )
     }
 
     override fun onNestedPreScroll(
@@ -72,15 +74,16 @@ class AppBarLayoutOverScrollViewBehavior(context: Context, attrs: AttributeSet) 
         consumed: IntArray,
         type: Int
     ) {
-        if (mParentHeight != null){
+        if (mParentHeight != null) {
             if (mTargetView != null &&
                 ((dy < 0 && child.bottom >= mParentHeight!!) ||
-                        (dy >0 && child.bottom > mParentHeight!!))){
-                scale(child,target,dy)
-            }else{
+                        (dy > 0 && child.bottom > mParentHeight!!))
+            ) {
+                scale(child, target, dy)
+            } else {
                 super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type)
             }
-        }else{
+        } else {
             super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type)
         }
     }
@@ -92,7 +95,7 @@ class AppBarLayoutOverScrollViewBehavior(context: Context, attrs: AttributeSet) 
         velocityX: Float,
         velocityY: Float
     ): Boolean {
-        if(velocityY > 100){
+        if (velocityY > 100) {
             isAnimate = false
         }
         return super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY)
@@ -109,19 +112,21 @@ class AppBarLayoutOverScrollViewBehavior(context: Context, attrs: AttributeSet) 
     }
 
     private fun recovery(abl: AppBarLayout) {
-        if (mTotalDy > 0){
+        if (mTotalDy > 0) {
             mTotalDy = 0f
-            if (isAnimate){
+            if (isAnimate) {
                 val duration = ValueAnimator.ofFloat(mLastScale, 1f).setDuration(200)
-                duration.addUpdateListener { ValueAnimator.AnimatorUpdateListener{ animation ->
-                    val animatedValue:Float = animation.animatedValue as Float
-                    mTargetView?.scaleX = animatedValue
-                    mTargetView?.scaleY = animatedValue
-                    abl.bottom = (mLastBottom -( mLastBottom - mParentHeight) * animation.animatedFraction).toInt()
+                duration.addUpdateListener {
+                    ValueAnimator.AnimatorUpdateListener { animation ->
+                        val animatedValue: Float = animation.animatedValue as Float
+                        mTargetView?.scaleX = animatedValue
+                        mTargetView?.scaleY = animatedValue
+                        abl.bottom =
+                            (mLastBottom - (mLastBottom - mParentHeight) * animation.animatedFraction).toInt()
                     }
                 }
                 duration.start();
-            }else{
+            } else {
                 mTargetView?.scaleX = 1f
                 mTargetView?.scaleX = 1f
                 abl.bottom = mParentHeight

@@ -12,7 +12,7 @@ object DataBindingAdapter {
     //加载图片
     @BindingAdapter("imageUrl")
     @JvmStatic
-    fun setImage(imageView: ImageView, url:String?){
+    fun setImage(imageView: ImageView, url: String?) {
         url?.let {
             Glide.with(imageView.context)
                 .load(url)
@@ -23,20 +23,20 @@ object DataBindingAdapter {
     //
     @BindingAdapter("changeAllBackGround")
     @JvmStatic
-    fun setChangeBackGround(view: View,boolean: Boolean){
-        if (boolean){
+    fun setChangeBackGround(view: View, boolean: Boolean) {
+        if (boolean) {
             view.setBackgroundResource(R.drawable.mine_shape_exchange_detail_cv_got)
-        }else{
+        } else {
             view.setBackgroundResource(R.drawable.mine_shape_exchange_detail_cv_normal)
         }
     }
 
     @BindingAdapter("changeCircleBackGround")
     @JvmStatic
-    fun setChangeCircleBackGround(view: View,boolean: Boolean){
-        if (boolean){
+    fun setChangeCircleBackGround(view: View, boolean: Boolean) {
+        if (boolean) {
             view.setBackgroundResource(R.drawable.mine_vector_stamp_exchange_detail_icon_collected)
-        }else{
+        } else {
             view.setBackgroundResource(R.drawable.mine_vector_stamp_exchange_detail_icon)
         }
     }

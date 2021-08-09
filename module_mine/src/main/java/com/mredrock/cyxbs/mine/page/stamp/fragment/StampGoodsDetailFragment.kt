@@ -24,8 +24,12 @@ import java.util.concurrent.TimeUnit
  * 根据商品是虚拟商品还是实体商品页面显示不同
  * 如果是虚拟商品要通过代码修改权益说明textview的值
  */
+
 class StampGoodsDetailFragment :
     BaseDataBindingFragment<MineFragmentGoodsDetailBinding>(R.layout.mine_fragment_goods_detail) {
+    //banner当前的item的position
+    private var mCurPosition = 0
+
     //注意退出后让流停止，否则会不断发送信息
     private lateinit var disposable: Disposable
     private val mRadioButtonList = ArrayList<RadioButton>()
@@ -56,12 +60,12 @@ class StampGoodsDetailFragment :
         disposable = Observable.interval(3000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                mBinding.mineVp2GoodsPic.setCurrentItem((it.toInt()) % 3, true)
+                mBinding.mineVp2GoodsPic.setCurrentItem((mCurPosition + 1) % 3, true)
             }
     }
 
     private fun initListener() {
-        //这里的代码很多，但逻辑其实很简单，就是处理商品详情界面兑换按钮后被点击后的各种情况
+        //这里处理商品详情界面兑换按钮后被点击后的各种情况
         mBinding.mineBtnExchange.setOnClickListener {
             val builder = AlertDialog.Builder(activity)
             val inflater = LayoutInflater.from(activity)
@@ -121,6 +125,7 @@ class StampGoodsDetailFragment :
         mBinding.mineVp2GoodsPic.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
+                    mCurPosition = position
                     when (position) {
                         0 ->
                             mBinding.mineRbGoodsDetail0.isChecked = true

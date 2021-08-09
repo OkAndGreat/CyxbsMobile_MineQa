@@ -71,10 +71,10 @@
 
             <ImageView
                 android:id="@+id/mine_iv_stamp_exchange_detail"
-                changeCircleBackGround="@{exChangeDetail.collected}"
                 android:layout_width="wrap_content"
+                changeCircleBackGround="@{exChangeDetail.collected}"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginTop="26dp"
                 android:layout_marginEnd="4dp" />
 

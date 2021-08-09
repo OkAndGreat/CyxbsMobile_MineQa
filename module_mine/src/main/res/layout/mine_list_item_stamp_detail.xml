@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:onClick="@{() -> viewModel.onClickForToExChangePager(exChange.orderId)}"
         android:layout_height="73dp"
-        android:background="#FFFFFF">
+        android:background="@drawable/mine_stamp_detail_item_ripple">
 
         <TextView
             android:id="@+id/mine_tv_stamp_exchange_name"

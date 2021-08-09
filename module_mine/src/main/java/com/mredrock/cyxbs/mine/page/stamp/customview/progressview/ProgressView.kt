@@ -47,7 +47,6 @@ class ProgressView(context: Context) :
     private var curBarWidth = 0F
 
 
-
     init {
         mPaintStrokeWidth = DisplayUtils.dp2px(context, 8F).toFloat()
         progressColor = Color.parseColor("#7D8AFF")
@@ -64,7 +63,7 @@ class ProgressView(context: Context) :
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         //项目需求 宽度写死 150dp
         val width = DisplayUtils.dp2px(context, 150F)
-        if(maxCount != 0){
+        if (maxCount != 0) {
             averageWidth = (width / maxCount).toFloat()
         }
 

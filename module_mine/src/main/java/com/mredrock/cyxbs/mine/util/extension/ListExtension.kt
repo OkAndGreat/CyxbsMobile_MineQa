@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable
  */
 fun disposeAll(disposables: MutableList<Disposable>) {
     disposables.asSequence()
-            .filterNot { it.isDisposed }
-            .forEach { it.dispose() }
+        .filterNot { it.isDisposed }
+        .forEach { it.dispose() }
     disposables.clear()
 }

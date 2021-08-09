@@ -7,6 +7,7 @@
         <variable
             name="Decoration"
             type="com.mredrock.cyxbs.mine.network.model.stamp.Decoration" />
+
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />
@@ -24,8 +25,8 @@
             android:id="@+id/mine_sign_store_item_iv"
             android:layout_width="match_parent"
             android:layout_height="145dp"
-            android:scaleType="centerCrop"
             android:onClick="@{() -> viewModel.onClickForToGoodPager(Decoration.title)}"
+            android:scaleType="centerCrop"
             android:src="@drawable/mine_stamp_center_fake"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
