@@ -1,6 +1,7 @@
 package com.mredrock.cyxbs.mine.page.stamp.fragment
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
@@ -39,8 +40,9 @@ class StampCenterFragment :
     //对右上角的图形的宽度进行一个初始化的记录
     private var baseIconWidth = 0
 
-
-    override fun initView() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //以下代码不能写在onCreateView中，具体原因和Fragment的生命周期有关
         //进来fragment后就对当前时间戳赋值
         mCurTimeStamp = System.currentTimeMillis()
         //拿到上一次的时间戳 如果是第一次进入 则返回0
@@ -64,7 +66,9 @@ class StampCenterFragment :
 
             }
         }
+    }
 
+    override fun initView() {
         if (fragmentList.size == 0) {
             fragmentList.add(StampTabGoodFragment())
             fragmentList.add(StampTabTaskFragment())

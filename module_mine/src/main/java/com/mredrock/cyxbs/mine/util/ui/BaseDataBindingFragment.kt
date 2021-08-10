@@ -21,15 +21,16 @@ import com.mredrock.cyxbs.common.ui.BaseFragment
 abstract class BaseDataBindingFragment<DB: ViewDataBinding>(
     @LayoutRes private val layoutId:Int
 ): BaseFragment() {
-    lateinit var mBinding: DB
+    private var _mBinding: DB? = null
+    val mBinding get() = _mBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mBinding = DataBindingUtil.inflate(inflater,layoutId,container,false)
-        mBinding.lifecycleOwner = this
+        _mBinding = DataBindingUtil.inflate(inflater,layoutId,container,false)
+        _mBinding?.lifecycleOwner = this
         initView()
         initData()
         initOther()
@@ -38,4 +39,9 @@ abstract class BaseDataBindingFragment<DB: ViewDataBinding>(
     abstract fun initView()
     abstract fun initData()
     abstract fun initOther()
+    override fun onDestroyView() {
+        _mBinding?.unbind()
+        _mBinding = null
+        super.onDestroyView()
+    }
 }
