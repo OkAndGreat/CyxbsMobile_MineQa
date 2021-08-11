@@ -26,7 +26,7 @@ class StampDetailFragment :
     private var mCurPosition = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        mine_vp2_stamp_detail.adapter = activity?.let { StampDetailVp2Adapter(it) }
+        mBinding.mineVp2StampDetail.adapter = activity?.let { StampDetailVp2Adapter(it) }
 
         initListener()
         initVp2CallBack()
@@ -115,16 +115,16 @@ class StampDetailFragment :
     private fun initListener() {
         //设置俩个tab的点击事件
         //和Vp2联动
-        mine_tv_stamp_detail_exchange_note.setOnClickListener {
+        mBinding.mineTvStampDetailExchangeNote.setOnClickListener {
             mine_vp2_stamp_detail.setCurrentItem(0, true)
         }
 
-        mine_tv_stamp_detail_got_note.setOnClickListener {
+        mBinding.mineTvStampDetailGotNote.setOnClickListener {
             mine_vp2_stamp_detail.setCurrentItem(1, true)
         }
 
         //跳转的逻辑
-        mine_rl_stamp_detail_back.setOnClickListener {
+        mBinding.mineRlStampDetailBack.setOnClickListener {
             activity?.onBackPressed()
         }
     }
@@ -136,5 +136,6 @@ class StampDetailFragment :
     override fun initOther() {
 
     }
+
 
 }
