@@ -12,13 +12,18 @@
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />
     </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="237dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="9dp"
-        android:background="@drawable/mine_shape_round_corner_store_item_bg">
+        app:cardCornerRadius="8dp"
+        android:layout_marginEnd="9dp"
+        app:cardElevation="5dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
         <ImageView
@@ -26,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="145dp"
             android:scaleType="centerCrop"
+            android:src="@drawable/mine_stamp_center_fake"
             imageUrl="@{StampGood.pic.get(0)}"
             android:onClick="@{() -> viewModel.onClickForToGoodPager(StampGood.title,StampGood.type)}"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -100,7 +106,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/mine_sign_store_item_iv_diamond"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mine_sign_store_item_iv_diamond" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

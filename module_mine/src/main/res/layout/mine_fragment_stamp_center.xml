@@ -68,7 +68,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
                     <ImageView
                         android:id="@+id/mine_stamp_center_icon_iv"
                         android:layout_width="21.23dp"

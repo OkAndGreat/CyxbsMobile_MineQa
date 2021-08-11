@@ -50,6 +50,7 @@ class StampTabGoodFragment : BaseFragment() {
             adapter = mAdapter
             GridLayoutAnimationController.AnimationParameters()
         }
+
         loadData()
 
         return view

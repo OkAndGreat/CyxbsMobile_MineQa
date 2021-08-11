@@ -7,6 +7,11 @@ import com.mredrock.cyxbs.mine.network.model.stamp.GetChangeDetail
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingAdapter
 
+/**
+ * 明细界面的获取rv
+ * @property viewModel StampChangeViewModel
+ * @constructor
+ */
 class StampGetChangeAdapter(
     private val viewModel: StampChangeViewModel,
     lifecycleOwner: LifecycleOwner

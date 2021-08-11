@@ -5,6 +5,11 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
+import com.bumptech.glide.request.RequestOptions
+import com.mredrock.cyxbs.common.utils.extensions.setImageFromUrl
 import com.mredrock.cyxbs.mine.R
 
 object DataBindingAdapter {
@@ -14,11 +19,7 @@ object DataBindingAdapter {
     @BindingAdapter("imageUrl")
     @JvmStatic
     fun setImage(imageView: ImageView, url: String?) {
-        url?.let {
-            Glide.with(imageView.context)
-                .load(url)
-                .into(imageView)
-        }
+            imageView.setImageFromUrl(url)
     }
 
     //设置背景

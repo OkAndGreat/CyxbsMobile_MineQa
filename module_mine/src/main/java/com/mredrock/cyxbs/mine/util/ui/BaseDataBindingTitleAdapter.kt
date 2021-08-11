@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -31,7 +33,7 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
         private val items : LiveData<List<M1>>,
         private val items2 : LiveData<List<M2>>,
         private val layoutTitleId:Int,
-        lifecycleOwner: LifecycleOwner,
+        private val lifecycleOwner: LifecycleOwner,
         private val title2:String = "无",
         private val title1:String = "无",
         scheduleLayoutAnimation: () -> Unit
@@ -41,6 +43,7 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
             items.observe(lifecycleOwner, Observer{
                 notifyDataSetChanged()
                 scheduleLayoutAnimation()
+
             })
             items2.observe(lifecycleOwner, Observer {
                 notifyDataSetChanged()
@@ -153,6 +156,12 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
     override fun getItemCount(): Int {
             return  items2.value?.size?.let { items.value?.size?.plus(it+1+baseNumber) } ?: 0
         }
+
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        items.removeObservers(lifecycleOwner)
+        items2.removeObservers(lifecycleOwner)
+        super.onDetachedFromRecyclerView(recyclerView)
+    }
 
         //mBinding为View，item为数据
         abstract fun onBindTitleItem(mBinding: DBT?, position: Int,title1: String)

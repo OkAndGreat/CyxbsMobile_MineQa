@@ -118,6 +118,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="16dp"
             android:text="@string/mine_stamp_exchange_goods_detail"
+            android:textStyle="bold"
             android:textAppearance="@style/mine_stamp_exchange_goods_detail" />
 
         <TextView

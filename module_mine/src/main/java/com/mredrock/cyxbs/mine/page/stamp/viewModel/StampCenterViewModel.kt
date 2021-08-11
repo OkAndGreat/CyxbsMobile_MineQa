@@ -46,7 +46,7 @@ class StampCenterViewModel : BaseStampViewModel() {
 
 
     fun loadDecorations() {
-        _decorations.postValue(repository.getDecorationData())
+        _decorations.value = (repository.getDecorationData())
     }
 
     fun loadGoods() {
