@@ -4,17 +4,20 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.mredrock.cyxbs.common.utils.extensions.setImageFromUrl
 import com.mredrock.cyxbs.mine.R
+import com.mredrock.cyxbs.mine.network.model.stamp.StampGood
 
 /**
  * Author by OkAndGreat，Date on 2021/8/2.
  * 因为后端数据暂时还没有拿到
  * 用来给viewpager2测试的adapter
  */
-class GoodsDetailPicAdapter : RecyclerView.Adapter<GoodsDetailPicAdapter.PagerViewHolder>() {
-    private var mList = listOf(1, 2, 3)
+class GoodsDetailPicAdapter(private val pic:List<String>) : RecyclerView.Adapter<GoodsDetailPicAdapter.PagerViewHolder>() {
+    private var mList = pic
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.mine_list_item_goods_pic, parent, false)
@@ -25,7 +28,7 @@ class GoodsDetailPicAdapter : RecyclerView.Adapter<GoodsDetailPicAdapter.PagerVi
         holder.bindData(mList[position])
     }
 
-    fun setList(list: List<Int>) {
+    fun setList(list: List<String>) {
         mList = list
     }
 
@@ -34,12 +37,10 @@ class GoodsDetailPicAdapter : RecyclerView.Adapter<GoodsDetailPicAdapter.PagerVi
     }
 
     class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val mTextView: TextView = itemView.findViewById(R.id.tv_text)
-        private var colors = arrayOf("#CCFF99", "#41F1E5", "#8D41F1", "#FF99CC")
-
-        fun bindData(i: Int) {
-            mTextView.text = i.toString()
-            mTextView.setBackgroundColor(Color.parseColor(colors[i]))
+        private val mImageView: ImageView = itemView.findViewById(R.id.mine_stamp_detail_iv)
+        fun bindData(url: String) {
+            println("设置成功")
+            mImageView.setImageFromUrl(url)
         }
     }
 }

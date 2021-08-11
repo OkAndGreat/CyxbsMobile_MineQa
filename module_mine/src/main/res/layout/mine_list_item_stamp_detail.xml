@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:layout_marginTop="6dp"
-            android:text="@{exChange.date}"
+            long2dayTime = "@{exChange.date}"
             android:textAppearance="@style/mine_stamp_exchange_simple_time"
             app:layout_constraintStart_toStartOf="@+id/mine_tv_stamp_exchange_name"
             app:layout_constraintTop_toBottomOf="@+id/mine_tv_stamp_exchange_name" />

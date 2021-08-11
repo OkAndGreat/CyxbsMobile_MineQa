@@ -19,7 +19,7 @@ import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampTaskViewModel
 class StampTabTaskFragment : BaseFragment() {
 
     private val viewModel: StampTaskViewModel by viewModels()
-
+    private var recyclerView:RecyclerView ?= null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,15 +27,15 @@ class StampTabTaskFragment : BaseFragment() {
     ): View {
         val view = inflater.inflate(R.layout.mine_fragment_stamp_tab_tasks, container, false)
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.mine_stamp_tab_rv_tasks)
+        recyclerView = view.findViewById(R.id.mine_stamp_tab_rv_tasks)
         //rvAdapter
         val adapter = StampCenterTaskAdapter(
             viewModel, this@StampTabTaskFragment
-        ) { recyclerView.scheduleLayoutAnimation() }
+        ) { recyclerView?.scheduleLayoutAnimation() }
         val layoutManager = LinearLayoutManager(context)
         LayoutAnimationController.AnimationParameters()
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
+        recyclerView?.layoutManager = layoutManager
+        recyclerView?.adapter = adapter
         loadData()
         return view
     }
@@ -43,5 +43,10 @@ class StampTabTaskFragment : BaseFragment() {
     private fun loadData() {
         viewModel.getTodayTask()
         viewModel.getMoreTask()
+    }
+    override fun onDestroyView() {
+        //这里清空是为了让rv销毁的时候让adapter也同时触发销毁
+        recyclerView?.adapter = null
+        super.onDestroyView()
     }
 }

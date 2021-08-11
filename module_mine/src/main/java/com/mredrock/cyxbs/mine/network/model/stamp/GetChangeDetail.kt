@@ -14,5 +14,5 @@ data class GetChangeDetail(
     val gainStamp : Int,
     //兑换时间
     @SerializedName("date")
-    val date:String
+    val date:Long
 ): Serializable

@@ -9,11 +9,15 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentGoodsDetailBinding
 import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
+import com.mredrock.cyxbs.mine.page.stamp.customview.progressview.SATransformer
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
+import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampGoodDetailViewModel
 import com.mredrock.cyxbs.mine.util.dp
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 import io.reactivex.Observable
@@ -31,7 +35,7 @@ import java.util.concurrent.TimeUnit
 class StampGoodsDetailFragment :
     BaseDataBindingFragment<MineFragmentGoodsDetailBinding>(R.layout.mine_fragment_goods_detail) {
 
-    private val viewModel:StampCenterViewModel by activityViewModels()
+    private val viewModel:StampGoodDetailViewModel by viewModels()
 
     //banner当前的item的position
     private var mCurPosition = 0
@@ -40,27 +44,29 @@ class StampGoodsDetailFragment :
     private lateinit var disposable: Disposable
     private val mRadioButtonList = ArrayList<RadioButton>()
 
-    private val title:String = ""
-    //0为
-    private val type:Int = -1
+    private var title:String = ""
+
 
     override fun initView() {
+        title = arguments?.get("title") as String
 
-        val title:String = arguments?.get("title") as String
-        val type:Int = arguments?.get("type") as Int
-
-        mBinding.mineVp2GoodsPic.adapter = GoodsDetailPicAdapter()
-
-
+        viewModel.good.observe(this, Observer {
+            mBinding.mineVp2GoodsPic.adapter = GoodsDetailPicAdapter(it.pic)
+            mBinding.stampGood = it
+        })
+        viewModel.loadGood(title)
+        //设置vp2的切换动画
+        mBinding.mineVp2GoodsPic.setPageTransformer(SATransformer())
         initListener()
         initCallback()
     }
 
 
     override fun initData() {
+        //图片数量
+        viewModel.good.observe(this, Observer {
 
-        viewModel
-
+        })
 //        代码添加radioBtn,拿到数据后得到图片数量数据后代码动态添加RadioButton
 //        val radioBtn = RadioButton(activity)
 //        mRadioButtonList.add(radioBtn)
@@ -71,6 +77,8 @@ class StampGoodsDetailFragment :
 //        radioBtn.layoutParams = layoutParams
 //
 //        mBinding.mineRgGoodsDetail.addView(radioBtn)
+        //数据加载
+
     }
 
     override fun initOther() {
@@ -80,6 +88,7 @@ class StampGoodsDetailFragment :
             .subscribe {
                 mBinding.mineVp2GoodsPic.setCurrentItem((mCurPosition + 1) % 3, true)
             }
+
     }
 
     private fun initListener() {

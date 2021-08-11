@@ -10,9 +10,6 @@ data class StampTask(
     //任务描述
     @SerializedName("description")
     val description: String,
-    //该任务完成后能获得的积分数量
-    @SerializedName("reward_number")
-    val rewardNumber : Int,
     //该任务总的任务量
     @SerializedName("max_progress")
     val totalAmount:Int,

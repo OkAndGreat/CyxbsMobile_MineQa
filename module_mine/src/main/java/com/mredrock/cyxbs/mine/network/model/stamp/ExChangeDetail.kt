@@ -14,10 +14,7 @@ data class ExChangeDetail(
     val amount : Int,
     //兑换时间
     @SerializedName("date")
-    val date:String,
-    //兑换时间
-    @SerializedName("moment")
-    val moment:String,
+    val date:Long,
     //是否被兑换 虚拟商品默认为0
     @SerializedName("is_collected")
     val isCollected:Boolean,

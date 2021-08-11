@@ -43,7 +43,6 @@ abstract class BaseDataBindingTitleAdapter<M1,M2,DB1: ViewDataBinding,DB2:ViewDa
             items.observe(lifecycleOwner, Observer{
                 notifyDataSetChanged()
                 scheduleLayoutAnimation()
-
             })
             items2.observe(lifecycleOwner, Observer {
                 notifyDataSetChanged()

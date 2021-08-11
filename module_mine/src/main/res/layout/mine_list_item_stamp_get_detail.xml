@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel" />
+
         <variable
             name="getChange"
             type="com.mredrock.cyxbs.mine.network.model.stamp.GetChangeDetail" />
@@ -30,10 +32,10 @@
 
         <TextView
             android:id="@+id/mine_tv_stamp_exchange_simple_time"
+            long2dayTime="@{getChange.date}"
             android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:layout_marginTop="6dp"
-            android:text="@{getChange.date}"
             android:textAppearance="@style/mine_stamp_exchange_simple_time"
             app:layout_constraintStart_toStartOf="@+id/mine_tv_stamp_exchange_name"
             app:layout_constraintTop_toBottomOf="@+id/mine_tv_stamp_exchange_name" />

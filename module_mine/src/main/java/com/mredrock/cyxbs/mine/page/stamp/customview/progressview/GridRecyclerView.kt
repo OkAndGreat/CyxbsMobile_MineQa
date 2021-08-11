@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * bug 未使用
+ * 手动计算GridRv的item数量，让动画正常播放
  * @constructor
  */
 class GridRecyclerView(

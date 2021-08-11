@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="#FBFCFF"
-    android:orientation="vertical"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-
-    <com.mredrock.cyxbs.mine.page.stamp.customview.progressview.GridRecyclerView
-        android:id="@+id/mine_stamp_tab_rv_goods"
-        android:layout_width="match_parent"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layoutAnimation="@anim/mine_tab_stamp_grid_form_bottom" />
-</LinearLayout>
+        android:background="#FBFCFF"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <com.mredrock.cyxbs.mine.page.stamp.customview.progressview.GridRecyclerView
+            android:id="@+id/mine_stamp_tab_rv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutAnimation="@anim/mine_tab_stamp_grid_form_bottom" />
+    </LinearLayout>

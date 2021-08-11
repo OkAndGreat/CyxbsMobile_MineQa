@@ -139,10 +139,10 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="15dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:text='@{`交易时间：` + exChangeDetail.date +" "+ exChangeDetail.moment}'
+            long2Time="@{exChangeDetail.date}"
             android:textAppearance="@style/mine_stamp_exchange_common" />
 
         <TextView

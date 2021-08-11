@@ -22,7 +22,14 @@ import com.mredrock.cyxbs.mine.util.getDateDay
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 import com.mredrock.cyxbs.mine.util.ui.StampTabPageAdapter
 
-
+/**
+ * 邮票中心 主Fragment
+ * @property mCurTimeStamp Long 进入这个fragment时的时间戳
+ * @property mShouldShowBlueDot Boolean 是否应该展示小蓝点
+ * @property viewModel StampCenterViewModel
+ * @property fragmentList ArrayList<Fragment> viewpager2的fragment集合
+ * @property baseIconWidth Int 对右上角的图形的宽度进行一个初始化的记录
+ */
 class StampCenterFragment :
     BaseDataBindingFragment<MineFragmentStampCenterBinding>(R.layout.mine_fragment_stamp_center) {
 
@@ -96,11 +103,9 @@ class StampCenterFragment :
                     }
                 }
             }.attach()
-
             if (!mShouldShowBlueDot) {
                 hintIv?.visibility = GONE
             }
-
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     if (tab?.position == 1) {

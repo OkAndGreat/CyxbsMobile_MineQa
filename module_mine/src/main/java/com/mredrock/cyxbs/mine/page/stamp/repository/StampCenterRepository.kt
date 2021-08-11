@@ -1,8 +1,11 @@
 package com.mredrock.cyxbs.mine.page.stamp.repository
 
-import com.mredrock.cyxbs.mine.network.model.stamp.Decoration
+import com.mredrock.cyxbs.mine.network.model.stamp.CenterGood
 import com.mredrock.cyxbs.mine.network.model.stamp.StampGood
 
+/**
+ * 邮票中心以及详情页仓库
+ */
 class StampCenterRepository private constructor(){
     companion object {
         fun getInstance(): StampCenterRepository {
@@ -13,20 +16,45 @@ class StampCenterRepository private constructor(){
         val instance = StampCenterRepository()
     }
 
-
-    fun getDecorationData():List<Decoration>{
-        val decorationList = ArrayList<Decoration>()
+    /**
+     * 根据后端返回接口，0为虚拟商品，1为实体商品
+     * @return List<List<CenterGood>>
+     */
+    fun getCenterGoodData():List<List<CenterGood>>{
+        val centerGoodsList = ArrayList<CenterGood>()
+        val allCenterGoodList = ArrayList<ArrayList<CenterGood>>(2)
+        allCenterGoodList.add(ArrayList())
+        allCenterGoodList.add(ArrayList())
         repeat(6) {
-            decorationList.add(Decoration("title+$it",
+            centerGoodsList.add(CenterGood("title+$it",
+                "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F770f139892f2c3d06879182c47e077104c02e085.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631091734&t=2bacd69f90e442a728f0073d1bde0a27",
                 20,
-                "好东西",
-                "什么玩意",
                 0,
-                20,
-                listOf("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F770f139892f2c3d06879182c47e077104c02e085.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631091734&t=2bacd69f90e442a728f0073d1bde0a27", "pic2", "pic3")))
+                0))
         }
-        return decorationList
+        repeat(6) {
+            centerGoodsList.add(CenterGood("title+$it",
+                "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F770f139892f2c3d06879182c47e077104c02e085.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631091734&t=2bacd69f90e442a728f0073d1bde0a27",
+                20,
+                0,
+                1))
+        }
+        //通过type将他们分类
+        centerGoodsList.forEach{
+            when(it.type){
+                0 ->{
+                    allCenterGoodList[0].add(it)
+                }
+                1 ->{
+                    allCenterGoodList[1].add(it)
+                }
+            }
+
+        }
+        return allCenterGoodList
     }
+
+
 
     fun getStampGoodData():List<StampGood>{
         val goodList = ArrayList<StampGood>()

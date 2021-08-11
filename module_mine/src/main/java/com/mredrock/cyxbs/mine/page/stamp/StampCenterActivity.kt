@@ -37,8 +37,7 @@ class StampCenterActivity : BaseActivity() {
             goodsDetailFragment.arguments
             toFragmentForAnim((goodsDetailFragment).apply {
                 val bundle = Bundle()
-                bundle.putString("title", it.title)
-                bundle.putInt("type", it.type)
+                bundle.putString("title", it)
                 this.arguments = bundle
             }).addToBackStack(null).commit()
         })

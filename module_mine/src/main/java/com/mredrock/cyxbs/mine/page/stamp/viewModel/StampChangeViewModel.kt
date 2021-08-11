@@ -54,7 +54,7 @@ class StampChangeViewModel : BaseViewModel() {
                 return it
             }
         }
-        return ExChangeDetail("未查找到", 0, "", "", true, 0)
+        return ExChangeDetail("未查找到", 0, 0, false, 0)
     }
 
 }

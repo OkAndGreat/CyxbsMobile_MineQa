@@ -3,14 +3,15 @@ package com.mredrock.cyxbs.mine.page.stamp.adapter
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
-import com.bumptech.glide.request.RequestOptions
 import com.mredrock.cyxbs.common.utils.extensions.setImageFromUrl
 import com.mredrock.cyxbs.mine.R
+import com.mredrock.cyxbs.mine.util.getDateFromYMD
+import com.mredrock.cyxbs.mine.util.toDateDayStr
+import com.mredrock.cyxbs.mine.util.toDateStr
+import java.text.SimpleDateFormat
+import java.util.*
 
 object DataBindingAdapter {
 
@@ -54,5 +55,19 @@ object DataBindingAdapter {
             view.isEnabled = false
             view.setBackgroundResource(R.drawable.mine_shape_task_btn_finish)
         }
+    }
+
+    //显示年月日
+    @BindingAdapter("long2dayTime")
+    @JvmStatic
+    fun setDayTime(textView: TextView, time:Long) {
+        textView.text = time.toDateDayStr()
+    }
+
+    //显示具体时间
+    @BindingAdapter("long2Time")
+    @JvmStatic
+    fun setTime(textView: TextView, time:Long) {
+        textView.text = "交易时间：${time.toDateStr()}"
     }
 }

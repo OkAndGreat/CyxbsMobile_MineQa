@@ -124,6 +124,18 @@ fun Long.toDateStr(pattern: String = "yyyy-MM-dd HH:mm:ss"): String {
 }
 
 /**
+ * 时间戳转换成字符窜
+ * @param pattern 时间样式 yyyy-MM-dd HH:mm:ss
+ * @return [String] 时间字符串
+ */
+@SuppressLint("SimpleDateFormat")
+fun Long.toDateDayStr(pattern: String = "yyyy-MM-dd"): String {
+    val date = Date(this)
+    val format = SimpleDateFormat(pattern)
+    return format.format(date)
+}
+
+/**
  * 将字符串转为时间戳
  * @param pattern 时间样式 yyyy-MM-dd HH:mm:ss
  * @return [String] 时间字符串

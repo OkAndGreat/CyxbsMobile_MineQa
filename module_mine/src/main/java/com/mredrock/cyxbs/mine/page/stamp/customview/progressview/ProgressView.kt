@@ -24,7 +24,7 @@ class ProgressView(context: Context) :
     private val bgColor = -0x1e1a18
 
     //动画执行时间
-    private val duration = 5000L
+    private val duration = 2000L
 
     // 进度条颜色
     private var progressColor = -0x994ee

@@ -19,8 +19,8 @@ import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
  */
 class StampTabGoodFragment : BaseFragment() {
 
-    val viewModel: StampCenterViewModel by activityViewModels()
-
+    private val viewModel: StampCenterViewModel by activityViewModels()
+    private var recyclerView: GridRecyclerView? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -28,11 +28,11 @@ class StampTabGoodFragment : BaseFragment() {
     ): View {
         val view = inflater.inflate(R.layout.mine_fragment_stamp_tab_goods, container, false)
 
-        val recyclerView: GridRecyclerView = view.findViewById(R.id.mine_stamp_tab_rv_goods)
+        recyclerView = view.findViewById(R.id.mine_stamp_tab_rv_goods)
         //设置rvAdapter
         val mAdapter = StampCenterTitleGoodsAdapter(
             viewModel, this@StampTabGoodFragment
-        ) { recyclerView.scheduleLayoutAnimation() }
+        ) { recyclerView?.scheduleLayoutAnimation() }
 
         val mLayoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
         mLayoutManager.spanSizeLookup = object : SpanSizeLookup() {
@@ -45,21 +45,20 @@ class StampTabGoodFragment : BaseFragment() {
             }
 
         }
-        recyclerView.apply {
+        recyclerView?.apply {
             layoutManager = mLayoutManager
             adapter = mAdapter
             GridLayoutAnimationController.AnimationParameters()
         }
 
-        loadData()
+        viewModel.loadCenterGoods()
 
         return view
     }
 
-    //数据加载
-    private fun loadData() {
-        viewModel.loadDecorations()
-        viewModel.loadGoods()
-
+    override fun onDestroyView() {
+        //这里清空是为了让rv销毁的时候让adapter也同时触发销毁
+        recyclerView?.adapter = null
+        super.onDestroyView()
     }
 }

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="stampGood"
+            type="com.mredrock.cyxbs.mine.network.model.stamp.StampGood" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,7 +68,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
-            app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mine_cl_stamp_detail">
@@ -116,7 +117,7 @@
             android:layout_height="25dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="28dp"
-            android:text="掌邮PM名片"
+            android:text="@{stampGood.title}"
             android:textAppearance="@style/mine_decoration_detail_goods_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_fl_goods_pic" />
@@ -127,7 +128,7 @@
             android:layout_height="18dp"
             android:layout_marginTop="31dp"
             android:layout_marginRight="15dp"
-            android:text="库存量：999"
+            android:text="@{`库存量：`+ stampGood.amount }"
             android:textAppearance="@style/mine_decoration_detail_Inventory"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_fl_goods_pic" />
@@ -139,7 +140,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="69dp"
             android:singleLine="false"
-            android:text="带上这个名片，你就是这条街最亮的仔带上这个名片，你就是这条街最亮的仔"
+            android:text="@{stampGood.description}"
             android:textAppearance="@style/mine_decoration_detail_goods_decoration"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_fl_goods_pic" />
@@ -150,7 +151,7 @@
             android:layout_height="18dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="121dp"
-            android:text="有效期：15天"
+            android:text="@{`有效期：` + stampGood.life}"
             android:textAppearance="@style/mine_decoration_detail_Validity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_fl_goods_pic" />
