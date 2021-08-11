@@ -30,6 +30,8 @@ import com.mredrock.cyxbs.mine.util.ui.StampTabPageAdapter
  * @property fragmentList ArrayList<Fragment> viewpager2的fragment集合
  * @property baseIconWidth Int 对右上角的图形的宽度进行一个初始化的记录
  */
+
+
 class StampCenterFragment :
     BaseDataBindingFragment<MineFragmentStampCenterBinding>(R.layout.mine_fragment_stamp_center) {
 
@@ -38,6 +40,7 @@ class StampCenterFragment :
 
     //是否应该展示小蓝点
     private var mShouldShowBlueDot = true
+
 
     val viewModel: StampCenterViewModel by activityViewModels()
 
@@ -73,7 +76,9 @@ class StampCenterFragment :
 
             }
         }
+        savedInstanceState?.putBoolean("mShouldShowBlueDot", mShouldShowBlueDot)
     }
+
 
     override fun initView() {
         if (fragmentList.size == 0) {
@@ -109,6 +114,7 @@ class StampCenterFragment :
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     if (tab?.position == 1) {
+                        mShouldShowBlueDot = false
                         hintIv?.visibility = GONE
                         context?.let {
                             ContextCompat.getColor(
