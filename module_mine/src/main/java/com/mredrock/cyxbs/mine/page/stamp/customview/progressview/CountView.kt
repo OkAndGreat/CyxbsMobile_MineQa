@@ -57,7 +57,6 @@ class CountView(context: Context) : View(context) {
     //如果 当前数量从 3变化到 107则 mCarryNum为2因为此时进位的数量为2
     private var mCarryNum = 0
 
-    private var mCount2Bigger = false
 
     init {
         calculateChangeNum(0)
@@ -77,9 +76,11 @@ class CountView(context: Context) : View(context) {
     }
 
 
-    fun setCount(mCount: Int) {
+    fun initCount(mCount: Int) {
         this.mCount = mCount
-        calculateChangeNum(0)
+        mTexts[0] = mCount.toString()
+        mTexts[1] = ""
+        mTexts[2] = ""
         requestLayout()
     }
 
@@ -87,11 +88,6 @@ class CountView(context: Context) : View(context) {
         this.mMaxCount = mMaxCount
     }
 
-
-    fun setTextSize(mTextSize: Float) {
-        this.mTextSize = mTextSize
-        requestLayout()
-    }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(
@@ -163,13 +159,6 @@ class CountView(context: Context) : View(context) {
      * 直接设置的时候没有动画
      */
     fun calculateChangeNum(change: Int) {
-        if (change == 0) {
-            mTexts[0] = mCount.toString()
-            mTexts[1] = ""
-            mTexts[2] = ""
-            return
-        }
-
         val oldNum = mCount.toString()
         val newNum = (mCount + change).toString()
 
@@ -178,7 +167,7 @@ class CountView(context: Context) : View(context) {
         for (i in oldNum.indices) {
             val oldC = oldNum[i]
             val newC = newNum[i]
-            if (oldC != newC) {
+            if (oldC != newC || change == 0) {
                 mTexts[0] = if (i == 0) "" else newNum.substring(0, i)
                 mTexts[1] = oldNum.substring(i)
                 mTexts[2] = newNum.substring(i)
@@ -186,28 +175,23 @@ class CountView(context: Context) : View(context) {
             }
         }
         mCount += change
-        startAnim(change > 0)
+        if (change >= 0) {
+            startAnim(change!=0)
+        }
     }
 
-    private fun startAnim(is2Bigger: Boolean) {
-        mCount2Bigger = is2Bigger
+    private fun startAnim(needAnim: Boolean) {
         val textOffsetY = ObjectAnimator.ofFloat(
             this, "textOffsetY",
-            mMinOffsetY, if (mCount2Bigger) mMaxOffsetY else -mMaxOffsetY
+            mMinOffsetY, mMaxOffsetY
         )
         textOffsetY.duration = COUNT_ANIM_DURING.toLong()
-        textOffsetY.start()
+        if(needAnim) textOffsetY.start()
     }
 
     fun setTextOffsetY(offsetY: Float) {
         mOldOffsetY = offsetY //变大是从[0,1]，变小是[0,-1]
-        mNewOffsetY = if (mCount2Bigger) {
-            //从下到上[-1,0]
-            offsetY - mMaxOffsetY
-        } else {
-            //从上到下[1,0]
-            mMaxOffsetY + offsetY
-        }
+        mNewOffsetY = offsetY - mMaxOffsetY
         mFraction = (mMaxOffsetY - abs(mOldOffsetY)) / (mMaxOffsetY - mMinOffsetY)
         calculateLocation()
         postInvalidate()
