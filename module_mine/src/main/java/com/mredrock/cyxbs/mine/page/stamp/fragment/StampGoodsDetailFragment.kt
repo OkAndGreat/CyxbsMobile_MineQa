@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
+import com.mredrock.cyxbs.common.component.CyxbsToast
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentGoodsDetailBinding
 import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
@@ -125,7 +126,7 @@ class StampGoodsDetailFragment :
 
             //TODO:在这里处理用户请求服务器购买商品的逻辑
             forSureBtn.setOnClickListener {
-                Toast.makeText(activity, "购买成功", Toast.LENGTH_LONG).show()
+                CyxbsToast.makeText(requireActivity(),"购买成功",Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             }
 
