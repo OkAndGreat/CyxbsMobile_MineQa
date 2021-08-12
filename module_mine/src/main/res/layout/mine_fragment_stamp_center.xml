@@ -157,15 +157,12 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/mine_stamp_center_nub_tv"
+                        <com.mredrock.cyxbs.mine.page.stamp.customview.RollTextView
+                            android:id="@+id/mine_stamp_center_nub_rtv"
                             android:layout_width="wrap_content"
-                            android:layout_height="66dp"
-                            android:layout_marginTop="30dp"
-                            android:textAppearance="@style/mine_stamp_center_count"
-                            android:fontFamily="@font/bauhaus_93"
-                            android:lines="1"
-                            android:text="11000"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            app:Roll_count="1000"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 

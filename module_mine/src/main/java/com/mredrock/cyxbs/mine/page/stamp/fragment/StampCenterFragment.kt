@@ -21,6 +21,9 @@ import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.util.getDateDay
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 import com.mredrock.cyxbs.mine.util.ui.StampTabPageAdapter
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import java.util.concurrent.TimeUnit
 
 /**
  * 邮票中心 主Fragment
@@ -171,6 +174,13 @@ class StampCenterFragment :
     override fun initOther() {
         mBinding.mineStampCenterFl.setOnClickListener { viewModel.onClickForToDetailPager() }
         mBinding.mineRlStampCenterBack.onClick { activity?.onBackPressed() }
+
+        //TODO:测试ROLLTextView 拿到数据后应删除以下代码
+        mBinding.mineStampCenterTitleTv.setOnClickListener {
+            mBinding.mineStampCenterNubRtv.calculateChangeNum(1)
+        }
+
+
     }
 
     /**
