@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -68,6 +67,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
                     <ImageView
                         android:id="@+id/mine_stamp_center_icon_iv"
                         android:layout_width="21.23dp"
@@ -106,16 +106,20 @@
                 app:elevation="0dp"
                 android:layout_height="wrap_content">
 
-                <FrameLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/mine_stamp_center_fl"
                     android:layout_width="match_parent"
                     android:layout_height="154dp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardBackgroundColor="#F2F3F8"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginRight="16dp"
                     android:tag="overScroll"
-                    app:cardCornerRadius="12dp"
                     app:layout_scrollFlags="scroll|snap|snapMargins">
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -189,7 +193,7 @@
                         android:textAppearance="@style/mine_stamp_center_ps" />
 
 
-                </FrameLayout>
+                </androidx.cardview.widget.CardView>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/mine_stamp_center_tl"
