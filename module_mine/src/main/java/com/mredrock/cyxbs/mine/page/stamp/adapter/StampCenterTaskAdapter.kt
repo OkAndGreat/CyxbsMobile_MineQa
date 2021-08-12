@@ -9,7 +9,7 @@ import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampTaskViewModel
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingTitleAdapter
 
 class StampCenterTaskAdapter(
-    private val viewModel: StampTaskViewModel,
+    viewModel: StampTaskViewModel,
     lifecycleOwner: LifecycleOwner,
     scheduleLayoutAnimation: () -> Unit
 ) : BaseDataBindingTitleAdapter<

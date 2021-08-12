@@ -13,13 +13,18 @@ import kotlin.math.ceil
 
 /**
  * Author by OkAndGreat，Date on 2021/8/2.
- * 进度条上面的指示文字的自定义View
+ * 进度条右边的指示文字的自定义View
  * 示例 ： 5 / 20
  */
 class CountView(context: Context) : View(context) {
     companion object {
+        //文字颜色值
         const val DEFAULT_TEXT_COLOR = "#7D8AFF"
+
+        //文字大小
         const val DEFAULT_TEXT_SIZE = 40f
+
+        //动画时间
         const val COUNT_ANIM_DURING = 2000
     }
 
@@ -28,7 +33,10 @@ class CountView(context: Context) : View(context) {
     private var mTextColor = 0
     private var mEndTextColor = 0
 
+    //当前值
     private var mCount = 0
+
+    //最大值
     private var mMaxCount = 0
 
     //mTexts[0]是不变的部分，mTexts[1]原来的部分，mTexts[2]变化后的部分
@@ -58,9 +66,8 @@ class CountView(context: Context) : View(context) {
     private var mCarryNum = 0
 
 
+    //初始化画笔属性和要做动画要用到的的一些值
     init {
-        calculateChangeNum(0)
-
         mTextColor = Color.parseColor(DEFAULT_TEXT_COLOR)
 
         mMinOffsetY = 0f
@@ -75,7 +82,7 @@ class CountView(context: Context) : View(context) {
         mTextPaint.color = mTextColor
     }
 
-
+    //设定一个初始值
     fun initCount(mCount: Int) {
         this.mCount = mCount
         mTexts[0] = mCount.toString()
@@ -84,6 +91,7 @@ class CountView(context: Context) : View(context) {
         requestLayout()
     }
 
+    //设置最大值，设置一遍即可
     fun setMaxCount(mMaxCount: Int) {
         this.mMaxCount = mMaxCount
     }
@@ -176,7 +184,7 @@ class CountView(context: Context) : View(context) {
         }
         mCount += change
         if (change >= 0) {
-            startAnim(change!=0)
+            startAnim(change != 0)
         }
     }
 
@@ -186,7 +194,7 @@ class CountView(context: Context) : View(context) {
             mMinOffsetY, mMaxOffsetY
         )
         textOffsetY.duration = COUNT_ANIM_DURING.toLong()
-        if(needAnim) textOffsetY.start()
+        if (needAnim) textOffsetY.start()
     }
 
     fun setTextOffsetY(offsetY: Float) {

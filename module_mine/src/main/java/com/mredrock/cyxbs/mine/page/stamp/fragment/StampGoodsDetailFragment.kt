@@ -1,22 +1,20 @@
 package com.mredrock.cyxbs.mine.page.stamp.fragment
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentGoodsDetailBinding
 import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
-import com.mredrock.cyxbs.mine.page.stamp.customview.progressview.SATransformer
-import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
+import com.mredrock.cyxbs.mine.page.stamp.customview.SATransformer
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampGoodDetailViewModel
 import com.mredrock.cyxbs.mine.util.dp
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
@@ -91,6 +89,7 @@ class StampGoodsDetailFragment :
 
     }
 
+    @SuppressLint("InflateParams")
     private fun initListener() {
         //这里处理商品详情界面兑换按钮后被点击后的各种情况
         mBinding.mineBtnExchange.setOnClickListener {
@@ -105,14 +104,14 @@ class StampGoodsDetailFragment :
             val forCancelBtn = view2.findViewById(R.id.mine_btn_goods_detail_for_cancel) as Button
 
             val dialog = builder.create()
-            dialog.window.setWindowAnimations(R.style.mine_dialog_anim)
+            dialog.window?.setWindowAnimations(R.style.mine_dialog_anim)
             dialog.show()
-            val attributes = dialog.window.attributes
-            attributes.width = 300.dp.toInt()
-            attributes.height = 178.dp.toInt()
-            dialog.window.attributes = attributes
-            dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.window.setContentView(view1)
+            val attributes = dialog.window?.attributes
+            attributes?.width = 300.dp.toInt()
+            attributes?.height = 178.dp.toInt()
+            dialog.window?.attributes = attributes
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.window?.setContentView(view1)
 
             sureBtn.setOnClickListener {
                 dialog.dismiss()

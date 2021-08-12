@@ -5,8 +5,7 @@
     android:background="#FBFCFF"
     android:orientation="vertical"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="10dp">
+    android:paddingRight="16dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mine_stamp_tab_rv_tasks"

@@ -17,7 +17,7 @@ import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
  * 和mine_iv_stamp_exchange_detail的background为
  * mine_vector_stamp_exchange_detail_icon_collected.xml
  */
-class StampExchangeFragment() :
+class StampExchangeFragment :
     BaseDataBindingFragment<MineFragmentExchangeDetailBinding>(R.layout.mine_fragment_exchange_detail) {
 
     private val viewModel: StampChangeViewModel by activityViewModels()

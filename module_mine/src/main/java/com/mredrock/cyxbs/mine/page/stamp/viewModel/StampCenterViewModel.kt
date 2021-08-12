@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.mine.page.stamp.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.mine.network.model.stamp.CenterGood
@@ -15,7 +14,7 @@ class StampCenterViewModel : BaseStampViewModel() {
     val title2: String
         get() = "邮货"
 
-    private val repository:StampCenterRepository =
+    private val repository: StampCenterRepository =
         StampCenterRepository.getInstance()
 
     //虚拟商品
@@ -38,7 +37,7 @@ class StampCenterViewModel : BaseStampViewModel() {
     val toDetailPager: LiveData<Int>
         get() = _toDetailPager
 
-    fun loadCenterGoods(){
+    fun loadCenterGoods() {
         val centerGoodData = repository.getCenterGoodData()
         _decorations.postValue(centerGoodData[0])
         _goods.postValue(centerGoodData[1])
