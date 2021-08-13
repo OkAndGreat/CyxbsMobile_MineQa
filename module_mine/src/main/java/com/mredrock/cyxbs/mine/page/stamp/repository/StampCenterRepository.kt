@@ -26,17 +26,17 @@ class StampCenterRepository private constructor(){
         allCenterGoodList.add(ArrayList())
         allCenterGoodList.add(ArrayList())
         repeat(6) {
-            centerGoodsList.add(CenterGood("title+$it",
+            centerGoodsList.add(CenterGood("挂件挂件挂件挂件挂件+$it",
                 "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F770f139892f2c3d06879182c47e077104c02e085.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631091734&t=2bacd69f90e442a728f0073d1bde0a27",
                 20,
-                0,
+                212,
                 0))
         }
         repeat(6) {
-            centerGoodsList.add(CenterGood("title+$it",
+            centerGoodsList.add(CenterGood("挂件挂件挂件挂件挂件+$it",
                 "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F770f139892f2c3d06879182c47e077104c02e085.jpg&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631091734&t=2bacd69f90e442a728f0073d1bde0a27",
                 20,
-                0,
+                121,
                 1))
         }
         //通过type将他们分类

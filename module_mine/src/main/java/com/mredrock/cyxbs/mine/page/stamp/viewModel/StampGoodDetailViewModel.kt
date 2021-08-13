@@ -18,10 +18,10 @@ class StampGoodDetailViewModel : BaseViewModel() {
                 "http://md.udday.cn/typora/src=http%3A%2F%2Fwww.haitaoseo.com%2Fwp-content%2Fuploads%2F2019%2F06%2Febfc5-115R024Y-18.jpg&refer=http%3A%2F%2Fwww.haitaoseo.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg",
                 "http://md.udday.cn/typora/7a3479802a7f4ff09c087d019b333d53.jpeg"
             ),
-                "名字",
+                "掌邮PM名片",
                 20,
-                "好东西",
-                "什么玩意",
+                "带上这个名片，你就是这条街最亮的仔带上这个名片，你就是这条街最亮的仔",
+                "15天",
                 1,
                 15)
         )

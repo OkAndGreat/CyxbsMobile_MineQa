@@ -61,13 +61,17 @@ object DataBindingAdapter {
     @BindingAdapter("long2dayTime")
     @JvmStatic
     fun setDayTime(textView: TextView, time:Long) {
-        textView.text = time.toDateDayStr()
+        val split = time.toDateDayStr().split("-")
+        val text = "${split[0]}.${split[1]}.${split[2]}"
+        textView.text = text
     }
 
     //显示具体时间
     @BindingAdapter("long2Time")
     @JvmStatic
     fun setTime(textView: TextView, time:Long) {
-        textView.text = "交易时间：${time.toDateStr()}"
+        val text = "交易时间：       ${time.toDateStr()}"
+        textView.text = text
     }
+
 }

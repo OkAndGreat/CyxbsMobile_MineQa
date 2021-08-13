@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="TextView"
+                android:layout_marginLeft="4dp"
                 android:textColor="@color/mine_stamp_item_title"
                 android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"

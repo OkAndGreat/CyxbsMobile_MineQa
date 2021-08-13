@@ -191,7 +191,7 @@
         </item>
 
         <item name="android:textColor">
-            #CC15315B
+            #9915315B
         </item>
 
     </style>
@@ -207,7 +207,7 @@
         </item>
 
         <item name="android:textColor">
-            #CC15315B
+            #9915315B
         </item>
 
     </style>
@@ -396,7 +396,17 @@
 
 
     </style>
+    <style name="mine_stamp_tab_good_normal">
 
+        <item name="android:textSize">
+            11sp
+        </item>
+
+        <item name="android:textColor">
+            #B315315B
+        </item>
+
+    </style>
     <style name="mine_stamp_detail_tab_normal">
 
         <item name="android:textSize">

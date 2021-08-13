@@ -126,7 +126,7 @@ class StampCenterFragment :
                         context?.let {
                             ContextCompat.getColor(
                                 it,
-                                R.color.common_alpha_level_two_font_color
+                                R.color.common_level_two_font_color
                             )
                         }?.let {
                             hintTv?.setTextColor(it)
@@ -138,7 +138,7 @@ class StampCenterFragment :
                     context?.let {
                         ContextCompat.getColor(
                             it,
-                            R.color.common_alpha_level_two_font_color
+                            R.color.common_level_two_font_color
                         )
                     }?.let {
                         hintTv?.setTextColor(it)

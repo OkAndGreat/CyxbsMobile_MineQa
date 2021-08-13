@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
-            android:text="@{ `商品名称：` + exChangeDetail.wareName}"
+            android:text="@{ `商品名称：` + `       ` + exChangeDetail.wareName}"
             android:textAppearance="@style/mine_stamp_exchange_common" />
 
         <TextView
@@ -134,15 +134,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
-            android:text='@{`商品价格：` + String.valueOf(exChangeDetail.amount)}'
+            android:text='@{`商品价格：` + `       ` + String.valueOf(exChangeDetail.amount)}'
             android:textAppearance="@style/mine_stamp_exchange_common" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
             long2Time="@{exChangeDetail.date}"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
             android:textAppearance="@style/mine_stamp_exchange_common" />
 
         <TextView
@@ -150,6 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
+            android:text='@{`商品价格：` + `       ` + String.valueOf(exChangeDetail.collected ? `已领取` : `待领取`) }'
             android:textAppearance="@style/mine_stamp_exchange_common" />
     </LinearLayout>
 </layout>

@@ -157,7 +157,7 @@
                             android:id="@+id/mine_stamp_center_nub_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="66dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="40dp"
                             android:textAppearance="@style/mine_stamp_center_count"
                             android:fontFamily="@font/bauhaus_93"
                             android:lines="1"
@@ -183,7 +183,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="18dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="118dp"
                         android:text="你还有待领取的商品，请尽快领取"
                         android:textAppearance="@style/mine_stamp_center_ps" />
@@ -205,10 +205,9 @@
                     app:tabIndicatorFullWidth="false"
                     app:tabIndicatorHeight="3dp"
                     app:tabMode="fixed"
-                    app:tabRippleColor="@android:color/transparent"
-                    app:tabSelectedTextColor="@color/common_level_two_font_color"
                     app:tabTextAppearance="@style/mine_stamp_center_tab_text"
-                    app:tabTextColor="@color/common_alpha_level_two_font_color" />
+                    app:tabRippleColor="@android:color/transparent"
+                     />
             </com.google.android.material.appbar.AppBarLayout>
 
             <androidx.cardview.widget.CardView
