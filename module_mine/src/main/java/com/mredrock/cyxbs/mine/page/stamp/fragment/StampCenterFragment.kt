@@ -119,41 +119,16 @@ class StampCenterFragment :
                     if (tab?.position == 1) {
                         mShouldShowBlueDot = false
                         hintIv?.visibility = GONE
-                        context?.let {
-                            ContextCompat.getColor(
-                                it,
-                                R.color.common_level_two_font_color
-                            )
-                        }?.let {
-                            hintTv?.setTextColor(it)
-                        }
                     }
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {
-                    if (tab?.position == 1) {
-                        context?.let {
-                            ContextCompat.getColor(
-                                it,
-                                R.color.common_level_two_font_color
-                            )
-                        }?.let {
-                            hintTv?.setTextColor(it)
-                        }
-                    }
+
                 }
 
                 override fun onTabReselected(tab: TabLayout.Tab?) {
-                    context?.let {
-                        ContextCompat.getColor(
-                            it,
-                            R.color.common_level_two_font_color
-                        )
-                    }?.let {
-                        hintTv?.setTextColor(it)
-                    }
-                }
 
+                }
             })
         }
     }

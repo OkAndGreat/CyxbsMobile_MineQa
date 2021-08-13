@@ -1,10 +1,14 @@
 package com.mredrock.cyxbs.mine.page.stamp.fragment
 
+import android.animation.Animator
+import android.graphics.Path
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.view.animation.GridLayoutAnimationController
+import android.view.animation.GridLayoutAnimationController.*
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
@@ -27,7 +31,7 @@ class StampTabGoodFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.mine_fragment_stamp_tab_goods, container, false)
-
+        println(arguments?.getString("first"))
         recyclerView = view.findViewById(R.id.mine_stamp_tab_rv_goods)
         //设置rvAdapter
         val mAdapter = StampCenterTitleGoodsAdapter(
@@ -43,15 +47,24 @@ class StampTabGoodFragment : BaseFragment() {
                     else -> 1
                 }
             }
-
         }
+
+
         recyclerView?.apply {
             layoutManager = mLayoutManager
             adapter = mAdapter
-            GridLayoutAnimationController.AnimationParameters()
+            if (viewModel.firstInto < 1) {
+                val gridLayoutAnimationController = GridLayoutAnimationController(
+                    AnimationUtils.loadAnimation(
+                        context, R.anim.mine_item_animation_from_bottom
+                    )
+                )
+                layoutAnimation = gridLayoutAnimationController
+            }
         }
-
         viewModel.loadCenterGoods()
+
+        //加载动画
 
         return view
     }

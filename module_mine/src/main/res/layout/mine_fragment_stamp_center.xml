@@ -199,12 +199,16 @@
                     android:layout_marginTop="24dp"
                     android:background="#F2F3F8"
                     app:elevation="0dp"
-                    app:tabGravity="fill"
+                    app:tabGravity="center"
+                    app:tabMinWidth="20dp"
+                    app:tabPaddingStart="45dp"
+                    app:tabPaddingEnd="45dp"
                     app:tabIndicator="@drawable/mine_ic_stamp_center_tl_select"
                     app:tabIndicatorColor="@color/common_mine_tab_layout_indicator_color"
                     app:tabIndicatorFullWidth="false"
                     app:tabIndicatorHeight="3dp"
                     app:tabMode="fixed"
+
                     app:tabTextAppearance="@style/mine_stamp_center_tab_text"
                     app:tabRippleColor="@android:color/transparent"
                      />

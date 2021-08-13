@@ -7,15 +7,15 @@
 
     <TextView
         android:id="@+id/mine_item_tl_hint_tv"
+        style="@style/mine_stamp_center_tab_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="邮票任务"
-        style="@style/mine_stamp_center_tab_text"
-        android:textColor="@color/common_level_two_font_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/mine_item_tl_hint_iv"

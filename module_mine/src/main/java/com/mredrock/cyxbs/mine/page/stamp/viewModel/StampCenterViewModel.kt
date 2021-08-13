@@ -14,6 +14,9 @@ class StampCenterViewModel : BaseStampViewModel() {
     val title2: String
         get() = "邮货"
 
+    //记录是否是第一次进入这个界面，rv的动画
+    var firstInto = 0
+
     private val repository: StampCenterRepository =
         StampCenterRepository.getInstance()
 
@@ -38,6 +41,7 @@ class StampCenterViewModel : BaseStampViewModel() {
         get() = _toDetailPager
 
     fun loadCenterGoods() {
+        firstInto += 1
         val centerGoodData = repository.getCenterGoodData()
         _decorations.postValue(centerGoodData[0])
         _goods.postValue(centerGoodData[1])
