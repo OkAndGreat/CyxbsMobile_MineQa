@@ -32,6 +32,7 @@ class ProgressView(context: Context) :
     //Count +1时进度条应该增长的长度
     private var averageWidth = 0F
 
+    //进度条最大值和当前值
     private var maxCount = 0
     private var curCount = 0
 
@@ -41,12 +42,13 @@ class ProgressView(context: Context) :
     //进度条的RectF
     private val mProgressRectF = RectF()
 
-    private lateinit var Animator: ValueAnimator
+    private lateinit var progressAnimator: ValueAnimator
 
     //当前的进度条宽度
     private var curBarWidth = 0F
 
 
+    //初始化画笔的属性
     init {
         mPaintStrokeWidth = DisplayUtils.dp2px(context, 8F).toFloat()
         progressColor = Color.parseColor("#7D8AFF")
@@ -61,7 +63,7 @@ class ProgressView(context: Context) :
 
     //将View的高度设置成边框的宽度
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        //项目需求 宽度写死 150dp
+        //因为这个自定义View是自己写的并且自己用，不用给别人用所以这里 宽度写死了 是 150dp
         val width = DisplayUtils.dp2px(context, 150F)
         if (maxCount != 0) {
             averageWidth = (width / maxCount).toFloat()
@@ -71,10 +73,8 @@ class ProgressView(context: Context) :
     }
 
     override fun onDraw(canvas: Canvas) {
-        //View的宽度和高度
+        //View的宽度
         val width = width
-        val height = height
-
 
         //画进度条背景
         mBackGroundRectF.set(
@@ -102,24 +102,26 @@ class ProgressView(context: Context) :
 
     }
 
+    //设置进度条值，设置之后开始进度条增加的动画
     fun setCurCount(Count: Int) {
         startAnim(curCount, Count)
         curCount = Count
     }
 
+    //最大值设置一次即可
     fun setMaxCount(Count: Int) {
         maxCount = Count
     }
 
     private fun startAnim(oldCount: Int, newCount: Int) {
-        Animator = ValueAnimator.ofFloat(averageWidth * oldCount, averageWidth * newCount)
-        Animator.duration = duration
-        Animator.interpolator = AccelerateDecelerateInterpolator()
-        Animator.addUpdateListener {
+        progressAnimator = ValueAnimator.ofFloat(averageWidth * oldCount, averageWidth * newCount)
+        progressAnimator.duration = duration
+        progressAnimator.interpolator = AccelerateDecelerateInterpolator()
+        progressAnimator.addUpdateListener {
             curBarWidth = it.animatedValue as Float
             invalidate()
         }
 
-        Animator.start()
+        progressAnimator.start()
     }
 }

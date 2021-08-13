@@ -19,7 +19,7 @@ class StampTaskRepository private constructor() {
 
 
     fun getTodayTask(): List<StampTask> {
-        var tasks: ArrayList<StampTask> = ArrayList()
+        val tasks: ArrayList<StampTask> = ArrayList()
         tasks.add(StampTask("任务名称", "任务描述 +10", 15, 0, "base"))
         tasks.add(StampTask("任务名称", "任务描述 +20", 15, 2, "base"))
         tasks.add(StampTask("任务名称", "任务描述 +30", 0, 0, "base"))
@@ -28,7 +28,7 @@ class StampTaskRepository private constructor() {
     }
 
     fun getMoreTask(): List<StampTask> {
-        var tasks: ArrayList<StampTask> = ArrayList()
+        val tasks: ArrayList<StampTask> = ArrayList()
         tasks.add(StampTask("任务名称", "任务描述", 5, 5, "more"))
         tasks.add(StampTask("任务名称", "任务描述", 2, 1, "more"))
         return tasks

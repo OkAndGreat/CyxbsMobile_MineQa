@@ -20,7 +20,7 @@ object DataBindingAdapter {
     @BindingAdapter("imageUrl")
     @JvmStatic
     fun setImage(imageView: ImageView, url: String?) {
-            imageView.setImageFromUrl(url)
+        imageView.setImageFromUrl(url)
     }
 
     //设置背景
@@ -33,6 +33,7 @@ object DataBindingAdapter {
             view.setBackgroundResource(R.drawable.mine_shape_exchange_detail_cv_normal)
         }
     }
+
     //设置背景
     @BindingAdapter("changeCircleBackGround")
     @JvmStatic
@@ -45,12 +46,12 @@ object DataBindingAdapter {
     }
 
     //设置任务完成状态
-    @BindingAdapter(value = ["taskChangeDone","taskChangeTotal"],requireAll = true)
+    @BindingAdapter(value = ["taskChangeDone", "taskChangeTotal"], requireAll = true)
     @JvmStatic
-    fun setTaskChange(view: Button, taskChangeDone:Int, taskChangeTotal:Int){
+    fun setTaskChange(view: Button, taskChangeDone: Int, taskChangeTotal: Int) {
         if (taskChangeTotal != 0 && taskChangeDone < taskChangeTotal) {
             view.text = "去签到"
-        }else{
+        } else {
             view.text = "已完成"
             view.isEnabled = false
             view.setBackgroundResource(R.drawable.mine_shape_task_btn_finish)
@@ -73,5 +74,4 @@ object DataBindingAdapter {
         val text = "交易时间：       ${time.toDateStr()}"
         textView.text = text
     }
-
 }

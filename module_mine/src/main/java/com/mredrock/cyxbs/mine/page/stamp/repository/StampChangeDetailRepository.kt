@@ -19,7 +19,7 @@ class StampChangeDetailRepository private constructor() {
 
 
     fun getExChangeDetails(): List<ExChangeDetail> {
-        var exChangeDetails = ArrayList<ExChangeDetail>()
+        val exChangeDetails = ArrayList<ExChangeDetail>()
         exChangeDetails.add(ExChangeDetail("熊大", 10, 1628666749427, false, 24579268))
         exChangeDetails.add(ExChangeDetail("熊二", 10, 1628666749427, true, 245327968))
         exChangeDetails.add(ExChangeDetail("熊三", 10, 1628666749427, false, 249957968))
@@ -30,7 +30,7 @@ class StampChangeDetailRepository private constructor() {
     }
 
     fun getGetChangeDetails(): List<GetChangeDetail> {
-        var getChangeDetailsS = ArrayList<GetChangeDetail>()
+        val getChangeDetailsS = ArrayList<GetChangeDetail>()
         getChangeDetailsS.add(GetChangeDetail("熊大", 10, 1628666749427))
         getChangeDetailsS.add(GetChangeDetail("熊二", 10, 1628666749427))
         getChangeDetailsS.add(GetChangeDetail("熊三", 10, 1628666749427))

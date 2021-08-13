@@ -9,7 +9,7 @@ import com.mredrock.cyxbs.mine.util.DisplayUtils
 
 /**
  * Author by OkAndGreat，Date on 2021/8/2.
- * 将ProgressView和CountView竖直方向合并到一起的自定义Layout
+ * 将ProgressView和CountView水平方向合并到一起的自定义Layout
  */
 class ProgressLayout(context: Context, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
@@ -36,7 +36,7 @@ class ProgressLayout(context: Context, attrs: AttributeSet?) :
 
         addProgressView()
         addCountView()
-        mCountView.setCount(0)
+        mCountView.initCount(0)
     }
 
     //将ProgressView添加到线性布局中

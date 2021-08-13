@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -18,7 +17,8 @@
         android:layout_height="237dp"
         android:layout_marginTop="15dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="1dp"
+        android:layout_marginEnd="9dp"
+        app:cardElevation="2dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         >
@@ -51,8 +51,6 @@
             android:text="@{CenterGood.title}"
             android:textColor="#15315B"
             android:textSize="14sp"
-            android:textStyle="bold"
-            android:lineSpacingMultiplier="1.2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_sign_store_item_iv" />
 

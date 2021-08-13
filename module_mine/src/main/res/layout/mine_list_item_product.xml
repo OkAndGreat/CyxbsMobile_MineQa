@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="237dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="9dp"
+        android:layout_marginEnd="9dp"
         android:background="@drawable/mine_shape_round_corner_store_item_bg">
 
 
@@ -45,7 +45,7 @@
             android:layout_marginTop="10dp"
             android:alpha="0.58"
             android:textColor="@color/common_level_two_font_color"
-            android:textSize="11sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/mine_sign_store_item_iv_diamond"
             app:layout_constraintTop_toBottomOf="@+id/mine_sign_store_item_tv_title" />
 

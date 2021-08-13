@@ -21,6 +21,9 @@ import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.util.getDateDay
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 import com.mredrock.cyxbs.mine.util.ui.StampTabPageAdapter
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import java.util.concurrent.TimeUnit
 
 /**
  * 邮票中心 主Fragment
@@ -30,6 +33,8 @@ import com.mredrock.cyxbs.mine.util.ui.StampTabPageAdapter
  * @property fragmentList ArrayList<Fragment> viewpager2的fragment集合
  * @property baseIconWidth Int 对右上角的图形的宽度进行一个初始化的记录
  */
+
+
 class StampCenterFragment :
     BaseDataBindingFragment<MineFragmentStampCenterBinding>(R.layout.mine_fragment_stamp_center) {
 
@@ -38,6 +43,7 @@ class StampCenterFragment :
 
     //是否应该展示小蓝点
     private var mShouldShowBlueDot = true
+
 
     val viewModel: StampCenterViewModel by activityViewModels()
 
@@ -73,7 +79,9 @@ class StampCenterFragment :
 
             }
         }
+        savedInstanceState?.putBoolean("mShouldShowBlueDot", mShouldShowBlueDot)
     }
+
 
     override fun initView() {
         if (fragmentList.size == 0) {
@@ -109,6 +117,7 @@ class StampCenterFragment :
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     if (tab?.position == 1) {
+                        mShouldShowBlueDot = false
                         hintIv?.visibility = GONE
                         context?.let {
                             ContextCompat.getColor(
@@ -165,6 +174,13 @@ class StampCenterFragment :
     override fun initOther() {
         mBinding.mineStampCenterFl.setOnClickListener { viewModel.onClickForToDetailPager() }
         mBinding.mineRlStampCenterBack.onClick { activity?.onBackPressed() }
+
+        //TODO:测试ROLLTextView 拿到数据后应删除以下代码
+        mBinding.mineStampCenterTitleTv.setOnClickListener {
+            mBinding.mineStampCenterNubRtv.calculateChangeNum(1)
+        }
+
+
     }
 
     /**

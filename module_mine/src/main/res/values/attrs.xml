@@ -24,4 +24,11 @@
         <attr name="max_count" format="integer"/>
         <attr name="cur_count" format="integer"/>
     </declare-styleable>
+
+    <!--确定唯一，不需要添加前缀-->
+    <declare-styleable name="RollTextView" tools:ignore="ResourceName">
+        <attr name="Roll_count" format="integer" />
+        <attr name="Roll_text_color" format="color"/>
+        <attr name="Roll_text_size" format="dimension"/>
+    </declare-styleable>
 </resources>

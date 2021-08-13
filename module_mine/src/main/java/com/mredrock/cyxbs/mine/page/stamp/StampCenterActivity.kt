@@ -25,7 +25,7 @@ class StampCenterActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = DataBindingUtil.setContentView(this, R.layout.mine_activity_stampe);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.mine_activity_stampe)
         initView()
     }
 

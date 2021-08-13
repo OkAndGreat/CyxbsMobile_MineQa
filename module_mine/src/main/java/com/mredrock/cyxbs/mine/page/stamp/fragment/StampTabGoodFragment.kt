@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.mredrock.cyxbs.common.ui.BaseFragment
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.page.stamp.adapter.StampCenterTitleGoodsAdapter
-import com.mredrock.cyxbs.mine.page.stamp.customview.progressview.GridRecyclerView
+import com.mredrock.cyxbs.mine.page.stamp.customview.GridRecyclerView
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 
 /**

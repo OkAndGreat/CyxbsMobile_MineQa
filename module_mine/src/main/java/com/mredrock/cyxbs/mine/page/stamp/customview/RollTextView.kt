@@ -1,25 +1,29 @@
-package com.mredrock.cyxbs.mine.page.stamp.customview.progressview
+package com.mredrock.cyxbs.mine.page.stamp.customview
 
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
+import com.mredrock.cyxbs.mine.R
+import com.mredrock.cyxbs.mine.util.DisplayUtils
 import com.mredrock.cyxbs.mine.util.ProgressPoint
 import com.mredrock.cyxbs.mine.util.ProgressUtils
 import kotlin.math.abs
 import kotlin.math.ceil
 
 /**
- * Author by OkAndGreat，Date on 2021/8/2.
- * 进度条右边的指示文字的自定义View
- * 示例 ： 5 / 20
+ * Author by OkAndGreat，Date on 2021/8/11.
+ * 数字改变时滚动的TextView
  */
-class CountView(context: Context) : View(context) {
+class RollTextView(context: Context, attrs: AttributeSet) :
+    View(context, attrs) {
     companion object {
         //文字颜色值
-        const val DEFAULT_TEXT_COLOR = "#7D8AFF"
+        const val DEFAULT_TEXT_COLOR = "#FFFFFF"
 
         //文字大小
         const val DEFAULT_TEXT_SIZE = 40f
@@ -47,7 +51,6 @@ class CountView(context: Context) : View(context) {
             : Array<ProgressPoint> = arrayOf(
         ProgressPoint(),
         ProgressPoint(),
-        ProgressPoint(),
         ProgressPoint()
     )
 
@@ -68,7 +71,17 @@ class CountView(context: Context) : View(context) {
 
     //初始化画笔属性和要做动画要用到的的一些值
     init {
-        mTextColor = Color.parseColor(DEFAULT_TEXT_COLOR)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RollTextView)
+        initCount(typedArray.getInt(R.styleable.RollTextView_Roll_count, 0))
+        mTextColor = typedArray.getColor(
+            R.styleable.RollTextView_Roll_text_color,
+            Color.parseColor(DEFAULT_TEXT_COLOR)
+        )
+        mTextSize = typedArray.getDimension(
+            R.styleable.RollTextView_Roll_text_size,
+            DisplayUtils.sp2px(context, 45F).toFloat()
+        )
+        typedArray.recycle()
 
         mMinOffsetY = 0f
         mMaxOffsetY = mTextSize
@@ -80,6 +93,7 @@ class CountView(context: Context) : View(context) {
         mTextPaint.isAntiAlias = true
         mTextPaint.textSize = mTextSize
         mTextPaint.color = mTextColor
+        mTextPaint.typeface = ResourcesCompat.getFont(context, R.font.bauhaus_93)
     }
 
     //设定一个初始值
@@ -91,17 +105,12 @@ class CountView(context: Context) : View(context) {
         requestLayout()
     }
 
-    //设置最大值，设置一遍即可
-    fun setMaxCount(mMaxCount: Int) {
-        this.mMaxCount = mMaxCount
-    }
-
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(
             ProgressUtils.getDefaultSize(
                 widthMeasureSpec,
-                getContentWidth() + paddingLeft + paddingRight * 2
+                getContentWidth() + paddingLeft + paddingRight
             ),
             ProgressUtils.getDefaultSize(
                 heightMeasureSpec,
@@ -111,7 +120,7 @@ class CountView(context: Context) : View(context) {
     }
 
     private fun getContentWidth(): Int {
-        return ceil(mTextPaint.measureText("$mCount   /  $mMaxCount"))
+        return ceil(mTextPaint.measureText(mCount.toString()))
             .toInt()
     }
 
@@ -135,11 +144,9 @@ class CountView(context: Context) : View(context) {
         mTextPoints[0].x = paddingLeft.toFloat()
         mTextPoints[1].x = paddingLeft + unChangeWidth
         mTextPoints[2].x = paddingLeft + unChangeWidth
-        mTextPoints[3].x = paddingLeft + unChangeWidth + (1 - mFraction) * (textWidth * mCarryNum)
         mTextPoints[0].y = y
         mTextPoints[1].y = y - mOldOffsetY
         mTextPoints[2].y = y - mNewOffsetY
-        mTextPoints[3].y = y
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -156,10 +163,6 @@ class CountView(context: Context) : View(context) {
         //变化后部分
         mTextPaint.color = (ProgressUtils.evaluate(mFraction, mTextColor, mEndTextColor) as Int)
         canvas.drawText(mTexts[2].toString(), mTextPoints[2].x, mTextPoints[2].y, mTextPaint)
-
-        //后缀
-        mTextPaint.color = mTextColor
-        canvas.drawText("   / $mMaxCount", mTextPoints[3].x, mTextPoints[3].y, mTextPaint)
     }
 
     /**
@@ -204,5 +207,6 @@ class CountView(context: Context) : View(context) {
         calculateLocation()
         postInvalidate()
     }
+
 
 }

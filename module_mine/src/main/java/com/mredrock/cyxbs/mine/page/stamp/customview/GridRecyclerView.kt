@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.mine.page.stamp.customview.progressview
+package com.mredrock.cyxbs.mine.page.stamp.customview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -27,7 +27,7 @@ class GridRecyclerView(
         if (controller is GridLayoutAnimationController) {
             super.setLayoutAnimation(controller)
         } else {
-            throw ClassCastException("com.mredrock.cyxbs.mine.page.stamp.customview.progressview.GridRecyclerView:你必须使用GridLayoutAnimationController");
+            throw ClassCastException("com.mredrock.cyxbs.mine.page.stamp.customview.GridRecyclerView:你必须使用GridLayoutAnimationController")
         }
     }
 
@@ -38,7 +38,7 @@ class GridRecyclerView(
         count: Int
     ) {
         if (adapter != null && layoutManager is GridLayoutManager) {
-            var animationParameters: GridLayoutAnimationController.AnimationParameters? = null
+            val animationParameters: GridLayoutAnimationController.AnimationParameters?
             if (params.layoutAnimationParameters != null) {
                 animationParameters =
                     params.layoutAnimationParameters as GridLayoutAnimationController.AnimationParameters
@@ -47,7 +47,7 @@ class GridRecyclerView(
                 params.layoutAnimationParameters = animationParameters
             }
 
-            var spanCount = (layoutManager as GridLayoutManager).spanCount
+            val spanCount = (layoutManager as GridLayoutManager).spanCount
 
             animationParameters.apply {
                 this.column = count
@@ -56,7 +56,7 @@ class GridRecyclerView(
                 this.rowsCount = count / spanCount
             }
 
-            val invertedIndex = count - 1 - index;
+            val invertedIndex = count - 1 - index
             animationParameters.column = spanCount - 1 - (invertedIndex % spanCount)
             animationParameters.row = animationParameters.rowsCount - 1 - invertedIndex / spanCount
         } else {

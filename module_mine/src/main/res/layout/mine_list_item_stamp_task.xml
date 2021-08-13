@@ -35,7 +35,7 @@
             android:id="@+id/mine_list_item_stamp_pl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:visibility="@{task.totalAmount == 0 ? plView.GONE : plView.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
