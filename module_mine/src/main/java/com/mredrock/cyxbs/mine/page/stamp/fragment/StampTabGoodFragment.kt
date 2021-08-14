@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.view.animation.GridLayoutAnimationController
 import android.view.animation.GridLayoutAnimationController.*
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.mredrock.cyxbs.common.ui.BaseFragment

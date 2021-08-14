@@ -37,7 +37,10 @@ class StampCenterActivity : BaseActivity() {
             goodsDetailFragment.arguments
             toFragmentForAnim((goodsDetailFragment).apply {
                 val bundle = Bundle()
-                bundle.putString("title", it)
+                stampViewModel.userAccount.value?.let{
+                    bundle.putInt("account",it)
+                }
+                bundle.putInt("id", it)
                 this.arguments = bundle
             }).addToBackStack(null).commit()
         })

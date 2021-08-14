@@ -140,6 +140,7 @@
     <string name="mine_stamp_exchange_goods_detail">商品详情</string>
     <string name="mine_decoration_detail">装扮详情</string>
     <string name="mine_decoration_detail_right">权益说明</string>
+    <string name="mine_stamp_center_un_got_good">你还有待领取的商品，请尽快领取</string>
 
 
 </resources>

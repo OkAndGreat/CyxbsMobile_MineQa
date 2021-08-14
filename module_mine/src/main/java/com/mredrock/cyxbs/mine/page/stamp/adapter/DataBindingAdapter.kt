@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.mredrock.cyxbs.common.utils.extensions.setImageFromUrl
 import com.mredrock.cyxbs.mine.R
+import com.mredrock.cyxbs.mine.page.stamp.customview.RollTextView
 import com.mredrock.cyxbs.mine.util.getDateFromYMD
 import com.mredrock.cyxbs.mine.util.toDateDayStr
 import com.mredrock.cyxbs.mine.util.toDateStr
@@ -73,5 +74,12 @@ object DataBindingAdapter {
     fun setTime(textView: TextView, time:Long) {
         val text = "交易时间：       ${time.toDateStr()}"
         textView.text = text
+    }
+
+    //设置center Account的值
+    @BindingAdapter("roll_account")
+    @JvmStatic
+    fun setAccount(view: RollTextView,count:Int){
+        view.initCount(count)
     }
 }

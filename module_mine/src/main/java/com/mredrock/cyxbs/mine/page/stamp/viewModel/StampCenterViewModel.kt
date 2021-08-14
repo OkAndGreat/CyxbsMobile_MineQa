@@ -3,6 +3,7 @@ package com.mredrock.cyxbs.mine.page.stamp.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.mine.network.model.stamp.CenterGood
+import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
 import com.mredrock.cyxbs.mine.page.stamp.repository.StampCenterRepository
 import com.mredrock.cyxbs.mine.util.ui.BaseStampViewModel
 
@@ -30,9 +31,29 @@ class StampCenterViewModel : BaseStampViewModel() {
     val goods: LiveData<List<CenterGood>>
         get() = _goods
 
+    //今日任务
+    private var _todayTasks = MutableLiveData<List<StampTask>>()
+    val todayTasks: LiveData<List<StampTask>>
+        get() = _todayTasks
+
+    //更多任务
+    private var _moreTasks = MutableLiveData<List<StampTask>>()
+    val moreTasks: LiveData<List<StampTask>>
+        get() = _moreTasks
+
+    //账户余额
+    private var _userAccount = MutableLiveData<Int>()
+    val userAccount: LiveData<Int>
+        get() = _userAccount
+
+    //是否有未领取的商品
+    private var _unGotGood = MutableLiveData<Boolean>()
+    val unGotGood:LiveData<Boolean>
+        get() = _unGotGood
+
     //跳转到商品界面
-    private var _toGoodPager = MutableLiveData<String>()
-    val toGoodPager: LiveData<String>
+    private var _toGoodPager = MutableLiveData<Int>()
+    val toGoodPager: LiveData<Int>
         get() = _toGoodPager
 
     //跳转到明细界面
@@ -42,9 +63,20 @@ class StampCenterViewModel : BaseStampViewModel() {
 
     fun loadCenterGoods() {
         firstInto += 1
-        val centerGoodData = repository.getCenterGoodData()
-        _decorations.postValue(centerGoodData[0])
-        _goods.postValue(centerGoodData[1])
+        repository.getCenterGoodData(
+            goods = {
+            _goods.postValue(it) },
+            decorations = {
+            _decorations.postValue(it) },
+            todayTasks = {
+            _todayTasks.postValue(it) },
+            moreTasks = {
+            _moreTasks.postValue(it) },
+            userAccount = {
+            _userAccount.postValue(it) },
+            unGotGood = {
+            _unGotGood.postValue(it) }
+        )
     }
 
     //点击title加载判断
@@ -70,13 +102,11 @@ class StampCenterViewModel : BaseStampViewModel() {
 
     }
 
-    fun onClickForToGoodPager(title: String) {
-        println("点击了")
-        _toGoodPager.postValue(title)
+    fun onClickForToGoodPager(id: Int) {
+        _toGoodPager.postValue(id)
     }
 
     fun onClickForToDetailPager() {
-        println("点击了")
         _toDetailPager.postValue(toDetailPager.value?.plus(1))
     }
 }

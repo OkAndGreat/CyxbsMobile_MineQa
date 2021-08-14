@@ -14,6 +14,9 @@ const val BASE_THUMBNAIL_IMG_URL = BASE_NORMAL_IMG_URL + "thumbnail/"
 
 const val BASE_NORMAL_BACKUP_GET = "https://be-prod.redrock.team/"
 
+//test
+const val BASE_TEST_URL = "https://be-dev.redrock.cqupt.edu.cn/"
+
 //获取baseUrl的方法
 //TODO: 暂时没有测试环境，就都返回了线上环境
-fun getBaseUrl() = if (BuildConfig.DEBUG) END_POINT_REDROCK_PROD else END_POINT_REDROCK_PROD
+fun getBaseUrl() = if (BuildConfig.DEBUG) BASE_TEST_URL else BASE_TEST_URL

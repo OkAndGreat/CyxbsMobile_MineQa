@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.mine.page.stamp.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mredrock.cyxbs.common.viewmodel.BaseViewModel
@@ -24,12 +25,19 @@ class StampChangeViewModel : BaseViewModel() {
 
     //更新获取明细
     fun loadGetChangeDetails() {
-        _getChangeDetails.postValue(repository.getGetChangeDetails())
+        repository.getGetChangeDetails {
+            _getChangeDetails.postValue(it)
+        }
+
     }
 
     //更新兑换明细
     fun loadExChangeDetails() {
-        _exChangeDetails.postValue(repository.getExChangeDetails())
+        repository.getExChangeDetails {
+            Log.d("StampChangeViewModel","更新成功,${it[0].amount}")
+            _exChangeDetails.postValue(it)
+        }
+
     }
 
     //跳转详情页面
@@ -49,8 +57,10 @@ class StampChangeViewModel : BaseViewModel() {
         get() = _exChangeDetail
 
     fun getOneExChangeById(id: Int): ExChangeDetail {
+//        Log.d("StampChangeViewModel","$id")
         exChangeDetails.value?.forEach {
             if (it.orderId == id) {
+                Log.d("StampChangeViewModel", it.amount.toString())
                 return it
             }
         }

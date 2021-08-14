@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -37,7 +38,6 @@ import java.util.concurrent.TimeUnit
 
 class StampCenterFragment :
     BaseDataBindingFragment<MineFragmentStampCenterBinding>(R.layout.mine_fragment_stamp_center) {
-
     //进入这个fragment时的时间戳
     private var mCurTimeStamp = 0L
 
@@ -79,11 +79,18 @@ class StampCenterFragment :
 
             }
         }
+        viewModel.userAccount.observe(this, Observer {
+            mBinding.account = it
+        })
+        viewModel.unGotGood.observe(this, Observer {
+            mBinding.unGotGood = it
+        })
         savedInstanceState?.putBoolean("mShouldShowBlueDot", mShouldShowBlueDot)
     }
 
 
     override fun initView() {
+
         if (fragmentList.size == 0) {
             fragmentList.add(StampTabGoodFragment())
             fragmentList.add(StampTabTaskFragment())
@@ -134,6 +141,7 @@ class StampCenterFragment :
     }
 
     override fun initData() {
+
         //对上方的动画进行监听
         mBinding.mineStampCenterAbl.apply {
             addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
@@ -143,17 +151,13 @@ class StampCenterFragment :
                 }
             })
         }
+
     }
 
 
     override fun initOther() {
         mBinding.mineStampCenterFl.setOnClickListener { viewModel.onClickForToDetailPager() }
         mBinding.mineRlStampCenterBack.onClick { activity?.onBackPressed() }
-
-        //TODO:测试ROLLTextView 拿到数据后应删除以下代码
-        mBinding.mineStampCenterTitleTv.setOnClickListener {
-            mBinding.mineStampCenterNubRtv.calculateChangeNum(1)
-        }
 
 
     }

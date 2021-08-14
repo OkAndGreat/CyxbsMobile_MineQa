@@ -3,6 +3,7 @@ package com.mredrock.cyxbs.mine.network
 import com.mredrock.cyxbs.common.bean.RedrockApiStatus
 import com.mredrock.cyxbs.common.bean.RedrockApiWrapper
 import com.mredrock.cyxbs.mine.network.model.*
+import com.mredrock.cyxbs.mine.network.model.stamp.*
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -238,6 +239,28 @@ interface ApiService {
     ):Observable<RedrockApiWrapper<UserUncheckCount>>
 
     //仿ping接口，用于检测magipoke系列接口状态
-    @GET("magipoke/ping")
+    @GET("/magipoke/ping")
     fun pingMagipoke(): Observable<RedrockApiStatus>
+
+    //主页信息
+    @GET("/magipoke-intergral/User/info")
+    fun getCenterInfo():Observable<RedrockApiWrapper<CenterData>>
+
+    //积分兑换记录
+    @GET("/magipoke-intergral/User/exchange")
+    fun getExChangeInfo():Observable<RedrockApiWrapper<List<ExChangeDetail>>>
+
+
+    //积分获取记录
+    @GET("/magipoke-intergral/User/getRecord")
+    fun getGetChangeInfo(@Query("page") page:Int,@Query("size") size:Int):Observable<RedrockApiWrapper<List<GetChangeDetail>>>
+
+    //查询商品信息
+    @GET("/magipoke-intergral/Integral/getItemInfo")
+    fun getGoodDetail(@Query("id") id:Int):Observable<RedrockApiWrapper<StampGood>>
+
+    //购买商品
+    @Multipart
+    @POST("/magipoke-intergral/Integral/purchase")
+    fun buyGoodById(@Field("id") id:Int):Observable<RedrockApiWrapper<BuyGoodBack>>
 }

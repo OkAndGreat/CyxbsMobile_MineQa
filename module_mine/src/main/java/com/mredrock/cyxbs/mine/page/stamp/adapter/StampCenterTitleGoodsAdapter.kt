@@ -35,7 +35,6 @@ class StampCenterTitleGoodsAdapter(
         title: String
     ) {
         mBinding?.string = title
-        mBinding?.viewModel = viewModel
     }
     //绑定虚拟商品
     override fun onBindItem1(

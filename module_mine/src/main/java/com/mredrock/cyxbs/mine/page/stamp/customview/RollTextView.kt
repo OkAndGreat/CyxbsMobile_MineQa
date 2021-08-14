@@ -208,5 +208,4 @@ class RollTextView(context: Context, attrs: AttributeSet) :
         postInvalidate()
     }
 
-
 }

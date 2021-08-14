@@ -43,17 +43,25 @@ class StampGoodsDetailFragment :
     private lateinit var disposable: Disposable
     private val mRadioButtonList = ArrayList<RadioButton>()
 
-    private var title:String = ""
+    private var mId:Int = 0
 
 
     override fun initView() {
-        title = arguments?.get("title") as String
+        mId = arguments?.get("id") as Int
+        //设置传进的余额
+        val account = arguments?.get("account") as Int ?: 0
+        mBinding.mineTvDecorationRestCount.text = account.toString()
 
         viewModel.good.observe(this, Observer {
             mBinding.mineVp2GoodsPic.adapter = GoodsDetailPicAdapter(it.pic)
             mBinding.stampGood = it
         })
-        viewModel.loadGood(title)
+
+        viewModel.account.observe(this, Observer {
+            mBinding.mineTvDecorationRestCount.text = it.toString()
+        })
+
+        viewModel.loadGood(mId)
         //设置vp2的切换动画
         mBinding.mineVp2GoodsPic.setPageTransformer(SATransformer())
         initListener()
@@ -139,8 +147,6 @@ class StampGoodsDetailFragment :
         mBinding.mineRlStampCenterBack.setOnClickListener {
             activity?.onBackPressed()
         }
-
-
     }
 
     private fun initCallback() {

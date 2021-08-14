@@ -225,7 +225,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:paddingLeft="4.87dp"
-                android:text="121"
+                android:text="@{String.valueOf(stampGood.price)}"
                 android:textAppearance="@style/mine_decoration_detail_cost_count"
                 app:layout_constraintBottom_toBottomOf="@+id/mine_iv_decoration_icon"
                 app:layout_constraintStart_toEndOf="@+id/mine_iv_decoration_icon" />

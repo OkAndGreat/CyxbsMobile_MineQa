@@ -5,11 +5,11 @@ import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineListItemStampTaskBinding
 import com.mredrock.cyxbs.mine.databinding.MineListItemStampTitleBinding
 import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
-import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampTaskViewModel
+import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingTitleAdapter
 
 class StampCenterTaskAdapter(
-    viewModel: StampTaskViewModel,
+    viewModel: StampCenterViewModel,
     lifecycleOwner: LifecycleOwner,
     scheduleLayoutAnimation: () -> Unit
 ) : BaseDataBindingTitleAdapter<
