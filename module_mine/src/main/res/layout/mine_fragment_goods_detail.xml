@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="stampGood"
             type="com.mredrock.cyxbs.mine.network.model.stamp.StampGood" />
@@ -11,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="@color/mine_goods_detail_bg"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,6 +46,7 @@
                 android:gravity="center"
                 android:text="@string/mine_decoration_detail"
                 android:textAppearance="@style/mine_stamp_exchange_detail"
+                android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -122,6 +124,7 @@
             android:layout_marginTop="28dp"
             android:text="@{stampGood.title}"
             android:textAppearance="@style/mine_decoration_detail_goods_name"
+            android:textColor="@color/mine_stamp_goods_detail_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_fl_goods_pic" />
 
@@ -133,6 +136,7 @@
             android:layout_marginRight="15dp"
             android:text="@{`库存量：`+ stampGood.amount }"
             android:textAppearance="@style/mine_decoration_detail_Inventory"
+            android:textColor="@color/mine_stamp_goods_detail_inventory"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_fl_goods_pic" />
 
@@ -145,6 +149,7 @@
             android:singleLine="false"
             android:text="@{stampGood.description}"
             android:textAppearance="@style/mine_decoration_detail_goods_decoration"
+            android:textColor="@color/mine_stamp_goods_detail_des"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_fl_goods_pic" />
 
@@ -156,6 +161,7 @@
             android:layout_marginTop="121dp"
             android:text="@{`有效期：` + stampGood.life}"
             android:textAppearance="@style/mine_decoration_detail_Validity"
+            android:textColor="@color/mine_stamp_good_detail_decoration_detail_Validity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_fl_goods_pic" />
 
@@ -167,6 +173,7 @@
             android:layout_marginTop="36dp"
             android:text="@string/mine_decoration_detail_right"
             android:textAppearance="@style/mine_decoration_detail_rights"
+            android:textColor="@color/mine_stamp_goods_detail_rights_des"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_tv_decoration_detail_Validity" />
 
@@ -179,6 +186,7 @@
             android:layout_marginRight="12dp"
             android:text="1、每个实物商品每人限兑换一次，已经兑换的商品不能退货换货也不予折现"
             android:textAppearance="@style/mine_decoration_detail_rights_detail"
+            android:textColor="@color/mine_stamp_goods_detail_inventory"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_tv_decoration_detail_rights_decoration" />
 
@@ -189,6 +197,7 @@
             android:layout_marginRight="12dp"
             android:text="2、在法律允许的范围内，本活动的最终解释权归红岩网校工作站所有。"
             android:textAppearance="@style/mine_decoration_detail_rights_detail"
+            android:textColor="@color/mine_stamp_goods_detail_inventory"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_tv_decoration_detail_rights_decoration_detail" />
 
@@ -238,6 +247,7 @@
                 android:layout_marginTop="6dp"
                 android:text="余额：1222"
                 android:textAppearance="@style/mine_decoration_detail_rest_count"
+                android:textColor="@color/mine_stamp_goods_detail_inventory"
                 app:layout_constraintLeft_toLeftOf="@id/mine_iv_decoration_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mine_iv_decoration_icon" />

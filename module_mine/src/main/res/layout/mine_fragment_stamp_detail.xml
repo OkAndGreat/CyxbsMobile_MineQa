@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mine_stamp_detail_base_color"
+        android:background="@color/mine_stamp_stamp_detail_bg"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,6 +41,7 @@
                 android:layout_height="31dp"
                 android:gravity="center"
                 android:text="@string/mine_stamp_detail"
+                android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
                 android:textAppearance="@style/mine_stamp_exchange_detail"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -83,11 +84,13 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/mine_stamp_detail_bg"
             app:cardCornerRadius="15dp">
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/mine_vp2_stamp_detail"
                 android:layout_width="match_parent"
+                android:background="@color/mine_stamp_detail_bg"
                 android:layout_height="match_parent"
                 android:overScrollMode="never" />
         </androidx.cardview.widget.CardView>

@@ -133,7 +133,7 @@
         </item>
 
         <item name="android:textColor">
-            #CC15315B
+            @color/mine_stamp_exchange_common_text
         </item>
 
     </style>

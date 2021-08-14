@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mine_stamp_detail_base_color"
+        android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,6 +47,7 @@
                 android:layout_height="31dp"
                 android:gravity="center"
                 android:text="@string/mine_stamp_exchange_detail"
+                android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
                 android:textAppearance="@style/mine_stamp_exchange_detail"
                 app:layout_constraintBottom_toBottomOf="@+id/mine_rl_exchange_detail_back"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -118,6 +119,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="16dp"
             android:text="@string/mine_stamp_exchange_goods_detail"
+            android:textColor="@color/mine_stamp_goods_detail_title"
             android:textStyle="bold"
             android:textAppearance="@style/mine_stamp_exchange_goods_detail" />
 

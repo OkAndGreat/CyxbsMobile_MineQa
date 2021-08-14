@@ -18,7 +18,7 @@
         android:layout_marginTop="15dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
-        android:background="@drawable/mine_shape_stamp_center_item"
+        android:background="@color/mine_stamp_center_tab_bg"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         >
@@ -49,7 +49,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="10dp"
             android:text="@{CenterGood.title}"
-            android:textColor="#15315B"
+            android:textColor="@color/mine_stamp_goods_detail_title"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_sign_store_item_iv" />
@@ -60,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="32dp"
+            android:textColor="@color/mine_stamp_center_goods_item_left"
             android:text="@{`库存：` + CenterGood.amount}"
             android:textAppearance="@style/mine_stamp_tab_good_normal"
             app:layout_constraintStart_toStartOf="parent"

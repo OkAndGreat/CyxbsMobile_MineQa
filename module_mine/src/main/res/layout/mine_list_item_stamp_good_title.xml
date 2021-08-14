@@ -24,7 +24,7 @@
                 android:layout_marginTop="24dp"
                 android:text="TextView"
                 android:layout_marginLeft="4dp"
-                android:textColor="@color/mine_stamp_item_title"
+                android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
                 android:textSize="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +37,7 @@
                 android:layout_marginTop="28dp"
                 android:layout_marginRight="9dp"
                 android:text="请在个人资料里查看"
-                android:textColor="@color/mine_stamp_item_title_small"
+                android:textColor="@color/mine_stamp_goods_detail_inventory"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

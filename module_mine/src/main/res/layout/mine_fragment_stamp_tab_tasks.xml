@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#FBFCFF"
     android:orientation="vertical"
     android:paddingLeft="16dp"
+    android:background="@color/mine_stamp_center_tab_bg"
     android:paddingRight="16dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mine_stamp_tab_rv_tasks"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/mine_stamp_center_tab_bg" />
 </LinearLayout>

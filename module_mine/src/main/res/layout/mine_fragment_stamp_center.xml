@@ -17,7 +17,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="#F2F3F8"
+        android:background="@color/mine_stamp_stamp_detail_bg"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="53dp"
                 android:text="@string/mine_stamp_center_title"
-                android:textColor="@color/mine_stamp_title"
+                android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
                 android:textSize="22dp"
                 app:layout_constraintStart_toEndOf="@+id/mine_rl_stamp_center_back"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -98,7 +98,6 @@
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:background="#F2F3F8"
             android:elevation="0dp"
             app:elevation="0dp"
             android:layout_height="match_parent">
@@ -106,9 +105,9 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/mine_stamp_center_abl"
                 android:layout_width="match_parent"
-                android:background="#F2F3F8"
                 android:elevation="0dp"
                 app:elevation="0dp"
+                android:background="@color/mine_stamp_stamp_detail_bg"
                 android:layout_height="wrap_content">
 
                 <androidx.cardview.widget.CardView
@@ -117,7 +116,7 @@
                     android:layout_height="154dp"
                     app:cardElevation="0dp"
                     app:cardMaxElevation="0dp"
-                    app:cardBackgroundColor="#F2F3F8"
+                    app:cardBackgroundColor="@color/mine_stamp_stamp_detail_bg"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginRight="16dp"
@@ -167,6 +166,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="40dp"
+                            android:layout_marginLeft="5dp"
                             roll_account="@{account}"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -203,7 +203,7 @@
                     android:layout_height="50dp"
                     android:layout_below="@id/mine_stamp_center_fl"
                     android:layout_marginTop="24dp"
-                    android:background="#F2F3F8"
+                    android:background="@color/mine_stamp_stamp_detail_bg"
                     app:elevation="0dp"
                     app:tabGravity="center"
                     app:tabMinWidth="20dp"

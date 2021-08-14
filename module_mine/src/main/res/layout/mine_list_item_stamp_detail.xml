@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="cardView"
             type="androidx.cardview.widget.CardView" />
+
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel" />
+
         <variable
             name="exChange"
             type="com.mredrock.cyxbs.mine.network.model.stamp.ExChangeDetail" />
@@ -27,6 +30,7 @@
             android:layout_height="22dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
+            android:textColor="@color/mine_stamp_goods_detail_title"
             android:text="@{exChange.wareName}"
             android:textAppearance="@style/mine_stamp_exchange_name"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="17dp"
             android:layout_marginTop="6dp"
-            long2dayTime = "@{exChange.date}"
+            long2dayTime="@{exChange.date}"
+            android:textColor="@color/mine_stamp_goods_detail_inventory"
             android:textAppearance="@style/mine_stamp_exchange_simple_time"
             app:layout_constraintStart_toStartOf="@+id/mine_tv_stamp_exchange_name"
             app:layout_constraintTop_toBottomOf="@+id/mine_tv_stamp_exchange_name" />
@@ -47,7 +52,7 @@
             android:layout_height="21dp"
             app:cardElevation="0dp"
             android:layout_marginLeft="5dp"
-            app:cardBackgroundColor="#E8F0FC"
+            app:cardBackgroundColor="@color/mine_stamp_detail_cv"
             app:cardCornerRadius="11dp"
             android:visibility="@{exChange.collected ? cardView.GONE : cardView.VISIBLE }"
             app:layout_constraintBottom_toBottomOf="@+id/mine_tv_stamp_exchange_name"

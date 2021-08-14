@@ -103,7 +103,6 @@ class StampCenterFragment :
             val customView =
                 tabLayout.newTab().setCustomView(R.layout.mine_item_tablayout_stamp_hint).customView
             val hintIv: ImageView? = customView?.findViewById(R.id.mine_item_tl_hint_iv)
-            val hintTv: TextView? = customView?.findViewById(R.id.mine_item_tl_hint_tv)
             TabLayoutMediator(
                 tabLayout,
                 mBinding.mineStampCenterTlVp
