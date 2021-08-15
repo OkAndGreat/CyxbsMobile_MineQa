@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/mine_tv_goods_detail_dialog_content"
+        android:id="@+id/mine_tv_goods_detail_dialog_content_over"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="21dp"
@@ -19,23 +19,13 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginRight="24dp">
+        android:layout_marginLeft="63dp"
+        android:layout_marginBottom="34dp"
+        android:layout_marginRight="63dp">
 
         <Button
-            android:id="@+id/mine_btn_goods_detail_cancel"
-            android:layout_width="93dp"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_height="40dp"
-            android:background="@drawable/mine_shape_goods_detail_cancel"
-            android:text="取消"
-            android:textAppearance="@style/mine_goods_detail_dialog_cancel" />
-
-        <Button
-            android:id="@+id/mine_btn_goods_detail_sure"
-            android:layout_marginLeft="19dp"
-            android:layout_width="93dp"
+            android:id="@+id/mine_btn_goods_detail_over"
+            android:layout_width="match_parent"
             style="?android:attr/borderlessButtonStyle"
             android:background="@drawable/mine_selector_decoration_detail_btn"
             android:text="确定"

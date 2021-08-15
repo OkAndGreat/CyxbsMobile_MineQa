@@ -47,7 +47,6 @@ class StampChangeDetailRepository private constructor() {
             .doOnErrorWithDefaultErrorHandler { true }
             .safeSubscribeBy(
                 onNext = {
-                    println(it)
                     function.invoke(it.data)
                 },
                 onError = {

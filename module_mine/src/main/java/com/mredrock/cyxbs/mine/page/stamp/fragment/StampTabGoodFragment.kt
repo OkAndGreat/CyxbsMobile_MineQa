@@ -63,8 +63,6 @@ class StampTabGoodFragment : BaseFragment() {
                 layoutAnimation = gridLayoutAnimationController
             }
         }
-        viewModel.loadCenterGoods()
-
         //加载动画
 
         return view

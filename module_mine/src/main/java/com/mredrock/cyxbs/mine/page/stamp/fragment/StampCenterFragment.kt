@@ -158,8 +158,7 @@ class StampCenterFragment :
     override fun initOther() {
         mBinding.mineStampCenterFl.setOnClickListener { viewModel.onClickForToDetailPager() }
         mBinding.mineRlStampCenterBack.onClick { activity?.onBackPressed() }
-
-
+        viewModel.loadCenterGoods()
     }
 
     /**
@@ -199,7 +198,6 @@ class StampCenterFragment :
         }
 
         mBinding.mineStampCenterIconFl.layoutParams = layoutParams
-
     }
 
 }

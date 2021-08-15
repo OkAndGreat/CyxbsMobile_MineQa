@@ -4,16 +4,20 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RadioButton
-import android.widget.Toast
+import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
-import com.mredrock.cyxbs.common.component.CyxbsToast
+import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentGoodsDetailBinding
+import com.mredrock.cyxbs.mine.network.model.stamp.StampGood
 import com.mredrock.cyxbs.mine.page.stamp.adapter.GoodsDetailPicAdapter
 import com.mredrock.cyxbs.mine.page.stamp.customview.SATransformer
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampGoodDetailViewModel
@@ -34,7 +38,7 @@ import java.util.concurrent.TimeUnit
 class StampGoodsDetailFragment :
     BaseDataBindingFragment<MineFragmentGoodsDetailBinding>(R.layout.mine_fragment_goods_detail) {
 
-    private val viewModel:StampGoodDetailViewModel by viewModels()
+    private val viewModel: StampGoodDetailViewModel by viewModels()
 
     //banner当前的item的position
     private var mCurPosition = 0
@@ -43,23 +47,37 @@ class StampGoodsDetailFragment :
     private lateinit var disposable: Disposable
     private val mRadioButtonList = ArrayList<RadioButton>()
 
-    private var mId:Int = 0
+    //传入的商品id
+    private var mId: Int = 0
+
+    //余额
+    private var mAccount :Int = 0
+
+    //商品剩余数量
+    private var mGoodAccount: Int = 0
+
+    //商品价格
+    private var mGood: StampGood = StampGood("", 99999, 0, listOf(), 0, "", "")
 
 
     override fun initView() {
         mId = arguments?.get("id") as Int
         //设置传进的余额
-        val account = arguments?.get("account") as Int ?: 0
-        mBinding.mineTvDecorationRestCount.text = account.toString()
+        mAccount = arguments?.get("account") as Int ?: 0
+        refreshMAccount()
 
         viewModel.good.observe(this, Observer {
             mBinding.mineVp2GoodsPic.adapter = GoodsDetailPicAdapter(it.pic)
             mBinding.stampGood = it
+            mGood = it
         })
 
         viewModel.account.observe(this, Observer {
-            mBinding.mineTvDecorationRestCount.text = it.toString()
+            mGoodAccount = it
+            mBinding.mineStampDecorationInventory.text = "$it"
         })
+
+
 
         viewModel.loadGood(mId)
         //设置vp2的切换动画
@@ -72,18 +90,19 @@ class StampGoodsDetailFragment :
     override fun initData() {
         //图片数量
         viewModel.good.observe(this, Observer {
+//        代码添加radioBtn,拿到数据后得到图片数量数据后代码动态添加RadioButton
+            for (i in it.pic.indices) {
+                val radioBtn = RadioButton(activity)
+                mRadioButtonList.add(radioBtn)
+                val layoutParams = LinearLayout.LayoutParams(6F.dp.toInt(), 6F.dp.toInt())
+                layoutParams.leftMargin = 6F.dp.toInt()
+                radioBtn.setBackgroundResource(R.drawable.mine_selector_decoration_detail_radio_btn)
+                radioBtn.layoutParams = layoutParams
+                mBinding.mineRgGoodsDetail.addView(radioBtn)
+            }
 
         })
-//        代码添加radioBtn,拿到数据后得到图片数量数据后代码动态添加RadioButton
-//        val radioBtn = RadioButton(activity)
-//        mRadioButtonList.add(radioBtn)
-//
-//        val layoutParams = LinearLayout.LayoutParams(6F.dp.toInt(),6F.dp.toInt())
-//        layoutParams.leftMargin = 6F.dp.toInt()
-//        radioBtn.setBackgroundResource(R.drawable.mine_selector_decoration_detail_radio_btn)
-//        radioBtn.layoutParams = layoutParams
-//
-//        mBinding.mineRgGoodsDetail.addView(radioBtn)
+
         //数据加载
 
     }
@@ -100,47 +119,123 @@ class StampGoodsDetailFragment :
 
     @SuppressLint("InflateParams")
     private fun initListener() {
-        //这里处理商品详情界面兑换按钮后被点击后的各种情况
+
+
         mBinding.mineBtnExchange.setOnClickListener {
+
+            //这里处理商品详情界面兑换按钮后被点击后的各种情况
             val builder = AlertDialog.Builder(activity)
             val inflater = LayoutInflater.from(activity)
             //加载出我们自定义的AlertDialog的布局并找到对应的view
             val view1 = inflater.inflate(R.layout.mine_dialog_goods_detail, null)
-            val view2 = inflater.inflate(R.layout.mine_dialog_goods_detail_for_sure, null)
+            val view1Tv =
+                view1.findViewById(R.id.mine_tv_goods_detail_dialog_content) as AppCompatTextView
             val sureBtn = view1.findViewById(R.id.mine_btn_goods_detail_sure) as Button
             val cancelBtn = view1.findViewById(R.id.mine_btn_goods_detail_cancel) as Button
+
+            val view2 = inflater.inflate(R.layout.mine_dialog_goods_detail_for_sure, null)
+            val view2Tv =
+                view2.findViewById(R.id.mine_tv_goods_detail_dialog_content_sure) as AppCompatTextView
             val forSureBtn = view2.findViewById(R.id.mine_btn_goods_detail_for_sure) as Button
             val forCancelBtn = view2.findViewById(R.id.mine_btn_goods_detail_for_cancel) as Button
 
+            val view3 = inflater.inflate(R.layout.mine_dialog_goods_detail_over, null)
+            val view3Tv =
+                view3.findViewById(R.id.mine_tv_goods_detail_dialog_content_over) as AppCompatTextView
+            val overBtn = view3.findViewById(R.id.mine_btn_goods_detail_over) as Button
+
             val dialog = builder.create()
             dialog.window?.setWindowAnimations(R.style.mine_dialog_anim)
+            dialog.setContentView(view1)
             dialog.show()
             val attributes = dialog.window?.attributes
             attributes?.width = 300.dp.toInt()
             attributes?.height = 178.dp.toInt()
             dialog.window?.attributes = attributes
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            //初始化
+            view1Tv.text = "确认要用${mGood.price}邮豆兑换${mGood.title}吗？"
             dialog.window?.setContentView(view1)
 
-            sureBtn.setOnClickListener {
+
+            //这里是不满足购买条件的时候的按钮
+            overBtn.setOnClickListener {
                 dialog.dismiss()
-                dialog.setContentView(view2)
-                dialog.show()
             }
 
+
+            //这里是第一个弹窗的逻辑
+            sureBtn.setOnClickListener {
+                if (mGood.amount > 0) {
+                    if (mAccount > mGood.price) {
+                        LogUtils.d("111111","好家伙")
+                        viewModel.buyGood(mId)
+                    } else {
+                        view3Tv.text = "诶.......邮票不够啊......穷日子真不好过呀QAQ"
+                        dialog.setContentView(view3)
+                        dialog.show()
+                    }
+                } else {
+                    view3Tv.text = "啊欧，手慢了！下次再来吧=.="
+                    dialog.setContentView(view3)
+                    dialog.show()
+                }
+                dialog.dismiss()
+                dialog.setContentView(view1)
+            }
+
+            //这里是第一个弹窗取消购买的按钮
             cancelBtn.setOnClickListener {
                 dialog.dismiss()
             }
 
-            //TODO:在这里处理用户请求服务器购买商品的逻辑
+            //TODO 这里设置装扮
             forSureBtn.setOnClickListener {
-                CyxbsToast.makeText(requireActivity(),"购买成功",Toast.LENGTH_LONG).show()
                 dialog.dismiss()
             }
 
             forCancelBtn.setOnClickListener {
                 dialog.dismiss()
             }
+            if (!viewModel.buyBackMessage.hasActiveObservers()){
+                viewModel.buyBackMessage.observe(this, Observer {
+                    Log.d("111111111",it)
+                    when (it) {
+                        "兑换成功" -> {
+                            //1是实体，0是虚拟
+                            if (mGood.type == 1) {
+                                view3Tv.text = "兑换成功！请在${mGood.life}天内到红岩网校领取哦"
+                                dialog.setContentView(view3)
+                                dialog.show()
+                                mAccount -= mGood.price
+                                refreshMAccount()
+                            } else {
+                                view2Tv.text = "兑换成功！现在就换掉原来的名片吧！"
+                                dialog.setContentView(view2)
+                                dialog.show()
+                                mAccount -= mGood.price
+                                refreshMAccount()
+                            }
+                        }
+                        "reduce goods error" -> {
+                            view3Tv.text = "啊欧，手慢了！下次再来吧=.="
+                            dialog.setContentView(view3)
+                            dialog.show()
+                        }
+                        "Integral not enough" -> {
+                            view3Tv.text = "诶.......邮票不够啊......穷日子真不好过呀QAQ"
+                            dialog.setContentView(view3)
+                            dialog.show()
+                        }
+                        else ->{
+                            dialog.dismiss()
+                        }
+                    }
+                })
+            }
+
+
+
         }
 
         //处理back键点击的交互逻辑
@@ -159,14 +254,7 @@ class StampGoodsDetailFragment :
             object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     mCurPosition = position
-                    when (position) {
-                        0 ->
-                            mBinding.mineRbGoodsDetail0.isChecked = true
-                        1 ->
-                            mBinding.mineRbGoodsDetail1.isChecked = true
-                        2 ->
-                            mBinding.mineRbGoodsDetail2.isChecked = true
-                    }
+                    mRadioButtonList[position].isChecked = true
                 }
             }
         )
@@ -179,4 +267,7 @@ class StampGoodsDetailFragment :
         }
     }
 
+    private fun refreshMAccount(){
+        mBinding.mineTvDecorationRestCount.text = "余额：$mAccount"
+    }
 }

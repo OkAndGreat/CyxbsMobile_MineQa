@@ -260,7 +260,7 @@ interface ApiService {
     fun getGoodDetail(@Query("id") id:Int):Observable<RedrockApiWrapper<StampGood>>
 
     //购买商品
-    @Multipart
+    @FormUrlEncoded
     @POST("/magipoke-intergral/Integral/purchase")
     fun buyGoodById(@Field("id") id:Int):Observable<RedrockApiWrapper<BuyGoodBack>>
 }

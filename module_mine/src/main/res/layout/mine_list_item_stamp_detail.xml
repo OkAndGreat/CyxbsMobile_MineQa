@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="31dp"
-            android:text='@{`-`+ String.valueOf(exChange.amount)}'
+            android:text='@{String.valueOf(exChange.amount)}'
             android:textAppearance="@style/mine_stamp_exchange_count"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

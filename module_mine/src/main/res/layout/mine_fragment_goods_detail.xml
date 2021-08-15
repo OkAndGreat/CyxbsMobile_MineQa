@@ -87,30 +87,7 @@
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="4dp"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/mine_rb_goods_detail_0"
-                    android:layout_width="6dp"
-                    android:layout_height="6dp"
-                    android:layout_marginRight="6dp"
-                    android:background="@drawable/mine_selector_decoration_detail_radio_btn"
-                    android:checked="true" />
-
-                <RadioButton
-                    android:id="@+id/mine_rb_goods_detail_1"
-                    android:layout_width="6dp"
-                    android:layout_height="6dp"
-                    android:layout_marginRight="6dp"
-                    android:background="@drawable/mine_selector_decoration_detail_radio_btn" />
-
-                <RadioButton
-                    android:id="@+id/mine_rb_goods_detail_2"
-                    android:layout_width="6dp"
-                    android:layout_height="6dp"
-                    android:background="@drawable/mine_selector_decoration_detail_radio_btn" />
-
-            </RadioGroup>
+                android:orientation="horizontal"/>
         </androidx.cardview.widget.CardView>
 
 
@@ -177,7 +154,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="12dp"
-            android:text="1、每个实物商品每人限兑换一次，已经兑换的商品不能退货换货也不予折现"
+            android:text="@{stampGood.type == 1 ? @string/mine_stamp_center_good_explain_1 : @string/mine_stamp_center_decoration_explain_1 }"
             android:textAppearance="@style/mine_decoration_detail_rights_detail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_tv_decoration_detail_rights_decoration" />
@@ -187,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="12dp"
-            android:text="2、在法律允许的范围内，本活动的最终解释权归红岩网校工作站所有。"
+            android:text="@{stampGood.type == 1 ? @string/mine_stamp_center_good_explain_2 : @string/mine_stamp_center_decoration_explain_2 }"
             android:textAppearance="@style/mine_decoration_detail_rights_detail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mine_tv_decoration_detail_rights_decoration_detail" />
