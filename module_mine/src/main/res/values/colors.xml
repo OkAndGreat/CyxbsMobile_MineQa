@@ -33,4 +33,8 @@
     <color name="mine_stamp_center_tab_bg">#FBFCFF</color>
 
     <color name="mine_stamp_center_goods_item_left">#B215315B</color>
+
+    <color name="mine_stamp_detail_tab_normal">#CC15315B</color>
+
+    <color name="mine_stamp_detail_tab_selected">#5F75E4</color>
 </resources>

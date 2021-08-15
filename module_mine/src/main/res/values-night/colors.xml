@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="mine_goods_detail_bg">#000000</color>
+
+    <color name="mine_stamp_goods_detail_ripple">#000000</color>
+
+    <color name="mine_stamp_stamp_detail_ripple">#000000</color>
+
+    <color name="mine_stamp_exchange_detail_top_text_color">#DFDFE3</color>
+
+    <color name="mine_stamp_detail_decoration">#27292B</color>
+
+    <color name="mine_stamp_goods_detail_title">#F0F0F2</color>
+
+    <color name="mine_stamp_goods_detail_inventory">#66F0F0F2</color>
+
+    <color name="mine_stamp_goods_detail_des">#CCF0F0F2</color>
+
+    <color name="mine_stamp_good_detail_decoration_detail_Validity">#CCF0F0F2</color>
+
+    <color name="mine_stamp_goods_detail_rights_des">#CCF0F0F2</color>
+
+    <color name="mine_stamp_stamp_detail_bg">#000000</color>
+
+    <color name="mine_stamp_detail_cv">#484848</color>
+
+    <color name="mine_stamp_exchange_common_text">#F0F0F2</color>
+
+    <color name="mine_stamp_center_stamp_bg">#484849</color>
+
+    <color name="mine_stamp_detail_bg">#1D1D1D</color>
+
+    <color name="mine_stamp_center_tab_bg">#1D1D1D</color>
+
+    <color name="mine_stamp_center_goods_item_left">#B2F0F0F2</color>
+
+    <color name="mine_stamp_detail_tab_normal">#CCF0F0F2</color>
+
+    <color name="mine_stamp_detail_tab_selected">#778EFF</color>
+</resources>

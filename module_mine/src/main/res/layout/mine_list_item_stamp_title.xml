@@ -19,7 +19,7 @@
             android:layout_height="30dp"
             android:layout_marginStart="17dp"
             android:text="@{string}"
-            android:textColor="@color/mine_stamp_item_title"
+            android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

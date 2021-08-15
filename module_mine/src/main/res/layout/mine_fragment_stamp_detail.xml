@@ -41,8 +41,8 @@
                 android:layout_height="31dp"
                 android:gravity="center"
                 android:text="@string/mine_stamp_detail"
-                android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
                 android:textAppearance="@style/mine_stamp_exchange_detail"
+                android:textColor="@color/mine_stamp_exchange_detail_top_text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -68,7 +68,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="兑换记录"
-                android:textAppearance="@style/mine_stamp_detail_tab_selected" />
+                android:textAppearance="@style/mine_stamp_detail_tab_selected"
+                android:textColor="@color/mine_stamp_detail_tab_selected" />
 
             <TextView
                 android:id="@+id/mine_tv_stamp_detail_got_note"
@@ -78,7 +79,8 @@
                 android:alpha="0.8"
                 android:gravity="center"
                 android:text="获取记录"
-                android:textAppearance="@style/mine_stamp_detail_tab_normal" />
+                android:textAppearance="@style/mine_stamp_detail_tab_normal"
+                android:textColor="@color/mine_stamp_detail_tab_normal" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.cardview.widget.CardView
@@ -90,8 +92,8 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/mine_vp2_stamp_detail"
                 android:layout_width="match_parent"
-                android:background="@color/mine_stamp_detail_bg"
                 android:layout_height="match_parent"
+                android:background="@color/mine_stamp_detail_bg"
                 android:overScrollMode="never" />
         </androidx.cardview.widget.CardView>
 

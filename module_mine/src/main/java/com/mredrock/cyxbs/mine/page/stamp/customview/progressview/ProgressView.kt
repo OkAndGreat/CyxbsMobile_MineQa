@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
+import com.mredrock.cyxbs.mine.page.stamp.fragment.StampDetailFragment
 import com.mredrock.cyxbs.mine.util.DisplayUtils
 
 /**
@@ -16,12 +17,18 @@ import com.mredrock.cyxbs.mine.util.DisplayUtils
  */
 class ProgressView(context: Context) :
     View(context) {
+    companion object {
+        //是否处于深色模式或者浅色模式的判断值
+        const val DARK_MODE = 0x21
+        const val LIGHT_MODE = 0x11
+    }
+
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     private var mPaintStrokeWidth = 0F
 
     //进度条背景颜色
-    private val bgColor = -0x1e1a18
+    private var bgColor = -0x1e1a18
 
     //动画执行时间
     private val duration = 2000L
@@ -49,9 +56,15 @@ class ProgressView(context: Context) :
 
 
     //初始化画笔的属性
+
     init {
-        mPaintStrokeWidth = DisplayUtils.dp2px(context, 8F).toFloat()
         progressColor = Color.parseColor("#7D8AFF")
+        mPaintStrokeWidth = DisplayUtils.dp2px(context, 8F).toFloat()
+        if (context.applicationContext.resources.configuration.uiMode == StampDetailFragment.DARK_MODE) {
+            bgColor = Color.parseColor("#454545")
+        }
+
+
         //初始化画笔
         paint.apply {
             style = Paint.Style.FILL

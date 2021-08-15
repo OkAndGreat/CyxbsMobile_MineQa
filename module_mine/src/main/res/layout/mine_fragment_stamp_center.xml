@@ -7,9 +7,11 @@
         <variable
             name="viewModel"
             type="com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel" />
+
         <variable
             name="account"
             type="Integer" />
+
         <variable
             name="unGotGood"
             type="Boolean" />
@@ -17,8 +19,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/mine_stamp_stamp_detail_bg"
         android:layout_height="match_parent"
+        android:background="@color/mine_stamp_stamp_detail_bg"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,6 +75,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
                     <ImageView
                         android:id="@+id/mine_stamp_center_icon_iv"
                         android:layout_width="21.23dp"
@@ -98,30 +101,30 @@
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:elevation="0dp"
-            app:elevation="0dp"
-            android:layout_height="match_parent">
+            app:elevation="0dp">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/mine_stamp_center_abl"
                 android:layout_width="match_parent"
-                android:elevation="0dp"
-                app:elevation="0dp"
+                android:layout_height="wrap_content"
                 android:background="@color/mine_stamp_stamp_detail_bg"
-                android:layout_height="wrap_content">
+                android:elevation="0dp"
+                app:elevation="0dp">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/mine_stamp_center_fl"
                     android:layout_width="match_parent"
                     android:layout_height="154dp"
-                    app:cardElevation="0dp"
-                    app:cardMaxElevation="0dp"
-                    app:cardBackgroundColor="@color/mine_stamp_stamp_detail_bg"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginRight="16dp"
                     android:tag="overScroll"
+                    app:cardBackgroundColor="@color/mine_stamp_stamp_detail_bg"
                     app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="0dp"
                     app:layout_scrollFlags="scroll|snap|snapMargins">
 
 
@@ -163,11 +166,11 @@
 
                         <com.mredrock.cyxbs.mine.page.stamp.customview.RollTextView
                             android:id="@+id/mine_stamp_center_nub_rtv"
+                            roll_account="@{account}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="40dp"
                             android:layout_marginLeft="5dp"
-                            roll_account="@{account}"
+                            android:layout_marginTop="40dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -206,18 +209,17 @@
                     android:background="@color/mine_stamp_stamp_detail_bg"
                     app:elevation="0dp"
                     app:tabGravity="center"
-                    app:tabMinWidth="20dp"
-                    app:tabPaddingStart="45dp"
-                    app:tabPaddingEnd="45dp"
                     app:tabIndicator="@drawable/mine_ic_stamp_center_tl_select"
                     app:tabIndicatorColor="@color/common_mine_tab_layout_indicator_color"
                     app:tabIndicatorFullWidth="false"
                     app:tabIndicatorHeight="3dp"
+                    app:tabMinWidth="20dp"
                     app:tabMode="fixed"
-
-                    app:tabTextAppearance="@style/mine_stamp_center_tab_text"
+                    app:tabPaddingEnd="45dp"
+                    app:tabPaddingStart="45dp"
                     app:tabRippleColor="@android:color/transparent"
-                     />
+                    app:tabTextAppearance="@style/mine_stamp_center_tab_text"
+                    app:tabTextColor="@color/mine_stamp_goods_detail_title" />
             </com.google.android.material.appbar.AppBarLayout>
 
             <androidx.cardview.widget.CardView

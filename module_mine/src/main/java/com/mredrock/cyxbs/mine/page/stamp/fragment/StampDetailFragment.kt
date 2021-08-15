@@ -1,6 +1,9 @@
 package com.mredrock.cyxbs.mine.page.stamp.fragment
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.mredrock.cyxbs.mine.R
@@ -17,11 +20,26 @@ import kotlinx.android.synthetic.main.mine_fragment_stamp_detail.*
 class StampDetailFragment :
     BaseDataBindingFragment<MineFragmentStampDetailBinding>(R.layout.mine_fragment_stamp_detail) {
     companion object {
+        //滑动tab时tab改变的值
         const val TO_CHANGE_SIZE = 2
         const val TO_CHANGE_ALPHA = 0.2
-        const val NORMAL_TEXT_COLOR = -15388325
-        const val SELECTED_TEXT_COLOR = -10521116
+
+        //是否处于深色模式或者浅色模式的判断值
+        const val DARK_MODE = 0x21
+        const val LIGHT_MODE = 0x11
+
+        //浅色模式下俩个tab所对应的颜色Int值
+        const val NORMAL_TEXT_COLOR_LIGHT = -15388325
+        const val SELECTED_TEXT_COLOR_LIGHT = -10521116
+
+        //深色模式下俩个tab所对应的颜色Int值
+        const val NORMAL_TEXT_COLOR_DARK = -856624910
+        const val SELECTED_TEXT_COLOR_DARK = -8941825
     }
+
+
+    private var NORMAL_TEXT_COLOR = 0
+    private var SELECTED_TEXT_COLOR = 0
 
     private var mCurPosition = 0
 
@@ -29,13 +47,27 @@ class StampDetailFragment :
         mBinding.mineVp2StampDetail.adapter = activity?.let { StampDetailVp2Adapter(it) }
 
         initListener()
-        initVp2CallBack()
+        initVp2()
     }
 
     override fun initView() {
     }
 
-    private fun initVp2CallBack() {
+    private fun initVp2() {
+
+        //根据是否是深色模式进行适配
+        if (requireActivity().applicationContext.resources.configuration.uiMode == DARK_MODE) {
+            NORMAL_TEXT_COLOR = NORMAL_TEXT_COLOR_DARK
+            SELECTED_TEXT_COLOR = SELECTED_TEXT_COLOR_DARK
+
+        }
+        if (requireActivity().applicationContext.resources.configuration.uiMode == LIGHT_MODE) {
+            NORMAL_TEXT_COLOR = NORMAL_TEXT_COLOR_LIGHT
+            SELECTED_TEXT_COLOR = SELECTED_TEXT_COLOR_LIGHT
+        }
+        //通过进入邮票明细页面默认同时加载兑换记录页面和获取记录页面
+        //vp2默认懒加载，这会导致黑夜模式下从兑换记录页面切换到获取记录页面时获取记录获取数据导致闪烁
+        mine_vp2_stamp_detail.offscreenPageLimit = 3
         //监听ViewPager2来改变tab的颜色和大小
         mine_vp2_stamp_detail.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
