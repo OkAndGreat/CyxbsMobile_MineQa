@@ -7,6 +7,9 @@
 
     <color name="mine_stamp_stamp_detail_ripple">#000000</color>
 
+    <color name="mine_stamp_stamp_good_detail_bg">#1C1C1C</color>
+    <color name="mine_stamp_stamp_good_detail_ok_btn_bg">#1C1C1C</color>
+
     <color name="mine_stamp_exchange_detail_top_text_color">#DFDFE3</color>
 
     <color name="mine_stamp_detail_decoration">#27292B</color>

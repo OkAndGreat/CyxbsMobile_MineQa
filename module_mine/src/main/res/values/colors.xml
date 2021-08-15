@@ -11,6 +11,8 @@
     <color name="mine_stamp_item_title_small">#6615315B</color>
     <color name="mine_stamp_item_title">#15315B</color>
     <color name="mine_stamp_background">#fbfcff</color>
+    <color name="mine_stamp_stamp_good_detail_bg">#FFFFFF</color>
+    <color name="mine_stamp_stamp_good_detail_ok_btn_bg">#C3D4EE</color>
 
     <color name="mine_goods_detail_bg">#FFFFFF</color>
     <color name="mine_stamp_goods_detail_ripple">#FFFFFF</color>

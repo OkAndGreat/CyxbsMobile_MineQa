@@ -22,11 +22,14 @@ class StampChangeViewModel : BaseViewModel() {
     private var _getChangeDetails = MutableLiveData<List<GetChangeDetail>>()
     val getChangeDetails: LiveData<List<GetChangeDetail>>
         get() = _getChangeDetails
+    private val getChangeDetailList = ArrayList<GetChangeDetail>()
+
 
     //更新获取明细
-    fun loadGetChangeDetails() {
-        repository.getGetChangeDetails {
-            _getChangeDetails.postValue(it)
+    fun loadGetChangeDetails(page:Int) {
+        repository.getGetChangeDetails(page) {
+            getChangeDetailList.addAll(it)
+            _getChangeDetails.postValue(getChangeDetailList)
         }
 
     }
@@ -34,7 +37,6 @@ class StampChangeViewModel : BaseViewModel() {
     //更新兑换明细
     fun loadExChangeDetails() {
         repository.getExChangeDetails {
-            Log.d("StampChangeViewModel","更新成功,${it[0].amount}")
             _exChangeDetails.postValue(it)
         }
 

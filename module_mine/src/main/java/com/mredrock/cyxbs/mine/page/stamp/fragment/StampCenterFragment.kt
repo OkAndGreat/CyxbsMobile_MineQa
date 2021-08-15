@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.common.utils.extensions.onClick
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentStampCenterBinding
@@ -53,6 +54,9 @@ class StampCenterFragment :
     //对右上角的图形的宽度进行一个初始化的记录
     private var baseIconWidth = 0
 
+    //appBarLayout是否展开
+    private var mShowAbl: Boolean = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //以下代码不能写在onCreateView中，具体原因和Fragment的生命周期有关
@@ -86,11 +90,17 @@ class StampCenterFragment :
             mBinding.unGotGood = it
         })
         savedInstanceState?.putBoolean("mShouldShowBlueDot", mShouldShowBlueDot)
+        //获得状态
+        LogUtils.d("1111","onCreate")
     }
 
+    override fun onResume() {
+        LogUtils.d("1111","onResume")
+        mBinding.mineStampCenterAbl.setExpanded(mShowAbl)
+        super.onResume()
+    }
 
     override fun initView() {
-
         if (fragmentList.size == 0) {
             fragmentList.add(StampTabGoodFragment())
             fragmentList.add(StampTabTaskFragment())
@@ -144,9 +154,9 @@ class StampCenterFragment :
         //对上方的动画进行监听
         mBinding.mineStampCenterAbl.apply {
             addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
-                Log.d(TAG, "滑动 $verticalOffset 滑动最大值${mBinding.mineStampCenterFl.height}")
                 mBinding.mineStampCenterFl.apply {
                     changeAnim(this, this.height + verticalOffset, this.height)
+                    mShowAbl = isExpanded(mBinding.mineStampCenterFl.height, verticalOffset)
                 }
             })
         }
@@ -176,13 +186,12 @@ class StampCenterFragment :
         view.alpha = ratio
 
 
-
-
-        Log.d(TAG, "offset $offset maxHeight $maxHeight ratio $ratio")
         //右上角动画
         //这里的if主要是进行边界值判断，发现width为0的时候就会填充边界
         if (ratio != 0f && baseIconWidth == 0 && offset != maxHeight) {
-            baseIconWidth = mBinding.mineStampCenterIconFl.width
+            mBinding.mineStampCenterIconFl.measure(View.MeasureSpec.UNSPECIFIED,
+                View.MeasureSpec.UNSPECIFIED)
+            baseIconWidth = mBinding.mineStampCenterIconFl.measuredWidth
         }
         val layoutParams = mBinding.mineStampCenterIconFl.layoutParams
         mBinding.mineStampCenterIconFl.width.let {
@@ -199,4 +208,10 @@ class StampCenterFragment :
         mBinding.mineStampCenterIconFl.layoutParams = layoutParams
     }
 
+    fun isExpanded(scrollRange: Int, verticalOffset: Int): Boolean {
+        if (verticalOffset == 0) {
+            //展开状态
+            return true;
+        } else return scrollRange < verticalOffset
+    }
 }

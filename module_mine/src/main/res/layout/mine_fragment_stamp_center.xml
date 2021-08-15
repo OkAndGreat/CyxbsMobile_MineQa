@@ -58,7 +58,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mine_stamp_center_icon_fl"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="27dp"
                 android:background="@drawable/mine_stamp_center_icon_fl_background"
                 app:layout_constraintBottom_toBottomOf="@+id/mine_stamp_center_title_tv"
@@ -74,6 +74,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="3dp"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
@@ -81,7 +83,6 @@
                         android:layout_width="21.23dp"
                         android:layout_height="21.23dp"
                         android:layout_gravity="center_vertical"
-
                         android:src="@drawable/mine_ic_stamp" />
 
                     <TextView

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="270dp"
     android:layout_height="178dp"
     android:paddingLeft="10dp"
@@ -8,30 +10,39 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mine_tv_goods_detail_dialog_content_over"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="21dp"
+        android:layout_width="226dp"
+        android:layout_height="48dp"
         android:layout_marginTop="34dp"
-        android:layout_marginRight="18dp"
         android:text="确认要用100邮票兑换PM名片吗？"
-        android:textAppearance="@style/mine_goods_detail_dialog_ps" />
+        android:textAppearance="@style/mine_goods_detail_dialog_ps"
+        app:layout_constraintBottom_toTopOf="@+id/mine_linearlayoutcompat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="63dp"
+        android:id="@+id/mine_linearlayoutcompat"
+        android:layout_width="146dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="63dp"
         android:layout_marginBottom="34dp"
-        android:layout_marginRight="63dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <Button
             android:id="@+id/mine_btn_goods_detail_over"
-            android:layout_width="match_parent"
             style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:background="@drawable/mine_selector_decoration_detail_btn"
             android:text="确定"
-            android:textAppearance="@style/mine_goods_detail_dialog_sure"
-            android:layout_height="40dp" />
+            android:textAppearance="@style/mine_goods_detail_dialog_sure" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

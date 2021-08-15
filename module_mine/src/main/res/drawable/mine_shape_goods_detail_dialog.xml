@@ -4,6 +4,6 @@
 
     <corners android:radius="18dp"/>
 
-    <solid android:color="@color/common_grades_activity_tl_white"/>
+    <solid android:color="@color/mine_stamp_stamp_good_detail_bg"/>
 
 </shape>

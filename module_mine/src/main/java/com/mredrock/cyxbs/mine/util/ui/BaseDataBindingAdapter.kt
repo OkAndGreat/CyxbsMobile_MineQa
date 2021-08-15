@@ -7,7 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.*
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.mredrock.cyxbs.mine.page.stamp.adapter.GetChangeDiffUtil
 
 /**
  * @author xiao
@@ -25,9 +27,17 @@ abstract class BaseDataBindingAdapter<M,DB: ViewDataBinding>
     private val lifecycleOwner: LifecycleOwner
     ):
     RecyclerView.Adapter<BaseDataBindingAdapter.BaseDataBindingViewHolder>() {
+    private var mItems = items.value
+    private var firstInto = true
     init {
-        items.observe(lifecycleOwner, Observer{
-            notifyDataSetChanged()
+        items.observe(lifecycleOwner, Observer{ newList ->
+            if (firstInto) {
+                notifyDataSetChanged()
+                firstInto = false
+            }
+            mItems?.let {
+                DiffUtil.calculateDiff(GetChangeDiffUtil(it,newList)).dispatchUpdatesTo(this)
+            }
         })
 
     }

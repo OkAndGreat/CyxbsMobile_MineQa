@@ -2,8 +2,10 @@ package com.mredrock.cyxbs.mine.page.stamp.fragment
 
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentStampGetDetailBinding
+import com.mredrock.cyxbs.mine.page.stamp.adapter.EndlessRecyclerOnScrollListener
 import com.mredrock.cyxbs.mine.page.stamp.adapter.StampGetChangeAdapter
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
@@ -14,9 +16,16 @@ class StampGetDetailListFragment :
     private val viewModel: StampChangeViewModel by activityViewModels()
 
     override fun initView() {
-        mBinding.mineRvStampGetDetail.layoutManager = LinearLayoutManager(activity)
+        val linearLayoutManager = LinearLayoutManager(activity)
+
+        mBinding.mineRvStampGetDetail.addOnScrollListener(object : EndlessRecyclerOnScrollListener(linearLayoutManager){
+            override fun onLoadMore(currentPage: Int) {
+                viewModel.loadGetChangeDetails(currentPage)
+            }
+        })
+        mBinding.mineRvStampGetDetail.layoutManager = linearLayoutManager
         mBinding.mineRvStampGetDetail.adapter = StampGetChangeAdapter(viewModel, this)
-        viewModel.loadGetChangeDetails()
+        viewModel.loadGetChangeDetails(1)
     }
 
     override fun initData() {

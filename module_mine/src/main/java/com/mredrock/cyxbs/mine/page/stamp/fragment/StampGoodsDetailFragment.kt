@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.mredrock.cyxbs.common.utils.LogUtils
 import com.mredrock.cyxbs.mine.R
@@ -40,6 +41,7 @@ class StampGoodsDetailFragment :
 
     private val viewModel: StampGoodDetailViewModel by viewModels()
 
+
     //banner当前的item的position
     private var mCurPosition = 0
 
@@ -51,7 +53,7 @@ class StampGoodsDetailFragment :
     private var mId: Int = 0
 
     //余额
-    private var mAccount :Int = 0
+    private var mAccount: Int = 0
 
     //商品剩余数量
     private var mGoodAccount: Int = 0
@@ -77,9 +79,18 @@ class StampGoodsDetailFragment :
             mBinding.mineStampDecorationInventory.text = "$it"
         })
 
-
+        viewModel.isRefresh.observe(this, Observer {
+            println("111 $it")
+            mBinding.mineFlGoodsSf.isRefreshing = false
+        })
 
         viewModel.loadGood(mId)
+
+        mBinding.mineFlGoodsSf.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
+            override fun onRefresh() {
+                viewModel.loadGood(mId)
+            }
+        })
         //设置vp2的切换动画
         mBinding.mineVp2GoodsPic.setPageTransformer(SATransformer())
         initListener()
@@ -166,9 +177,10 @@ class StampGoodsDetailFragment :
 
             //这里是第一个弹窗的逻辑
             sureBtn.setOnClickListener {
+                dialog.dismiss()
                 if (mGood.amount > 0) {
                     if (mAccount > mGood.price) {
-                        LogUtils.d("111111","好家伙")
+                        LogUtils.d("111111", "好家伙")
                         viewModel.buyGood(mId)
                     } else {
                         view3Tv.text = "诶.......邮票不够啊......穷日子真不好过呀QAQ"
@@ -180,8 +192,7 @@ class StampGoodsDetailFragment :
                     dialog.setContentView(view3)
                     dialog.show()
                 }
-                dialog.dismiss()
-                dialog.setContentView(view1)
+
             }
 
             //这里是第一个弹窗取消购买的按钮
@@ -197,9 +208,9 @@ class StampGoodsDetailFragment :
             forCancelBtn.setOnClickListener {
                 dialog.dismiss()
             }
-            if (!viewModel.buyBackMessage.hasActiveObservers()){
+            if (!viewModel.buyBackMessage.hasActiveObservers()) {
                 viewModel.buyBackMessage.observe(this, Observer {
-                    Log.d("111111111",it)
+                    Log.d("111111111", it)
                     when (it) {
                         "兑换成功" -> {
                             //1是实体，0是虚拟
@@ -227,13 +238,12 @@ class StampGoodsDetailFragment :
                             dialog.setContentView(view3)
                             dialog.show()
                         }
-                        else ->{
+                        else -> {
                             dialog.dismiss()
                         }
                     }
                 })
             }
-
 
 
         }
@@ -267,7 +277,7 @@ class StampGoodsDetailFragment :
         }
     }
 
-    private fun refreshMAccount(){
+    private fun refreshMAccount() {
         mBinding.mineTvDecorationRestCount.text = "余额：$mAccount"
     }
 }

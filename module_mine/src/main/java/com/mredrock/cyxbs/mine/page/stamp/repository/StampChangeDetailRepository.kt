@@ -25,7 +25,6 @@ class StampChangeDetailRepository private constructor() {
         val instance = StampChangeDetailRepository()
     }
 
-
     fun getExChangeDetails(function: (List<ExChangeDetail>) -> Unit) = TestRetrofit.testRetrofit
         .getExChangeInfo()
         .setSchedulers()
@@ -41,8 +40,8 @@ class StampChangeDetailRepository private constructor() {
         )
 
 
-    fun getGetChangeDetails(function: (List<GetChangeDetail>) -> Unit) =
-        TestRetrofit.testRetrofit.getGetChangeInfo(1, 10)
+    fun getGetChangeDetails(page:Int,function: (List<GetChangeDetail>) -> Unit) =
+        TestRetrofit.testRetrofit.getGetChangeInfo(page, 15)
             .setSchedulers()
             .doOnErrorWithDefaultErrorHandler { true }
             .safeSubscribeBy(
