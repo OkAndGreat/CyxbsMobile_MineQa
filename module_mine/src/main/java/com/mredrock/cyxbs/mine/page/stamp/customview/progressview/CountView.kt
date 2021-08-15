@@ -162,6 +162,12 @@ class CountView(context: Context) : View(context) {
         canvas.drawText("   / $mMaxCount", mTextPoints[3].x, mTextPoints[3].y, mTextPaint)
     }
 
+    fun setCurCount(count: Int) {
+        if (count != mCount) {
+            calculateChangeNum(count - mCount)
+        }
+    }
+
     /**
      * 此方法用来改变数字
      * 只能增加，不能减少

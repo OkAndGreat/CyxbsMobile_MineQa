@@ -1,14 +1,12 @@
 package com.mredrock.cyxbs.mine.page.stamp.fragment
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -20,11 +18,9 @@ import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineFragmentStampCenterBinding
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.util.getDateDay
+import com.mredrock.cyxbs.mine.util.noOpDelegate
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingFragment
 import com.mredrock.cyxbs.mine.util.ui.StampTabPageAdapter
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import java.util.concurrent.TimeUnit
 
 /**
  * 邮票中心 主Fragment
@@ -118,22 +114,29 @@ class StampCenterFragment :
                 }
             }.attach()
             if (!mShouldShowBlueDot) {
-                hintIv?.visibility = GONE
+                hintIv?.visibility = INVISIBLE
             }
-            tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+
+            tabLayout.addOnTabSelectedListener(object :
+                TabLayout.OnTabSelectedListener by noOpDelegate() {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     if (tab?.position == 1) {
+                        //让小蓝点消失时alpha值逐渐从1降低到0
+                        if (mShouldShowBlueDot) {
+                            val hintIvAnim = ValueAnimator.ofFloat(1F, 0F)
+                            hintIvAnim.duration = 500
+                            hintIvAnim.start()
+                            hintIvAnim.addUpdateListener {
+                                val fl = it.animatedValue as Float
+                                //ru
+                                if (fl == 0F) {
+                                    hintIv?.visibility = INVISIBLE
+                                }
+                                hintIv?.alpha = fl
+                            }
+                        }
                         mShouldShowBlueDot = false
-                        hintIv?.visibility = GONE
                     }
-                }
-
-                override fun onTabUnselected(tab: TabLayout.Tab?) {
-
-                }
-
-                override fun onTabReselected(tab: TabLayout.Tab?) {
-
                 }
             })
         }

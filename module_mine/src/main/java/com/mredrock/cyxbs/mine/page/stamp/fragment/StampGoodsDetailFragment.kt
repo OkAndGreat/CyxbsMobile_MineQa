@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RadioButton
-import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -51,7 +50,10 @@ class StampGoodsDetailFragment :
     private var mId: Int = 0
 
     //余额
-    private var mAccount :Int = 0
+    private var mAccount: Int = 0
+
+    //图片的数量，不能为0，否则可能banner轮播会出现除0错误
+    private var mPicCount = 1
 
     //商品剩余数量
     private var mGoodAccount: Int = 0
@@ -63,7 +65,7 @@ class StampGoodsDetailFragment :
     override fun initView() {
         mId = arguments?.get("id") as Int
         //设置传进的余额
-        mAccount = arguments?.get("account") as Int ?: 0
+        mAccount = arguments?.get("account") as Int
         refreshMAccount()
 
         viewModel.good.observe(this, Observer {
@@ -77,8 +79,6 @@ class StampGoodsDetailFragment :
             mBinding.mineStampDecorationInventory.text = "$it"
         })
 
-
-
         viewModel.loadGood(mId)
         //设置vp2的切换动画
         mBinding.mineVp2GoodsPic.setPageTransformer(SATransformer())
@@ -90,20 +90,22 @@ class StampGoodsDetailFragment :
     override fun initData() {
         //图片数量
         viewModel.good.observe(this, Observer {
-//        代码添加radioBtn,拿到数据后得到图片数量数据后代码动态添加RadioButton
-            for (i in it.pic.indices) {
-                val radioBtn = RadioButton(activity)
-                mRadioButtonList.add(radioBtn)
-                val layoutParams = LinearLayout.LayoutParams(6F.dp.toInt(), 6F.dp.toInt())
-                layoutParams.leftMargin = 6F.dp.toInt()
-                radioBtn.setBackgroundResource(R.drawable.mine_selector_decoration_detail_radio_btn)
-                radioBtn.layoutParams = layoutParams
-                mBinding.mineRgGoodsDetail.addView(radioBtn)
+            //代码添加radioBtn,拿到数据后得到图片数量数据后代码动态添加RadioButton,要求图片数量大于1张
+            if (it.pic.size > 1) {
+                mPicCount = 0
+                for (i in it.pic.indices) {
+                    val radioBtn = RadioButton(activity)
+                    mRadioButtonList.add(radioBtn)
+                    val layoutParams = LinearLayout.LayoutParams(6F.dp.toInt(), 6F.dp.toInt())
+                    layoutParams.leftMargin = 6F.dp.toInt()
+                    radioBtn.setBackgroundResource(R.drawable.mine_selector_decoration_detail_radio_btn)
+                    radioBtn.layoutParams = layoutParams
+                    mBinding.mineRgGoodsDetail.addView(radioBtn)
+                    mPicCount++
+                }
             }
-
         })
 
-        //数据加载
 
     }
 
@@ -112,9 +114,13 @@ class StampGoodsDetailFragment :
         disposable = Observable.interval(3000, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                mBinding.mineVp2GoodsPic.setCurrentItem((mCurPosition + 1) % 3, true)
+                mBinding.mineVp2GoodsPic.setCurrentItem((mCurPosition + 1) % mPicCount, true)
             }
 
+        //如果图片只有一张,关闭RX流
+        if (mPicCount == 1) {
+            disposable.dispose()
+        }
     }
 
     @SuppressLint("InflateParams")
@@ -168,7 +174,7 @@ class StampGoodsDetailFragment :
             sureBtn.setOnClickListener {
                 if (mGood.amount > 0) {
                     if (mAccount > mGood.price) {
-                        LogUtils.d("111111","好家伙")
+                        LogUtils.d("111111", "好家伙")
                         viewModel.buyGood(mId)
                     } else {
                         view3Tv.text = "诶.......邮票不够啊......穷日子真不好过呀QAQ"
@@ -197,9 +203,9 @@ class StampGoodsDetailFragment :
             forCancelBtn.setOnClickListener {
                 dialog.dismiss()
             }
-            if (!viewModel.buyBackMessage.hasActiveObservers()){
+            if (!viewModel.buyBackMessage.hasActiveObservers()) {
                 viewModel.buyBackMessage.observe(this, Observer {
-                    Log.d("111111111",it)
+                    Log.d("111111111", it)
                     when (it) {
                         "兑换成功" -> {
                             //1是实体，0是虚拟
@@ -227,13 +233,12 @@ class StampGoodsDetailFragment :
                             dialog.setContentView(view3)
                             dialog.show()
                         }
-                        else ->{
+                        else -> {
                             dialog.dismiss()
                         }
                     }
                 })
             }
-
 
 
         }
@@ -254,7 +259,9 @@ class StampGoodsDetailFragment :
             object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     mCurPosition = position
-                    mRadioButtonList[position].isChecked = true
+                    if (mPicCount > 1) {
+                        mRadioButtonList[position].isChecked = true
+                    }
                 }
             }
         )
@@ -267,7 +274,7 @@ class StampGoodsDetailFragment :
         }
     }
 
-    private fun refreshMAccount(){
+    private fun refreshMAccount() {
         mBinding.mineTvDecorationRestCount.text = "余额：$mAccount"
     }
 }

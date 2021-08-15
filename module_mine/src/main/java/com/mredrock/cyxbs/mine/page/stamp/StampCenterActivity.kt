@@ -1,8 +1,9 @@
 package com.mredrock.cyxbs.mine.page.stamp
 
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -10,12 +11,13 @@ import androidx.lifecycle.Observer
 import com.mredrock.cyxbs.common.ui.BaseActivity
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineActivityStampeBinding
-import com.mredrock.cyxbs.mine.page.stamp.fragment.StampGoodsDetailFragment
-import com.mredrock.cyxbs.mine.page.stamp.fragment.StampDetailFragment
 import com.mredrock.cyxbs.mine.page.stamp.fragment.StampCenterFragment
+import com.mredrock.cyxbs.mine.page.stamp.fragment.StampDetailFragment
 import com.mredrock.cyxbs.mine.page.stamp.fragment.StampExchangeFragment
+import com.mredrock.cyxbs.mine.page.stamp.fragment.StampGoodsDetailFragment
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampChangeViewModel
+import kotlinx.android.synthetic.main.mine_activity_stampe.*
 
 //邮票中心界面
 class StampCenterActivity : BaseActivity() {
@@ -27,6 +29,9 @@ class StampCenterActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.mine_activity_stampe)
+        Handler().postDelayed({
+            mine_stamp_center_fragment.visibility = View.VISIBLE
+        }, 300)
         initView()
     }
 
@@ -38,8 +43,8 @@ class StampCenterActivity : BaseActivity() {
             goodsDetailFragment.arguments
             toFragmentForAnim((goodsDetailFragment).apply {
                 val bundle = Bundle()
-                stampViewModel.userAccount.value?.let{
-                    bundle.putInt("account",it)
+                stampViewModel.userAccount.value?.let {
+                    bundle.putInt("account", it)
                 }
                 bundle.putInt("id", it)
                 this.arguments = bundle

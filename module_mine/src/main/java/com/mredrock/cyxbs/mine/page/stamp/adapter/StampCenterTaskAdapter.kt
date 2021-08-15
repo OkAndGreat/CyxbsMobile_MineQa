@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.mine.page.stamp.adapter
 
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import com.mredrock.cyxbs.mine.R
 import com.mredrock.cyxbs.mine.databinding.MineListItemStampTaskBinding
@@ -8,6 +9,7 @@ import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
 import com.mredrock.cyxbs.mine.page.stamp.viewModel.StampCenterViewModel
 import com.mredrock.cyxbs.mine.util.ui.BaseDataBindingTitleAdapter
 
+private const val TAG = "StampCenterTaskAdapter"
 class StampCenterTaskAdapter(
     viewModel: StampCenterViewModel,
     lifecycleOwner: LifecycleOwner,
@@ -42,6 +44,7 @@ class StampCenterTaskAdapter(
         position: Int
     ) {
         //进度条自定义view设置值
+        Log.d(TAG, "onBindItem1: CurCount-->${item.doneAmount}  MaxCount-->${item.totalAmount}")
         mBinding?.mineListItemStampPl?.post { mBinding.mineListItemStampPl.setCurCount(item.doneAmount) }
         mBinding?.mineListItemStampPl?.setMaxCount(item.totalAmount)
         mBinding?.task = item
