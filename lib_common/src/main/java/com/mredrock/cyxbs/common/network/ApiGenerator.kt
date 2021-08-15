@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.common.network
 
-import android.util.Log
 import android.util.SparseArray
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -27,14 +26,13 @@ import java.util.concurrent.TimeUnit
 /**
  * Created by AceMurder on 2018/1/24.
  */
-private const val TAG = "ApiGenerator"
 object ApiGenerator {
     private const val DEFAULT_TIME_OUT = 30
 
     private var retrofit: Retrofit //统一添加了token到header
     private var commonRetrofit: Retrofit // 未添加token到header
 
-    private var token = "eyJEYXRhIjp7ImdlbmRlciI6IueUtyIsInN0dV9udW0iOiIyMDE5MjEwNDMyIn0sIkRvbWFpbiI6Im1hZ2lwb2tlIiwiUmVkaWQiOiJjNjNjODkwY2JjMmNlYjZlMTc2MDBmNjNkM2MxM2IwM2M3ZDA2ODhhIiwiZXhwIjoiNzM5ODcyMDI0NyIsImlhdCI6IjE2Mjg5MDg5OTQiLCJzdWIiOiJ3ZWIifQ==.g4G5bqechwaeYcu4mdEH6QPd30IM4y5Pj4OvpAPPXwUrePQ3n1asZo6KWjzVTgT9sZU1/l3eSTwjDCpu4HzuOFnN4GfSksFByBKKFZjdbpiCX4fzj+vhzmcpaNiLLYoswtDxdtsoGuJWDzpSai8UOYBYw9q5eQ+52qV3x+VGLlUd5hdYejrgNUD7CuOEq21KlQPkv3xvFkcjjKwZYOss0wgsuIQb9e7MOHgF91F8f3e9olZYTtGon7h1eDblnYUmA49JXQb5AmdlUZ6orCtbd86zvEz1EAIIcChlX+0kZBdILwSGaWvVusdFkqOkfzM1skA/JMJCU25Pws9XtFRezw=="
+    private var token = ""
     private var refreshToken = ""
     private val retrofitMap by lazy { SparseArray<Retrofit>() }
 
@@ -48,7 +46,7 @@ object ApiGenerator {
         accountService.getVerifyService().addOnStateChangedListener {
             when (it) {
                 IUserStateService.UserState.LOGIN, IUserStateService.UserState.REFRESH -> {
-//                    token = accountService.getUserTokenService().getToken()
+                    token = accountService.getUserTokenService().getToken()
                     refreshToken = accountService.getUserTokenService().getRefreshToken()
                 }
                 else -> {
@@ -56,7 +54,7 @@ object ApiGenerator {
                 }
             }
         }
-//        token = accountService.getUserTokenService().getToken()
+        token = accountService.getUserTokenService().getToken()
         refreshToken = accountService.getUserTokenService().getRefreshToken()
         LogUtils.d("tokenTag", "token = $token")
         LogUtils.d("tokenTag", "refresh token = $refreshToken")
@@ -196,7 +194,7 @@ object ApiGenerator {
                  */
                 when {
                     refreshToken.isEmpty() || token.isEmpty() -> {
-//                        token = ServiceManager.getService(IAccountService::class.java).getUserTokenService().getToken()
+                        token = ServiceManager.getService(IAccountService::class.java).getUserTokenService().getToken()
                         refreshToken = ServiceManager.getService(IAccountService::class.java).getUserTokenService().getRefreshToken()
                         if (isTokenExpired()) {
                             checkRefresh(it, token)
@@ -278,14 +276,12 @@ object ApiGenerator {
             return response
         }
     }
-    //TODO
+
     //检查token是否过期
-    private fun isTokenExpired() = false
-//        ServiceManager.getService(IAccountService::class.java).getVerifyService().isExpired()
+    private fun isTokenExpired() = ServiceManager.getService(IAccountService::class.java).getVerifyService().isExpired()
 
     //是否是游客模式
-    private fun isTouristMode() = false
-//        ServiceManager.getService(IAccountService::class.java).getVerifyService().isTouristMode()
+    private fun isTouristMode() = ServiceManager.getService(IAccountService::class.java).getVerifyService().isTouristMode()
 
     class BackupInterceptor : Interceptor {
 

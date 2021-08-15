@@ -60,14 +60,22 @@ class StampCenterRepository private constructor() {
                             }
                         }
                     }
-                    goods.invoke(allCenterGoodList[0])
-                    decorations.invoke(allCenterGoodList[1])
+                    goods.invoke(allCenterGoodList[1])
+                    decorations.invoke(allCenterGoodList[0])
 
-                    var centerTaskList = ArrayList<StampTask>()
+                    val centerTaskList = ArrayList<StampTask>()
+                    val centerTaskTempList = ArrayList<StampTask>()
                     val allCenterTaskList = ArrayList<ArrayList<StampTask>>(2)
                     allCenterTaskList.add(ArrayList())
                     allCenterTaskList.add(ArrayList())
-                    centerTaskList.addAll(it.data.tasks)
+                    it.data.tasks.forEach {
+                        if (it.totalAmount == it.doneAmount) {
+                            centerTaskTempList.add(it)
+                        } else {
+                            centerTaskList.add(it)
+                        }
+                    }
+                    centerTaskList.addAll(centerTaskTempList)
                     //通过type将他们分类
                     centerTaskList.forEach {
                         when (it.type) {
@@ -85,7 +93,7 @@ class StampCenterRepository private constructor() {
                     unGotGood.invoke(it.data.enterToday)
                 },
                 onError = {
-                    Log.d("StampCenterRepository",it.toString())
+                    Log.d("StampCenterRepository", it.toString())
                     BaseApp.context.toast("请求异常:${it}")
                 }
             )

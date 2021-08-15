@@ -24,7 +24,6 @@ class StampGoodDetailViewModel : BaseViewModel() {
     private var _buyBackMessage = MutableLiveData<String>()
     val buyBackMessage: LiveData<String>
         get() = _buyBackMessage
-
     fun loadGood(id: Int) {
        repository.getGoodDetail(id){
            _good.postValue(it)
@@ -44,4 +43,8 @@ class StampGoodDetailViewModel : BaseViewModel() {
         })
     }
 
+    fun clearGoodBuyInfo(){
+        _buyBackMessage.value = "1"
+        println(buyBackMessage.value)
+    }
 }

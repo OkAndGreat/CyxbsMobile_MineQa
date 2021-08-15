@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class BuyGoodBack(
     //任务列表
     @SerializedName("amount")
-    val amount : Int,
+    val amount: Int,
     //商品列表
     @SerializedName("msg")
-    val msg : String
+    val msg: String
 )

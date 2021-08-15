@@ -141,6 +141,10 @@
     <string name="mine_decoration_detail">装扮详情</string>
     <string name="mine_decoration_detail_right">权益说明</string>
     <string name="mine_stamp_center_un_got_good">你还有待领取的商品，请尽快领取</string>
+    <string name="mine_stamp_center_good_explain_1">1、每个实物商品每人限兑换一次，已经兑换的商品不能退货换货也不予折现</string>
+    <string name="mine_stamp_center_good_explain_2">2、在法律允许的范围内，本活动的最终解释权归红岩网校工作站所有。</string>
+    <string name="mine_stamp_center_decoration_explain_1">1、虚拟商品版权归红岩网校工作站所有。</string>
+    <string name="mine_stamp_center_decoration_explain_2">2、在法律允许的范围内，本活动的最终解释权归红岩网校工作站所有。</string>
 
 
 </resources>
