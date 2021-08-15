@@ -77,7 +77,7 @@ class ProgressLayout(context: Context, attrs: AttributeSet?) :
     //即  0  /  maxCount
     fun setCurCount(Count: Int) {
         mProgressView.setCurCount(Count)
-        mCountView.calculateChangeNum(Count)
+        mCountView.setCurCount(Count)
     }
 
     fun setMaxCount(Count: Int) {

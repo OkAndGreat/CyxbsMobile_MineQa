@@ -10,8 +10,13 @@
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/drawable/mine_stamp_center_icon_fl_background.xml" value="0.28888888888888886" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/drawable/mine_stamp_detail_item_ripple.xml" value="0.26666666666666666" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/drawable/mine_stamp_detail_ripple.xml" value="0.30462962962962964" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/drawable/mine_vector_stamp_center_tab.xml" value="0.28888888888888886" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/drawable/mine_vector_stamp_detail_back.xml" value="0.33043922369765066" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/drawable/mine_vector_stamp_detail_navigate.xml" value="0.26666666666666666" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_activity_stampe.xml" value="0.15338042381432895" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_dialog_goods_detail.xml" value="0.15338042381432895" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_dialog_goods_detail_for_sure.xml" value="0.15338042381432895" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_dialog_goods_detail_over.xml" value="0.25" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_fragment_exchange_detail.xml" value="0.375" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_fragment_goods_detail.xml" value="0.25" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_fragment_stamp_center.xml" value="0.25" />
@@ -21,7 +26,7 @@
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_fragment_stamp_tab_goods.xml" value="0.15338042381432895" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_fragment_stamp_tab_tasks.xml" value="0.15338042381432895" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_item_stamp_tab.xml" value="0.15338042381432895" />
-        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_item_tablayout_stamp_hint.xml" value="0.335" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_item_tablayout_stamp_hint.xml" value="0.9084507042253521" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_layout_dialog_recyclerview_dynamic.xml" value="0.15338042381432895" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_layout_user_fragment_item.xml" value="0.15338042381432895" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_list_item_goods_pic.xml" value="0.15338042381432895" />
@@ -34,6 +39,9 @@
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_list_item_stamp_task.xml" value="0.15338042381432895" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_list_item_stamp_title.xml" value="0.15338042381432895" />
         <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_mine/src/main/res/layout/mine_tab_stamp_detail_item.xml" value="0.15338042381432895" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_qa/src/main/res/drawable/qa_ic_camera.xml" value="0.22777777777777777" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_qa/src/main/res/drawable/qa_ic_no_circles_add.xml" value="0.2833333333333333" />
+        <entry key="..\:/AndroidProject/CyxbsMobile_MineQa/module_qa/src/main/res/drawable/qa_ic_toolbar_more.xml" value="0.22777777777777777" />
       </map>
     </option>
   </component>
