@@ -31,7 +31,7 @@ class StampCenterActivity : BaseActivity() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.mine_activity_stampe)
         Handler().postDelayed({
             mine_stamp_center_fragment.visibility = View.VISIBLE
-        }, 300)
+        }, 500)
         initView()
     }
 

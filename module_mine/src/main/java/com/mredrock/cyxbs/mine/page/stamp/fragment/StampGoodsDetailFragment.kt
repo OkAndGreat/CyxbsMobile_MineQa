@@ -78,22 +78,17 @@ class StampGoodsDetailFragment :
 
         viewModel.account.observe(this, Observer {
             mGoodAccount = it
-            mBinding.mineStampDecorationInventory.text = "$it"
+            mBinding.mineStampDecorationInventory.text = "库存量：$it"
         })
 
         viewModel.isRefresh.observe(this, Observer {
             println("111 $it")
             mBinding.mineFlGoodsSf.isRefreshing = false
         })
-        initSwipeRefreshLayout()
 
         viewModel.loadGood(mId)
 
-        mBinding.mineFlGoodsSf.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
-            override fun onRefresh() {
-                viewModel.loadGood(mId)
-            }
-        })
+        mBinding.mineFlGoodsSf.setOnRefreshListener { viewModel.loadGood(mId) }
         //设置vp2的切换动画
         mBinding.mineVp2GoodsPic.setPageTransformer(SATransformer())
         initListener()
@@ -135,12 +130,8 @@ class StampGoodsDetailFragment :
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 mBinding.mineVp2GoodsPic.setCurrentItem((mCurPosition + 1) % mPicCount, true)
+                Log.d(TAG, "(mCurPosition + 1) % mPicCount -- > ${(mCurPosition + 1) % mPicCount}")
             }
-
-        //如果图片只有一张,关闭RX流
-        if (mPicCount == 1) {
-            disposable.dispose()
-        }
     }
 
     @SuppressLint("InflateParams")
@@ -298,13 +289,4 @@ class StampGoodsDetailFragment :
         mBinding.mineTvDecorationRestCount.text = "余额：$mAccount"
     }
 
-    private fun initSwipeRefreshLayout() {
-        try {
-            val field = mBinding.mineFlGoodsSf.javaClass.getField("mTouchSlop")
-            field.isAccessible = true
-            field.set(mBinding.mineFlGoodsSf,800)
-        } catch ( e:Exception){
-            e.printStackTrace()
-        }
-    }
 }

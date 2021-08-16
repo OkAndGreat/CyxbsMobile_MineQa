@@ -33,8 +33,8 @@ class CountView(context: Context) : View(context) {
     private var mTextColor = 0
     private var mEndTextColor = 0
 
-    //当前值
-    private var mCount = 0
+    //当前值,设置成-1是为了防止setCurCount时判断设置得Count是否和mCount相同以判断是否要更改时如果是0不设置得问题
+    private var mCount = -1
 
     //最大值
     private var mMaxCount = 0
@@ -95,7 +95,6 @@ class CountView(context: Context) : View(context) {
     fun setMaxCount(mMaxCount: Int) {
         this.mMaxCount = mMaxCount
     }
-
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(
@@ -163,7 +162,9 @@ class CountView(context: Context) : View(context) {
     }
 
     fun setCurCount(count: Int) {
-        if (count != mCount) {
+        //设置文字进度条当前数量，如果和之前得相同就不改变，但如果是初始化count为0后再设置当前量为0就要接着执行
+        //否则会出现后缀与前面文字得间距过大的问题
+        if (count != mCount || count == 0) {
             calculateChangeNum(count - mCount)
         }
     }

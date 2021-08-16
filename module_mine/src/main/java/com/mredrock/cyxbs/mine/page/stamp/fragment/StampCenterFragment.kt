@@ -87,11 +87,11 @@ class StampCenterFragment :
         })
         savedInstanceState?.putBoolean("mShouldShowBlueDot", mShouldShowBlueDot)
         //获得状态
-        LogUtils.d("1111","onCreate")
+        LogUtils.d("1111", "onCreate")
     }
 
     override fun onResume() {
-        LogUtils.d("1111","onResume")
+        LogUtils.d("1111", "onResume")
         mBinding.mineStampCenterAbl.setExpanded(mShowAbl)
         super.onResume()
     }
@@ -136,14 +136,7 @@ class StampCenterFragment :
                             val hintIvAnim = ValueAnimator.ofFloat(1F, 0F)
                             hintIvAnim.duration = 500
                             hintIvAnim.start()
-                            hintIvAnim.addUpdateListener {
-                                val fl = it.animatedValue as Float
-                                //ru
-                                if (fl == 0F) {
-                                    hintIv?.visibility = INVISIBLE
-                                }
-                                hintIv?.alpha = fl
-                            }
+                            hintIvAnim.addUpdateListener { hintIv?.alpha = it.animatedValue as Float }
                         }
                         mShouldShowBlueDot = false
                     }
@@ -192,8 +185,10 @@ class StampCenterFragment :
         //右上角动画
         //这里的if主要是进行边界值判断，发现width为0的时候就会填充边界
         if (ratio != 0f && baseIconWidth == 0 && offset != maxHeight) {
-            mBinding.mineStampCenterIconFl.measure(View.MeasureSpec.UNSPECIFIED,
-                View.MeasureSpec.UNSPECIFIED)
+            mBinding.mineStampCenterIconFl.measure(
+                View.MeasureSpec.UNSPECIFIED,
+                View.MeasureSpec.UNSPECIFIED
+            )
             baseIconWidth = mBinding.mineStampCenterIconFl.measuredWidth
         }
         val layoutParams = mBinding.mineStampCenterIconFl.layoutParams

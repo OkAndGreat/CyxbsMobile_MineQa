@@ -64,7 +64,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mine_cl_stamp_detail"/>
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        <com.mredrock.cyxbs.mine.page.stamp.customview.VerticalSwipeRefreshLayout
             android:id="@+id/mine_fl_goods_sf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -262,6 +262,6 @@
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </com.mredrock.cyxbs.mine.page.stamp.customview.VerticalSwipeRefreshLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
