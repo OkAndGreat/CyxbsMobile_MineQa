@@ -10,44 +10,46 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mine_tv_goods_detail_dialog_content_sure"
-        android:layout_width="213dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="215dp"
+        android:layout_height="62dp"
+        android:gravity="center_horizontal"
         android:textAppearance="@style/mine_goods_detail_dialog_ps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.008" />
+        app:layout_constraintVertical_bias="0.275" />
 
     <Button
         android:id="@+id/mine_btn_goods_detail_for_cancel"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="93dp"
         android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="34dp"
         android:background="@drawable/mine_shape_goods_detail_cancel"
         android:text="再想想"
         android:textAppearance="@style/mine_goods_detail_dialog_cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.753" />
 
     <Button
         android:id="@+id/mine_btn_goods_detail_for_sure"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="93dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="34dp"
         android:background="@drawable/mine_selector_decoration_detail_btn"
         android:text="好的"
         android:textAppearance="@style/mine_goods_detail_dialog_sure"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.779"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.753" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

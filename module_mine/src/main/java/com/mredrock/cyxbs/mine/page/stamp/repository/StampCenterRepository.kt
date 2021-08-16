@@ -2,11 +2,13 @@ package com.mredrock.cyxbs.mine.page.stamp.repository
 
 import android.util.Log
 import com.mredrock.cyxbs.common.BaseApp
+import com.mredrock.cyxbs.common.network.ApiGenerator
 import com.mredrock.cyxbs.common.utils.extensions.doOnErrorWithDefaultErrorHandler
 import com.mredrock.cyxbs.common.utils.extensions.safeSubscribeBy
 import com.mredrock.cyxbs.common.utils.extensions.setSchedulers
 import com.mredrock.cyxbs.common.utils.extensions.toast
 import com.mredrock.cyxbs.mine.TestRetrofit
+import com.mredrock.cyxbs.mine.network.ApiService
 import com.mredrock.cyxbs.mine.network.model.stamp.CenterGood
 import com.mredrock.cyxbs.mine.network.model.stamp.StampGood
 import com.mredrock.cyxbs.mine.network.model.stamp.StampTask
