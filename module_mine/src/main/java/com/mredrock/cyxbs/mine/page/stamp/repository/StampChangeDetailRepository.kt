@@ -49,7 +49,7 @@ class StampChangeDetailRepository private constructor() {
                     function.invoke(it.data)
                 },
                 onError = {
-                    BaseApp.context.toast("请求异常:${it}")
+                    BaseApp.context.toast("没有更多了")
                 }
             )
 

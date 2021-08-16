@@ -18,7 +18,7 @@ class StampGetDetailListFragment :
     override fun initView() {
         val linearLayoutManager = LinearLayoutManager(activity)
 
-        mBinding.mineRvStampGetDetail.addOnScrollListener(object : EndlessRecyclerOnScrollListener(linearLayoutManager){
+        mBinding.mineRvStampGetDetail.addOnScrollListener(object : EndlessRecyclerOnScrollListener(linearLayoutManager,10){
             override fun onLoadMore(currentPage: Int) {
                 viewModel.loadGetChangeDetails(currentPage)
             }

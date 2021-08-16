@@ -3,7 +3,7 @@ package com.mredrock.cyxbs.mine.page.stamp.adapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: LinearLayoutManager) :
+abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: LinearLayoutManager,private val baseNum:Int = 0) :
     RecyclerView.OnScrollListener() {
 
     private var loading = false
@@ -28,7 +28,7 @@ abstract class EndlessRecyclerOnScrollListener(private val linearLayoutManager: 
             }
         }
         if (!loading
-            && (totalItemCount - visibleItemCount) <= firstVisibleItem) {
+            && (totalItemCount - visibleItemCount - baseNum) <= firstVisibleItem) {
             currentPage++;
             onLoadMore(currentPage);
             loading = true;

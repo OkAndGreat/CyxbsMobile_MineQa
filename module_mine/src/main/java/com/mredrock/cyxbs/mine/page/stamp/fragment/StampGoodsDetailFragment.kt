@@ -85,6 +85,7 @@ class StampGoodsDetailFragment :
             println("111 $it")
             mBinding.mineFlGoodsSf.isRefreshing = false
         })
+        initSwipeRefreshLayout()
 
         viewModel.loadGood(mId)
 
@@ -100,12 +101,16 @@ class StampGoodsDetailFragment :
     }
 
 
+
+
     override fun initData() {
         //图片数量
         viewModel.good.observe(this, Observer {
             //代码添加radioBtn,拿到数据后得到图片数量数据后代码动态添加RadioButton,要求图片数量大于1张
             if (it.pic.size > 1) {
                 mPicCount = 0
+                mBinding.mineRgGoodsDetail.removeAllViews()
+                mRadioButtonList.clear()
                 for (i in it.pic.indices) {
                     val radioBtn = RadioButton(activity)
                     mRadioButtonList.add(radioBtn)
@@ -291,5 +296,15 @@ class StampGoodsDetailFragment :
 
     private fun refreshMAccount() {
         mBinding.mineTvDecorationRestCount.text = "余额：$mAccount"
+    }
+
+    private fun initSwipeRefreshLayout() {
+        try {
+            val field = mBinding.mineFlGoodsSf.javaClass.getField("mTouchSlop")
+            field.isAccessible = true
+            field.set(mBinding.mineFlGoodsSf,800)
+        } catch ( e:Exception){
+            e.printStackTrace()
+        }
     }
 }
